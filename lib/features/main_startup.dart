@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'core/internal/device.dart';
-import 'core/internal/global.dart';
-import 'core/internal/local_strings.dart';
-import 'features/router/router_navigate.dart';
-import 'features/router/screen_router.gr.dart';
-import 'injection_container.dart' show sl;
+import '../core/internal/device.dart';
+import '../core/internal/global.dart';
+import '../core/internal/local_strings.dart';
+import '../injection_container.dart' show sl;
+import 'router/router_navigate.dart';
+import 'router/screen_router.gr.dart';
 
 ///@author H.C.CHIANG
 ///@version 2020/2/5

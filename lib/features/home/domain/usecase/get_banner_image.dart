@@ -44,7 +44,6 @@ class GetHomeBannerImage implements UseCase<List<dynamic>, DataParams> {
 //        MyLogger.error(msg: 'banner image exception', tag: tag, error: e);
 //        return Left(Failure.cachedFile());
 //      }
-      return Left(Failure.cachedFile());
     }
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_ty_mobile/features/web/state/web_route_store.dart';
 import 'package:mobx/mobx.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../widget_res_export.dart' show RouterNavigate, sl;
+import '../widget_res_export.dart' show sl;
 
 class WebRoute extends StatefulWidget {
   final String startUrl;

@@ -5,41 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChannels;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
-import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'core/data/hive_adapters_export.dart';
-import 'core/internal/permission_item.dart';
-import 'core/internal/themes.dart';
-import 'features/router/router_navigate.dart';
-import 'generated/l10n.dart';
-import 'injection_container.dart' as di;
+import '../core/data/hive_adapters_export.dart';
+import '../core/internal/permission_item.dart';
+import '../core/internal/themes.dart';
+import '../generated/l10n.dart';
+import '../injection_container.dart' as di;
+import '../mylogger.dart';
 import 'main_startup.dart';
-import 'mylogger.dart';
+import 'router/router_navigate.dart';
 
-void main() async {
-  // setup log
-  _setupLogging();
-  // setup injector
-  await di.init();
-  // run application
-  runApp(new MyApp());
-}
-
-void _setupLogging() {
-  Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen((rec) {
-    print('${rec.loggerName}: [${rec.level.name}] ${rec.message}');
-  });
-}
-
-class MyApp extends StatefulWidget {
+class MainApp extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _MyAppState();
+  State<StatefulWidget> createState() => _MainAppState();
 }
 
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final String tag = 'Main';
   final List<PermissionItem> permissions = List<PermissionItem>();
   final FLToastDefaults _toastDefaults = FLToastDefaults();

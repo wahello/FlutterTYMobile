@@ -1,5 +1,5 @@
 import 'package:flutter_ty_mobile/features/general/data/holds/user_data.dart'
-    show UserData, getUserData;
+    show UserData;
 import 'package:flutter_ty_mobile/features/users/domain/entity/user_entity.dart';
 import 'package:mobx/mobx.dart';
 
