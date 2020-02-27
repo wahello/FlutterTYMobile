@@ -1,0 +1,9 @@
+export 'package:flutter_ty_mobile/template/mobx/data/repository/template_repository.dart';
+export 'package:flutter_ty_mobile/template/mobx/data/source/template_data_source.dart';
+export 'package:flutter_ty_mobile/template/mobx/presentation/state/template_store.dart';
+export 'package:flutter_ty_mobile/template/page/data/repository/template2_repository_impl.dart';
+export 'package:flutter_ty_mobile/template/page/data/source/template2_data_source.dart';
+export 'package:flutter_ty_mobile/template/page/domain/repository/template_repository.dart';
+export 'package:flutter_ty_mobile/template/page/domain/usecase/get_desc.dart';
+export 'package:flutter_ty_mobile/template/page/domain/usecase/get_desc_2.dart';
+export 'package:flutter_ty_mobile/template/page/presentation/bloc/template2_bloc.dart';

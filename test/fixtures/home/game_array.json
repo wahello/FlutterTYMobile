@@ -1,0 +1,79 @@
+[
+  {
+    "id": 4107,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "candy",
+    "cname": "糖果世界"
+  },
+  {
+    "id": 4108,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "diamonds",
+    "cname": "宝石大亨"
+  },
+  {
+    "id": 4105,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "dice",
+    "cname": "骰宝"
+  },
+  {
+    "id": 4111,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "fighter",
+    "cname": "圣域传说"
+  },
+  {
+    "id": 4104,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "fish",
+    "cname": "鱼虾蟹"
+  },
+  {
+    "id": 4113,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "grave",
+    "cname": "盗墓笔记"
+  },
+  {
+    "id": 4109,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "hamster",
+    "cname": "欢乐地鼠"
+  },
+  {
+    "id": 4110,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "monkey",
+    "cname": "齐天大圣"
+  },
+  {
+    "id": 4112,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "opera",
+    "cname": "东方曲艺"
+  },
+  {
+    "id": 4103,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "rich",
+    "cname": "富贵吉祥"
+  },
+  {
+    "id": 4114,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "tank",
+    "cname": "战地风云"
+  }
+]

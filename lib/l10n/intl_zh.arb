@@ -1,0 +1,1833 @@
+{
+  "@@last_modified": "2020-02-05T17:45:17+0800",
+  "@@locale": "zh",
+  "title": "添运国际V1",
+  "@title": {
+    "description": "Title for the Demo application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "pageTitleHome":"首页",
+  "@pageTitleHome": {
+    "type": "text"
+  },
+  "pageTitleTutorial": "新手教学",
+  "@pageTitleTutorial": {
+    "type": "text"
+  },
+  "pageTitleMarquee": "公告",
+  "@pageTitleMarquee": {
+    "type": "text"
+  },
+  "pageTitleRouter": "线路导航",
+  "@pageTitleRouter": {
+    "type": "text"
+  },
+  "pageTitleRank": "VIP阶层",
+  "@pageTitleRank": {
+    "type": "text"
+  },
+  "pageTitleStore": "商店",
+  "@pageTitleStore": {
+    "type": "text"
+  },
+  "pageTitleSign": "签到",
+  "@pageTitleSign": {
+    "type": "text"
+  },
+  "pageTitleRoller": "幸运轮盘",
+  "@pageTitleRoller": {
+    "type": "text"
+  },
+  "pageTitleDeposit": "充值",
+  "@pageTitleDeposit": {
+    "type": "text"
+  },
+  "pageTitlePromo": "优惠",
+  "@pageTitlePromo": {
+    "type": "text"
+  },
+  "pageTitleService": "客服",
+  "@pageTitleService": {
+    "type": "text"
+  },
+  "pageTitleMember": "我的",
+  "@pageTitleMember": {
+    "type": "text"
+  },
+  "pageTitleLogin": "登入",
+  "@pageTitleLogin": {
+    "type": "text"
+  },
+  "pageTitleLogin2": "会员登入",
+  "@pageTitleLogin2": {
+    "type": "text"
+  },
+  "pageTitleRegister": "注册",
+  "@pageTitleRegister": {
+    "type": "text"
+  },
+  "pageTitleRegister2": "免费注册",
+  "@pageTitleRegister2": {
+    "type": "text"
+  },
+  "pageTitleMemberTransfer": "转帐",
+  "@pageTitleMemberTransfer": {
+    "type": "text"
+  },
+  "pageTitleMemberCard": "银行卡",
+  "@pageTitleMemberCard": {
+    "type": "text"
+  },
+  "pageTitleMemberWithdraw": "提现",
+  "@pageTitleMemberWithdraw": {
+    "type": "text"
+  },
+  "pageTitleMemberBalance": "平台馀额",
+  "@pageTitleMemberBalance": {
+    "type": "text"
+  },
+  "pageTitleMemberWallet": "免转钱包",
+  "@pageTitleMemberWallet": {
+    "type": "text"
+  },
+  "pageTitleMemberMessage": "站内信",
+  "@pageTitleMemberMessage": {
+    "type": "text"
+  },
+  "pageTitleMemberAccount": "帐户中心",
+  "@pageTitleMemberAccount": {
+    "type": "text"
+  },
+  "pageTitleMemberPassword": "更改密码",
+  "@pageTitleMemberPassword": {
+    "type": "text"
+  },
+  "pageTitleMemberTransaction": "转帐记录",
+  "@pageTitleMemberTransaction": {
+    "type": "text"
+  },
+  "pageTitleMemberBets": "投注记录",
+  "@pageTitleMemberBets": {
+    "type": "text"
+  },
+  "pageTitleMemberDeals": "交易记录",
+  "@pageTitleMemberDeals": {
+    "type": "text"
+  },
+  "pageTitleMemberFlow": "流水记录",
+  "@pageTitleMemberFlow": {
+    "type": "text"
+  },
+  "pageTitleMemberAgent": "代理",
+  "@pageTitleMemberAgent": {
+    "type": "text"
+  },
+  "toolBarMemberCredit": "￥ {value}",
+  "@toolBarMemberCredit": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100.00"
+      }
+    }
+  },
+  "sideMenuThemeSwitch": "更换皮肤：",
+  "@sideMenuThemeSwitch": {
+    "type": "text"
+  },
+  "sideMenuThemeSwitchDark": "深",
+  "@sideMenuThemeSwitchDark": {
+    "type": "text"
+  },
+  "sideMenuThemeSwitchLight": "淺",
+  "@sideMenuThemeSwitchLight": {
+    "type": "text"
+  },
+  "workInProgress": "功能即将上线!",
+  "@workInProgress": {
+    "type": "text"
+  },
+  "btnMenu": "选单",
+  "@btnMenu": {
+    "type": "text"
+  },
+  "btnBack": "返回",
+  "@btnBack": {
+    "type": "text"
+  },
+  "btnRefresh": "刷新",
+  "@btnRefresh": {
+    "type": "text"
+  },
+  "btnLogin": "登入",
+  "@btnLogin": {
+    "type": "text"
+  },
+  "btnRegister": "注册",
+  "@btnRegister": {
+    "type": "text"
+  },
+  "btnResetPassword": "忘记密码",
+  "@btnResetPassword": {
+    "type": "text"
+  },
+  "btnSignUp": "签到",
+  "@btnSignUp": {
+    "type": "text"
+  },
+  "btnSignUpTv": "已累积签到{value}天",
+  "@btnSignUpTv": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "3"
+      }
+    }
+  },
+  "btnSignUpAlready": "已签到",
+  "@btnSignUpAlready": {
+    "type": "text"
+  },
+  "btnSignUpSuccess": "签到成功!!",
+  "@btnSignUpSuccess": {
+    "type": "text"
+  },
+  "btnSignUpFailed": "签到失败!!",
+  "@btnSignUpFailed": {
+    "type": "text"
+  },
+  "btnNoticeGeneral": "一般讯息",
+  "@btnNoticeGeneral": {
+    "type": "text"
+  },
+  "btnNoticeMaintenance": "维护通知",
+  "@btnNoticeMaintenance": {
+    "type": "text"
+  },
+  "hintActionLogin": "请先登入",
+  "@hintActionLogin": {
+    "type": "text"
+  },
+  "hintTitleLogin": "请先登入您的会员帐号",
+  "@hintTitleLogin": {
+    "type": "text"
+  },
+  "homeHintWelcomeLogin": "您好！ 请登入会员",
+  "@homeHintWelcomeLogin": {
+    "type": "text"
+  },
+  "homeHintWelcome": "您好！",
+  "@homeHintWelcome": {
+    "type": "text"
+  },
+  "homeHintWelcomeMember": "{name}您好！",
+  "@homeHintWelcomeMember": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "homeHintMemberCreditLeft": "余额",
+  "@homeHintMemberCreditLeft": {
+    "type": "text"
+  },
+  "hintAccount": "您的会员帐号",
+  "@hintAccount": {
+    "type": "text"
+  },
+  "hintAccountPassword": "您的密码",
+  "@hintAccountPassword": {
+    "type": "text"
+  },
+  "hintName": "输入用户名",
+  "@hintName": {
+    "type": "text"
+  },
+  "hintEmail": "输入信箱",
+  "@hintEmail": {
+    "type": "text"
+  },
+  "hintPassword": "输入密码",
+  "@hintPassword": {
+    "type": "text"
+  },
+  "hintConfirmed": "再次输入密码",
+  "@hintConfirmed": {
+    "type": "text"
+  },
+  "alertTitleError": "错误",
+  "@alertTitleError": {
+    "type": "text"
+  },
+  "alertTitleWarning": "警告",
+  "@alertTitleWarning": {
+    "type": "text"
+  },
+  "alertTitleHint": "提示",
+  "@alertTitleHint": {
+    "type": "text"
+  },
+  "alertButtonYes": "是",
+  "@alertButtonYes": {
+    "type": "text"
+  },
+  "alertButtonNo": "否",
+  "@alertButtonNo": {
+    "type": "text"
+  },
+  "alertButtonOk": "确认",
+  "@alertButtonOk": {
+    "type": "text"
+  },
+  "alertButtonCancel": "取消",
+  "@alertButtonCancel": {
+    "type": "text"
+  },
+  "alertButtonClose": "关闭",
+  "@alertButtonClose": {
+    "type": "text"
+  },
+  "messageClearDataRestart": "语言已变更，清除数据中，稍后将重启",
+  "@messageClearDataRestart": {
+    "type": "text"
+  },
+  "messageWelcomeUser": "欢迎，{name}",
+  "@messageWelcomeUser": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "messageWelcome": "欢迎光临，请先登入/注册",
+  "@messageWelcome": {
+    "type": "text"
+  },
+  "messageRegisterFailed": "注册失败",
+  "@messageRegisterFailed": {
+    "type": "text"
+  },
+  "messageLoginFailed": "登入失败",
+  "@messageLoginFailed": {
+    "type": "text"
+  },
+  "messageLogout": "{name}，请重新登入",
+  "@messageLogout": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "messageNoEvent": "当前没有活动",
+  "@messageNoEvent": {
+    "type": "text"
+  },
+  "messageTaskSuccess": "成功:{msg}",
+  "@messageTaskSuccess": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login success"
+      }
+    }
+  },
+  "messageTaskCanceled": "取消:{msg}",
+  "@messageTaskCanceled": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login canceled"
+      }
+    }
+  },
+  "messageInvalidName": "名称格式错误",
+  "@messageInvalidName": {
+    "type": "text"
+  },
+  "messageInvalidEmail": "信箱格式错误",
+  "@messageInvalidEmail": {
+    "type": "text"
+  },
+  "messageInvalidPhone": "电话格式错误",
+  "@messageInvalidPhone": {
+    "type": "text"
+  },
+  "messageInvalidVerify": "请输入验证码",
+  "@messageInvalidVerify": {
+    "type": "text"
+  },
+  "messageInvalidPasswordArg": "密码至少为{num}个字",
+  "@messageInvalidPasswordArg": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "6"
+      }
+    }
+  },
+  "messageInvalidAccount": "帐号为6~12个字",
+  "@messageInvalidAccount": {
+    "type": "text"
+  },
+  "messageInvalidPassword": "密码为6~20个字",
+  "@messageInvalidPassword": {
+    "type": "text"
+  },
+  "messageInvalidConfirmPassword": "密码不符合",
+  "@messageInvalidConfirmPassword": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmount": "最小值为{num}",
+  "@messageInvalidDepositAmount": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "0"
+      }
+    }
+  },
+  "messageInvalidDepositAmountRange": "输入范围:{num}~{num2}",
+  "@messageInvalidDepositAmountRange": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "1"
+      },
+      "num2": {
+        "example": "100"
+      }
+    }
+  },
+  "messageInvalidDepositAmountRangeStep": "输入范围:{num}~{num2}(金额为{num3}的倍数)",
+  "@messageInvalidDepositAmountRangeStep": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "50"
+      },
+      "num2": {
+        "example": "500"
+      },
+      "num3": {
+        "example": "50"
+      }
+    }
+  },
+  "messageInvalidDepositName": "帐号名称错误",
+  "@messageInvalidDepositName": {
+    "type": "text"
+  },
+  "messageInvalidCardOwner": "持卡人名称错误",
+  "@messageInvalidCardOwner": {
+    "type": "text"
+  },
+  "messageInvalidCardNumber": "卡号为16~19个字",
+  "@messageInvalidCardNumber": {
+    "type": "text"
+  },
+  "messageInvalidCardBankPoint": "名称需大于3个字",
+  "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawPassword": "密码为4~8个字",
+  "@messageInvalidWithdrawPassword": {
+    "type": "text"
+  },
+  "messageWarnUsingCellular": "您正在使用移动网络",
+  "@messageWarnUsingCellular": {
+    "type": "text"
+  },
+  "messageWarnNetworkLocation": "您所在的网络区域无法使用此服务",
+  "@messageWarnNetworkLocation": {
+    "type": "text"
+  },
+  "messageWarnLoadingGame": "加载游戏中，请稍候…",
+  "@messageWarnLoadingGame": {
+    "type": "text"
+  },
+  "messageWarnNoHistoryData": "查无资料",
+  "@messageWarnNoHistoryData": {
+    "type": "text"
+  },
+  "messageWarnNoPromoData": "查无优惠",
+  "@messageWarnNoPromoData": {
+    "type": "text"
+  },
+  "messageWarnNoPromoInfo": "查无优惠信息",
+  "@messageWarnNoPromoInfo": {
+    "type": "text"
+  },
+  "messageError": "错误:{msg}({msg2})",
+  "@messageError": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login error"
+      },
+      "msg2": {
+        "example": "wrong password"
+      }
+    }
+  },
+  "messageErrorStatus": "错误:{msg}",
+  "@messageErrorStatus": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login error"
+      }
+    }
+  },
+  "messageErrorInternal": "内部错误，请稍候再重试或联系客服",
+  "@messageErrorInternal": {
+    "type": "text"
+  },
+  "messageErrorCachedFile": "缓存数据错误，请稍候再重试或联系客服",
+  "@messageErrorCachedFile": {
+    "type": "text"
+  },
+  "messageErrorData": "用户数据错误",
+  "@messageErrorData": {
+    "type": "text"
+  },
+  "messageErrorAutoLogin": "数据错误，请手动登入",
+  "@messageErrorAutoLogin": {
+    "type": "text"
+  },
+  "messageErrorNotLogin": "请先登入",
+  "@messageErrorNotLogin": {
+    "type": "text"
+  },
+  "messageErrorNoNetwork": "请检查网络状态",
+  "@messageErrorNoNetwork": {
+    "type": "text"
+  },
+  "messageErrorNoServerConnection": "无法连接至伺服器!!",
+  "@messageErrorNoServerConnection": {
+    "type": "text"
+  },
+  "messageErrorTimeoutError": "网络逾時，请稍候再重试",
+  "@messageErrorTimeoutError": {
+    "type": "text"
+  },
+  "messageErrorServerError": "伺服器错误，请稍候再重试或联系客服",
+  "@messageErrorServerError": {
+    "type": "text"
+  },
+  "messageErrorLoadingGame": "游戏加载发生错误，请稍候再重试",
+  "@messageErrorLoadingGame": {
+    "type": "text"
+  },
+  "messageErrorLoadingPay": "网页加载错误，请稍候再重试",
+  "@messageErrorLoadingPay": {
+    "type": "text"
+  },
+  "messageErrorNoStoragePermission": "请开启\"保存\"权限",
+  "@messageErrorNoStoragePermission": {
+    "type": "text"
+  },
+  "messageErrorHasCardData": "已绑定过银行卡",
+  "@messageErrorHasCardData": {
+    "type": "text"
+  },
+  "messageErrorFieldError": "请输入{msg}",
+  "@messageErrorFieldError": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "input filter"
+      }
+    }
+  },
+  "messageErrorBindCgp": "请先绑定Cgp钱包",
+  "@messageErrorBindCgp": {
+    "type": "text"
+  },
+  "messageErrorBindCpw": "请先绑定购宝钱包",
+  "@messageErrorBindCpw": {
+    "type": "text"
+  },
+  "messageErrorBindBankcard": "请先绑定银行卡！",
+  "@messageErrorBindBankcard": {
+    "type": "text"
+  },
+  "messageCopy": "已复制到剪贴板",
+  "@messageCopy": {
+    "type": "text"
+  },
+  "messageCopyError": "复制失败",
+  "@messageCopyError": {
+    "type": "text"
+  },
+  "messageWait": "处理请求中，请稍候…",
+  "@messageWait": {
+    "type": "text"
+  },
+  "messageWaitComplete": "处理请求中，请勿退出",
+  "@messageWaitComplete": {
+    "type": "text"
+  },
+  "messageSuccess": "成功",
+  "@messageSuccess": {
+    "type": "text"
+  },
+  "messageFailed": "更改失败，请稍候再重试",
+  "@messageFailed": {
+    "type": "text"
+  },
+  "userPwdFieldTitleOld": "旧密码：",
+  "@userPwdFieldTitleOld": {
+    "type": "text"
+  },
+  "userPwdFieldTitleNew": "新密码：",
+  "@userPwdFieldTitleNew": {
+    "type": "text"
+  },
+  "userPwdFieldTitleConfirm": "密码确认：",
+  "@userPwdFieldTitleConfirm": {
+    "type": "text"
+  },
+  "userPwdFieldHintOld": "输入旧密码",
+  "@userPwdFieldHintOld": {
+    "type": "text"
+  },
+  "userPwdFieldHintNew": "输入新密码",
+  "@userPwdFieldHintNew": {
+    "type": "text"
+  },
+  "userPwdFieldHintConfirm": "再次输入新密码",
+  "@userPwdFieldHintConfirm": {
+    "type": "text"
+  },
+  "userPwdButtonTitle": "修改密码",
+  "@userPwdButtonTitle": {
+    "type": "text"
+  },
+  "registerFieldTitleAccount": "帐号:",
+  "@registerFieldTitleAccount": {
+    "type": "text"
+  },
+  "registerFieldTitlePassword": "密码:",
+  "@registerFieldTitlePassword": {
+    "type": "text"
+  },
+  "registerFieldTitleConfirm": "确认密码:",
+  "@registerFieldTitleConfirm": {
+    "type": "text"
+  },
+  "registerFieldTitlePhone": "手机号:",
+  "@registerFieldTitlePhone": {
+    "type": "text"
+  },
+  "registerFieldTitleRecommend": "推荐码:",
+  "@registerFieldTitleRecommend": {
+    "type": "text"
+  },
+  "registerFieldTitleVerify": "验证码:",
+  "@registerFieldTitleVerify": {
+    "type": "text"
+  },
+  "registerFieldHintVerify": "请输入验证码",
+  "@registerFieldHintVerify": {
+    "type": "text"
+  },
+  "registerButtonTitleRefresh": "点图刷新",
+  "@registerButtonTitleRefresh": {
+    "type": "text"
+  },
+  "registerButtonTitleRegister": "注册",
+  "@registerButtonTitleRegister": {
+    "type": "text"
+  },
+  "promoCategoryAll": "All",
+  "@promoCategoryAll": {
+    "type": "text"
+  },
+  "promoCategoryOther": "其它",
+  "@promoCategoryOther": {
+    "type": "text"
+  },
+  "promoDetailPlatform": "适用平台",
+  "@promoDetailPlatform": {
+    "type": "text"
+  },
+  "promoDetailContent": "活动内容",
+  "@promoDetailContent": {
+    "type": "text"
+  },
+  "promoDetailApply": "申请方式",
+  "@promoDetailApply": {
+    "type": "text"
+  },
+  "promoDetailRules": "活动细则",
+  "@promoDetailRules": {
+    "type": "text"
+  },
+  "memberGridTitleDeposit": "充值",
+  "@memberGridTitleDeposit": {
+    "type": "text"
+  },
+  "memberGridTitleTransfer": "转帐",
+  "@memberGridTitleTransfer": {
+    "type": "text"
+  },
+  "memberGridTitleCard": "银行卡",
+  "@memberGridTitleCard": {
+    "type": "text"
+  },
+  "memberGridTitleWithdraw": "提现",
+  "@memberGridTitleWithdraw": {
+    "type": "text"
+  },
+  "memberGridTitleBalance": "平台馀额",
+  "@memberGridTitleBalance": {
+    "type": "text"
+  },
+  "memberGridTitleWallet": "免转钱包",
+  "@memberGridTitleWallet": {
+    "type": "text"
+  },
+  "memberGridTitleMessage": "站内信",
+  "@memberGridTitleMessage": {
+    "type": "text"
+  },
+  "memberGridTitleAccount": "帐户中心",
+  "@memberGridTitleAccount": {
+    "type": "text"
+  },
+  "memberGridTitleTransaction": "转帐记录",
+  "@memberGridTitleTransaction": {
+    "type": "text"
+  },
+  "memberGridTitleBet": "投注记录",
+  "@memberGridTitleBet": {
+    "type": "text"
+  },
+  "memberGridTitleDeal": "交易记录",
+  "@memberGridTitleDeal": {
+    "type": "text"
+  },
+  "memberGridTitleFlow": "流水记录",
+  "@memberGridTitleFlow": {
+    "type": "text"
+  },
+  "memberGridTitleAgent": "代理",
+  "@memberGridTitleAgent": {
+    "type": "text"
+  },
+  "memberGridTitleLogout": "登出",
+  "@memberGridTitleLogout": {
+    "type": "text"
+  },
+  "transferViewTitleIn": "转入",
+  "@transferViewTitleIn": {
+    "type": "text"
+  },
+  "transferViewTitleAmount": "金额",
+  "@transferViewTitleAmount": {
+    "type": "text"
+  },
+  "transferViewTitleOption": "选择金额",
+  "@transferViewTitleOption": {
+    "type": "text"
+  },
+  "transferViewTextOptionAll": "全部额度",
+  "@transferViewTextOptionAll": {
+    "type": "text"
+  },
+  "transferViewButtonConfirm": "确认转帐",
+  "@transferViewButtonConfirm": {
+    "type": "text"
+  },
+  "transferDataError": "数据错误，请重新选择",
+  "@transferDataError": {
+    "type": "text"
+  },
+  "transferResultAlertTitle": "转帐失败",
+  "@transferResultAlertTitle": {
+    "type": "text"
+  },
+  "bankcardViewTitleOwner": "帐户姓名",
+  "@bankcardViewTitleOwner": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankName": "银行名称",
+  "@bankcardViewTitleBankName": {
+    "type": "text"
+  },
+  "bankcardViewTitleCardNumber": "账(卡)号",
+  "@bankcardViewTitleCardNumber": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankPoint": "银行支行",
+  "@bankcardViewTitleBankPoint": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankProvince": "开户网点",
+  "@bankcardViewTitleBankProvince": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankArea": "地区",
+  "@bankcardViewTitleBankArea": {
+    "type": "text"
+  },
+  "bankcardViewTitleSend": "送出",
+  "@bankcardViewTitleSend": {
+    "type": "text"
+  },
+  "withdrawViewTitleAmount": "提款金额",
+  "@withdrawViewTitleAmount": {
+    "type": "text"
+  },
+  "withdrawViewTitlePwd": "提现密码",
+  "@withdrawViewTitlePwd": {
+    "type": "text"
+  },
+  "withdrawViewTitleNote": "备注",
+  "@withdrawViewTitleNote": {
+    "type": "text"
+  },
+  "withdrawViewTitleSend": "提交",
+  "@withdrawViewTitleSend": {
+    "type": "text"
+  },
+  "withdrawViewOptionVirtual": "不使用虚拟货币",
+  "@withdrawViewOptionVirtual": {
+    "type": "text"
+  },
+  "withdrawViewOptionHint": "如需提取虚拟货币请绑定後选取",
+  "@withdrawViewOptionHint": {
+    "type": "text"
+  },
+  "walletViewTitleMy": "我的钱包",
+  "@walletViewTitleMy": {
+    "type": "text"
+  },
+  "walletViewTitleRemain": "总余额",
+  "@walletViewTitleRemain": {
+    "type": "text"
+  },
+  "walletViewTitleWalletSingle": "单一钱包",
+  "@walletViewTitleWalletSingle": {
+    "type": "text"
+  },
+  "walletViewTitleWalletMulti": "多钱包",
+  "@walletViewTitleWalletMulti": {
+    "type": "text"
+  },
+  "walletViewButtonOneclick": "一键归户",
+  "@walletViewButtonOneclick": {
+    "type": "text"
+  },
+  "walletViewButtonConfrim": "确定",
+  "@walletViewButtonConfrim": {
+    "type": "text"
+  },
+  "walletViewHintOneclick": "所有平台额度转入主钱包",
+  "@walletViewHintOneclick": {
+    "type": "text"
+  },
+  "walletViewHintWalletSingle": "*系统预设，自动将额度转入开启的游戏平台",
+  "@walletViewHintWalletSingle": {
+    "type": "text"
+  },
+  "walletViewHintWalletMulti": "*需手动转移额度到该游戏平台",
+  "@walletViewHintWalletMulti": {
+    "type": "text"
+  },
+  "centerViewTitleData": "个人资料",
+  "@centerViewTitleData": {
+    "type": "text"
+  },
+  "centerViewTitleLotto": "六合幸运码",
+  "@centerViewTitleLotto": {
+    "type": "text"
+  },
+  "centerViewTitleVip": "Vip阶层",
+  "@centerViewTitleVip": {
+    "type": "text"
+  },
+  "centerTextTitleAccount": "用户名：",
+  "@centerTextTitleAccount": {
+    "type": "text"
+  },
+  "centerTextTitleName": "姓名：",
+  "@centerTextTitleName": {
+    "type": "text"
+  },
+  "centerTextTitleBirth": "生日：",
+  "@centerTextTitleBirth": {
+    "type": "text"
+  },
+  "centerTextTitleDateHint": "格式为：Yyyy–Mm–Dd",
+  "@centerTextTitleDateHint": {
+    "type": "text"
+  },
+  "centerTextTitleDateError": "请输入正确日期(格式为：Yyyy–Mm–Dd)",
+  "@centerTextTitleDateError": {
+    "type": "text"
+  },
+  "centerTextTitleMailError": "请输入正确邮箱",
+  "@centerTextTitleMailError": {
+    "type": "text"
+  },
+  "centerTextTitlePhone": "手机号：",
+  "@centerTextTitlePhone": {
+    "type": "text"
+  },
+  "centerTextTitleMail": "邮箱：",
+  "@centerTextTitleMail": {
+    "type": "text"
+  },
+  "centerTextTitleWechat": "微信号：",
+  "@centerTextTitleWechat": {
+    "type": "text"
+  },
+  "centerTextTitleCgp": "Cgp钱包",
+  "@centerTextTitleCgp": {
+    "type": "text"
+  },
+  "centerTextTitleCpw": "购宝钱包",
+  "@centerTextTitleCpw": {
+    "type": "text"
+  },
+  "centerTextButtonChangePwd": "更改密码",
+  "@centerTextButtonChangePwd": {
+    "type": "text"
+  },
+  "centerTextButtonBind": "绑订",
+  "@centerTextButtonBind": {
+    "type": "text"
+  },
+  "centerTextButtonEdit": "修改",
+  "@centerTextButtonEdit": {
+    "type": "text"
+  },
+  "centerTextButtonSend": "发送",
+  "@centerTextButtonSend": {
+    "type": "text"
+  },
+  "centerHintNoName": "请至绑订银行卡做相关设定",
+  "@centerHintNoName": {
+    "type": "text"
+  },
+  "centerLuckyTitle": "请在以下7个空格中，填入01~49的数字",
+  "@centerLuckyTitle": {
+    "type": "text"
+  },
+  "centerLuckyNumberError": "数字范围:01~49",
+  "@centerLuckyNumberError": {
+    "type": "text"
+  },
+  "centerLuckyHint": "绑定六合幸运码，就能参加六合彩运码对对碰哦，精彩大礼送给你!!!",
+  "@centerLuckyHint": {
+    "type": "text"
+  },
+  "centerLuckyButtonGenerate": "自动生成",
+  "@centerLuckyButtonGenerate": {
+    "type": "text"
+  },
+  "centerLuckyButtonBind": "确认绑定",
+  "@centerLuckyButtonBind": {
+    "type": "text"
+  },
+  "centerVipTextValidAmount": "有效投注：",
+  "@centerVipTextValidAmount": {
+    "type": "text"
+  },
+  "centerVipTextBetAmount": "老虎机投注：",
+  "@centerVipTextBetAmount": {
+    "type": "text"
+  },
+  "centerVipTextVip0": "普通",
+  "@centerVipTextVip0": {
+    "type": "text"
+  },
+  "centerVipTextVip1": "黄金",
+  "@centerVipTextVip1": {
+    "type": "text"
+  },
+  "centerVipTextVip2": "红宝石",
+  "@centerVipTextVip2": {
+    "type": "text"
+  },
+  "centerVipTextVip3": "翡翠",
+  "@centerVipTextVip3": {
+    "type": "text"
+  },
+  "centerVipTextVip4": "钻石",
+  "@centerVipTextVip4": {
+    "type": "text"
+  },
+  "centerVipTextVipCondition": "{num}万",
+  "@centerVipTextVipCondition": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "1"
+      }
+    }
+  },
+  "transactionViewSpinnerTitle": "转帐时间",
+  "@transactionViewSpinnerTitle": {
+    "type": "text"
+  },
+  "transactionViewSpinnerDate0": "全部时间",
+  "@transactionViewSpinnerDate0": {
+    "type": "text"
+  },
+  "transactionViewSpinnerDate1": "今天",
+  "@transactionViewSpinnerDate1": {
+    "type": "text"
+  },
+  "transactionViewSpinnerDate2": "昨天",
+  "@transactionViewSpinnerDate2": {
+    "type": "text"
+  },
+  "transactionViewSpinnerDate3": "一个月内",
+  "@transactionViewSpinnerDate3": {
+    "type": "text"
+  },
+  "transactionHeaderSerial": "序号",
+  "@transactionHeaderSerial": {
+    "type": "text"
+  },
+  "transactionHeaderDate": "日期",
+  "@transactionHeaderDate": {
+    "type": "text"
+  },
+  "transactionHeaderType": "类别",
+  "@transactionHeaderType": {
+    "type": "text"
+  },
+  "transactionHeaderDesc": "说明",
+  "@transactionHeaderDesc": {
+    "type": "text"
+  },
+  "transactionHeaderAmount": "金额",
+  "@transactionHeaderAmount": {
+    "type": "text"
+  },
+  "betsSpinnerTitlePlatform": "游戏平台",
+  "@betsSpinnerTitlePlatform": {
+    "type": "text"
+  },
+  "betsSpinnerTitleTime": "投注时间",
+  "@betsSpinnerTitleTime": {
+    "type": "text"
+  },
+  "betsTextTotal": "总计:￥{value}",
+  "@betsTextTotal": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "80.0"
+      }
+    }
+  },
+  "betsHeaderDate": "时间",
+  "@betsHeaderDate": {
+    "type": "text"
+  },
+  "betsHeaderId": "注单号",
+  "@betsHeaderId": {
+    "type": "text"
+  },
+  "betsHeaderPlatform": "平台",
+  "@betsHeaderPlatform": {
+    "type": "text"
+  },
+  "betsHeaderGame": "游戏名称",
+  "@betsHeaderGame": {
+    "type": "text"
+  },
+  "betsHeaderAmount": "投注额",
+  "@betsHeaderAmount": {
+    "type": "text"
+  },
+  "betsHeaderBonus": "派彩金额",
+  "@betsHeaderBonus": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType0": "全部",
+  "@dealsViewSpinnerType0": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType1": "充值",
+  "@dealsViewSpinnerType1": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType2": "提现",
+  "@dealsViewSpinnerType2": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType3": "红利",
+  "@dealsViewSpinnerType3": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus0": "全部",
+  "@dealsViewSpinnerStatus0": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus1": "成功",
+  "@dealsViewSpinnerStatus1": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus2": "失败",
+  "@dealsViewSpinnerStatus2": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus3": "处理中",
+  "@dealsViewSpinnerStatus3": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus4": "新交易",
+  "@dealsViewSpinnerStatus4": {
+    "type": "text"
+  },
+  "dealsHeaderSerial": "单号",
+  "@dealsHeaderSerial": {
+    "type": "text"
+  },
+  "dealsHeaderType": "项目",
+  "@dealsHeaderType": {
+    "type": "text"
+  },
+  "dealsHeaderDetail": "明细",
+  "@dealsHeaderDetail": {
+    "type": "text"
+  },
+  "dealsHeaderStatus": "订单状态",
+  "@dealsHeaderStatus": {
+    "type": "text"
+  },
+  "dealsHeaderDate": "日期",
+  "@dealsHeaderDate": {
+    "type": "text"
+  },
+  "dealsHeaderAmount": "金额",
+  "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "agentTextTitleData": "代理资料",
+  "@agentTextTitleData": {
+    "type": "text"
+  },
+  "agentTextTitleChart": "代理报表",
+  "@agentTextTitleChart": {
+    "type": "text"
+  },
+  "agentTextTitleCommission": "代理佣金报表",
+  "@agentTextTitleCommission": {
+    "type": "text"
+  },
+  "agentTextDataCode": "推荐码：",
+  "@agentTextDataCode": {
+    "type": "text"
+  },
+  "agentTextDataUrl": "代理连结:",
+  "@agentTextDataUrl": {
+    "type": "text"
+  },
+  "agentTextDataUpper": "上层帐号:",
+  "@agentTextDataUpper": {
+    "type": "text"
+  },
+  "agentTextDataLower": "下层帐号:",
+  "@agentTextDataLower": {
+    "type": "text"
+  },
+  "agentButtonTextRequest": "取得代理码",
+  "@agentButtonTextRequest": {
+    "type": "text"
+  },
+  "agentButtonTextCopy": "复制",
+  "@agentButtonTextCopy": {
+    "type": "text"
+  },
+  "agentTextChartDate": "时间：",
+  "@agentTextChartDate": {
+    "type": "text"
+  },
+  "agentTextChartMonth": "本月",
+  "@agentTextChartMonth": {
+    "type": "text"
+  },
+  "agentTextChartMonthPrev": "上月",
+  "@agentTextChartMonthPrev": {
+    "type": "text"
+  },
+  "agentTextChartOption": "选择",
+  "@agentTextChartOption": {
+    "type": "text"
+  },
+  "agentTextChartPlatform": "平台",
+  "@agentTextChartPlatform": {
+    "type": "text"
+  },
+  "agentTextChartCategory": "类别",
+  "@agentTextChartCategory": {
+    "type": "text"
+  },
+  "agentTextChartQuery": "查询",
+  "@agentTextChartQuery": {
+    "type": "text"
+  },
+  "depositPaymentTitleBank": "银行充值",
+  "@depositPaymentTitleBank": {
+    "type": "text"
+  },
+  "depositPaymentTitleQuick": "快捷支付(推荐)",
+  "@depositPaymentTitleQuick": {
+    "type": "text"
+  },
+  "depositPaymentTitleUnion": "银联支付",
+  "@depositPaymentTitleUnion": {
+    "type": "text"
+  },
+  "depositPaymentTitleVirtual": "虚拟货币",
+  "@depositPaymentTitleVirtual": {
+    "type": "text"
+  },
+  "depositPaymentTitleAli": "支付宝支付",
+  "@depositPaymentTitleAli": {
+    "type": "text"
+  },
+  "depositPaymentTitleOnline": "在线支付",
+  "@depositPaymentTitleOnline": {
+    "type": "text"
+  },
+  "depositPaymentTitleWechat": "微信支付",
+  "@depositPaymentTitleWechat": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitlePromo": "选择优惠",
+  "@depositPaymentSpinnerTitlePromo": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitleBank": "支付银行",
+  "@depositPaymentSpinnerTitleBank": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitleMethod": "充值方式",
+  "@depositPaymentSpinnerTitleMethod": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleName": "打款人姓名",
+  "@depositPaymentEditTitleName": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNameHint": "请填写您的打款人姓名",
+  "@depositPaymentEditTitleNameHint": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAmount": "存款金额",
+  "@depositPaymentEditTitleAmount": {
+    "type": "text"
+  },
+  "depositPaymentButtonTitleTutorial": "点我看教学",
+  "@depositPaymentButtonTitleTutorial": {
+    "type": "text"
+  },
+  "depositPaymentButtonTitleConfirm": "确定",
+  "@depositPaymentButtonTitleConfirm": {
+    "type": "text"
+  },
+  "depositPaymentMethodLocal1": "转帐充值",
+  "@depositPaymentMethodLocal1": {
+    "type": "text"
+  },
+  "depositPaymentMethodLocal2": "Atm充值",
+  "@depositPaymentMethodLocal2": {
+    "type": "text"
+  },
+  "depositPaymentNoPromo": "放弃申请优惠",
+  "@depositPaymentNoPromo": {
+    "type": "text"
+  },
+  "depositHintTextAccount": "充值帐号资讯请联络客服",
+  "@depositHintTextAccount": {
+    "type": "text"
+  },
+  "depositHintTextMax": "{no}单笔最高限额",
+  "@depositHintTextMax": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "1."
+      }
+    }
+  },
+  "depositHintTextService": "在线客服",
+  "@depositHintTextService": {
+    "type": "text"
+  },
+  "depositHintTextTitle": "注意事项",
+  "@depositHintTextTitle": {
+    "type": "text"
+  },
+  "depositHintTextClearInfo": "{no}【重要提醒】勿保留银行帐户，请您在每次充值前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！",
+  "@depositHintTextClearInfo": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "2."
+      }
+    }
+  },
+  "depositHintTextMaxExceed": "{no}超出在线支付单日额度限制或单笔大额充值，可使用其它充值方式",
+  "@depositHintTextMaxExceed": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "3."
+      }
+    }
+  },
+  "depositHintTextFailure": "{no}如遇到存款扫码失败等故障，请尝试刷新重试，并联系客服使用其他替换信道",
+  "@depositHintTextFailure": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "4."
+      }
+    }
+  },
+  "depositHintTextInfo": "{no}支付银行与帐户姓名等资料，请联系",
+  "@depositHintTextInfo": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "5."
+      }
+    }
+  },
+  "depositHintTextUnionShortcut": "{no}至中国银联开通快捷功能，让您的支付更加便利",
+  "@depositHintTextUnionShortcut": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "6."
+      }
+    }
+  },
+  "depositHintTextQuickpay": "{no}温馨提醒：使用快捷支付需支付小数两位，系统会自动带入（若您提交小数两位为00则无法成功）",
+  "@depositHintTextQuickpay": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "7."
+      }
+    }
+  },
+  "depositHintTextUnion": "{no}想要使用银联扫码支付，前提是需要持有卡号为62开头银联卡，信用卡借记卡都可以。",
+  "@depositHintTextUnion": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "8."
+      }
+    }
+  },
+  "depositHintTextUnionA": "A、手机下载中国银行App或银联钱包App；",
+  "@depositHintTextUnionA": {
+    "type": "text"
+  },
+  "depositHintTextUnionB": "B、登入中国银行手机App，通过右上角“+”中的付款功能或移动支付模块中的付款功能；",
+  "@depositHintTextUnionB": {
+    "type": "text"
+  },
+  "depositHintTextUnionC": "C、进入向商家付款的二维码页面，对准机具扫码即可。",
+  "@depositHintTextUnionC": {
+    "type": "text"
+  },
+  "depositHintTextAli": "{no}限用借记卡与支付宝余额支付！",
+  "@depositHintTextAli": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "9."
+      }
+    }
+  },
+  "depositHintTextLastNum": "{no}若单笔交易金额尾号不是0（如：1000元整），会造成无法成功存款",
+  "@depositHintTextLastNum": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "10."
+      }
+    }
+  },
+  "depositHintTextLimit": "{no}发卡行限额解决方法：需要用户自己致电发卡行客服要求增加网上交易额度",
+  "@depositHintTextLimit": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "11."
+      }
+    }
+  },
+  "depositMessageFailed": "充值失败，请稍候重试或联系客服",
+  "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageSuccess": "充值成功",
+  "@depositMessageSuccess": {
+    "type": "text"
+  },
+  "depositNewbieQuick0": "借记卡教学",
+  "@depositNewbieQuick0": {
+    "type": "text"
+  },
+  "depositNewbieVirtual0": "下载链结",
+  "@depositNewbieVirtual0": {
+    "type": "text"
+  },
+  "depositNewbieVirtualButton1": "下载购宝支付App",
+  "@depositNewbieVirtualButton1": {
+    "type": "text"
+  },
+  "depositNewbieAli0": "支付宝转银行卡教学",
+  "@depositNewbieAli0": {
+    "type": "text"
+  },
+  "depositNewbieAli1": "首先打开手机支付宝并登入，在主板面点击【转账】功能。",
+  "@depositNewbieAli1": {
+    "type": "text"
+  },
+  "depositNewbieAli2": "在转账页面下方选择【转到银行卡】按钮",
+  "@depositNewbieAli2": {
+    "type": "text"
+  },
+  "depositNewbieAli3": "同样需填写【收款人卡号】==【所属银行】==【收款人姓名】==【付款金额】",
+  "@depositNewbieAli3": {
+    "type": "text"
+  },
+  "depositNewbieAli4": "提交后再输入支付宝【支付密码】即可。",
+  "@depositNewbieAli4": {
+    "type": "text"
+  },
+  "depositNewbieAli5": "转账成功后，可在支付宝账单详情中查看，改转账明细、和到帐时间。",
+  "@depositNewbieAli5": {
+    "type": "text"
+  },
+  "depositNewbieUnion0": "银联支付教学",
+  "@depositNewbieUnion0": {
+    "type": "text"
+  },
+  "depositNewbieUnion1": "1、银联钱包App下载",
+  "@depositNewbieUnion1": {
+    "type": "text"
+  },
+  "depositNewbieUnion2": "2、注册并登入。",
+  "@depositNewbieUnion2": {
+    "type": "text"
+  },
+  "depositNewbieUnion3": "3、绑定银行卡，选择卡管家→卡列表→添加银行卡→添加一张新卡。",
+  "@depositNewbieUnion3": {
+    "type": "text"
+  },
+  "depositNewbieUnion4": "信用卡和储蓄卡皆可添加",
+  "@depositNewbieUnion4": {
+    "type": "text"
+  },
+  "depositNewbieWechat0": "扫码教学",
+  "@depositNewbieWechat0": {
+    "type": "text"
+  },
+  "depositNewbieWechat1": "1、先用一个手机拍下付款二维码。",
+  "@depositNewbieWechat1": {
+    "type": "text"
+  },
+  "depositNewbieWechat2": "2、然后用另一个手机微信扫码付款。",
+  "@depositNewbieWechat2": {
+    "type": "text"
+  },
+  "balanceStatusMaintenance": "维护中",
+  "@balanceStatusMaintenance": {
+    "type": "text"
+  },
+  "balanceTransferInText": "转入",
+  "@balanceTransferInText": {
+    "type": "text"
+  },
+  "balanceTransferOutText": "转出",
+  "@balanceTransferOutText": {
+    "type": "text"
+  },
+  "balanceTransferAlertMsg": "是否确认{value}{value2}平台？",
+  "@balanceTransferAlertMsg": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "Slot"
+      },
+      "value2": {
+        "example": "AG"
+      }
+    }
+  },
+  "balanceHintTextTitle": "温馨提示：",
+  "@balanceHintTextTitle": {
+    "type": "text"
+  },
+  "balanceHintText1": "1转账前请退出游戏或游戏投注界面。",
+  "@balanceHintText1": {
+    "type": "text"
+  },
+  "balanceHintText2": "2不参与活动时，户内转账金额不能少于1元，户内转账不收取任何手续费。",
+  "@balanceHintText2": {
+    "type": "text"
+  },
+  "balanceHintText3": "3如遇网速较慢时，请耐心等侯片刻，不要多次重复提交。",
+  "@balanceHintText3": {
+    "type": "text"
+  },
+  "balanceHintText4": "4转帐成功後若平台金额未改变，请手动刷新平台或联系客服",
+  "@balanceHintText4": {
+    "type": "text"
+  },
+  "flowHeaderTextTime": "时间区间",
+  "@flowHeaderTextTime": {
+    "type": "text"
+  },
+  "flowHeaderTextCode": "交易码",
+  "@flowHeaderTextCode": {
+    "type": "text"
+  },
+  "flowHeaderTextType": "类型",
+  "@flowHeaderTextType": {
+    "type": "text"
+  },
+  "flowHeaderTextAmount": "金额",
+  "@flowHeaderTextAmount": {
+    "type": "text"
+  },
+  "flowHeaderTextMultiple": "倍数",
+  "@flowHeaderTextMultiple": {
+    "type": "text"
+  },
+  "flowHeaderTextPromo": "现金优惠",
+  "@flowHeaderTextPromo": {
+    "type": "text"
+  },
+  "flowHeaderTextRequire": "注额须求",
+  "@flowHeaderTextRequire": {
+    "type": "text"
+  },
+  "flowHeaderTextCurrent": "当前注额",
+  "@flowHeaderTextCurrent": {
+    "type": "text"
+  },
+  "flowHeaderTextNeed": "注额须求剩馀",
+  "@flowHeaderTextNeed": {
+    "type": "text"
+  },
+  "agentChartTableSpinner": "表单",
+  "@agentChartTableSpinner": {
+    "type": "text"
+  },
+  "agentChartHeaderAccount": "帐号",
+  "@agentChartHeaderAccount": {
+    "type": "text"
+  },
+  "agentChartHeaderWager": "投注量",
+  "@agentChartHeaderWager": {
+    "type": "text"
+  },
+  "agentChartHeaderBet": "注额",
+  "@agentChartHeaderBet": {
+    "type": "text"
+  },
+  "agentChartHeaderValid": "有效注額",
+  "@agentChartHeaderValid": {
+    "type": "text"
+  },
+  "agentChartHeaderPayout": "派彩",
+  "@agentChartHeaderPayout": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalWager": "总投注量",
+  "@agentChartHeaderTotalWager": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalBet": "总注額",
+  "@agentChartHeaderTotalBet": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalValid": "总有效注额",
+  "@agentChartHeaderTotalValid": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalPayout": "总派彩",
+  "@agentChartHeaderTotalPayout": {
+    "type": "text"
+  },
+  "agentCommissionHeaderMonth": "月份",
+  "@agentCommissionHeaderMonth": {
+    "type": "text"
+  },
+  "agentCommissionHeaderLowLine": "下线佣金",
+  "@agentCommissionHeaderLowLine": {
+    "type": "text"
+  },
+  "agentCommissionHeaderGroup": "团体佣金",
+  "@agentCommissionHeaderGroup": {
+    "type": "text"
+  },
+  "agentCommissionHeaderAdmin": "行政费用",
+  "@agentCommissionHeaderAdmin": {
+    "type": "text"
+  },
+  "agentCommissionHeaderPlatform": "平台费",
+  "@agentCommissionHeaderPlatform": {
+    "type": "text"
+  },
+  "agentCommissionHeaderReceive": "实发佣金",
+  "@agentCommissionHeaderReceive": {
+    "type": "text"
+  },
+  "wheelTextTitleCount": "累积幸运轮抽奖次数:{num}次数",
+  "@wheelTextTitleCount": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "4"
+      }
+    }
+  },
+  "wheelTextTitlePrize": "获奖纪录",
+  "@wheelTextTitlePrize": {
+    "type": "text"
+  },
+  "wheelTextTitleRecord": "操作纪录",
+  "@wheelTextTitleRecord": {
+    "type": "text"
+  },
+  "wheelTextTitleGet": "领取旋转次数",
+  "@wheelTextTitleGet": {
+    "type": "text"
+  },
+  "wheelTextTitleRules": "活动规则",
+  "@wheelTextTitleRules": {
+    "type": "text"
+  },
+  "wheelOrderTableTextTime": "时间",
+  "@wheelOrderTableTextTime": {
+    "type": "text"
+  },
+  "wheelOrderTableTextPrize": "奖项",
+  "@wheelOrderTableTextPrize": {
+    "type": "text"
+  },
+  "wheelOrderTableTextStatus": "派发状态",
+  "@wheelOrderTableTextStatus": {
+    "type": "text"
+  },
+  "wheelRecordTableTextTime": "时间",
+  "@wheelRecordTableTextTime": {
+    "type": "text"
+  },
+  "wheelRecordTableTextOperate": "操作",
+  "@wheelRecordTableTextOperate": {
+    "type": "text"
+  },
+  "wheelRecordTableTextCount": "次数",
+  "@wheelRecordTableTextCount": {
+    "type": "text"
+  },
+  "wheelRecordTableTextContent": "内容",
+  "@wheelRecordTableTextContent": {
+    "type": "text"
+  },
+  "wheelApplyTableTextContent": "内容",
+  "@wheelApplyTableTextContent": {
+    "type": "text"
+  },
+  "wheelApplyTableTextProgress": "进度",
+  "@wheelApplyTableTextProgress": {
+    "type": "text"
+  },
+  "wheelApplyTableTextCount": "旋转次数",
+  "@wheelApplyTableTextCount": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus": "状态",
+  "@wheelApplyTableTextStatus": {
+    "type": "text"
+  },
+  "wheelTableMessageEmpty": "查无{msg}纪录",
+  "@wheelTableMessageEmpty": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "platform"
+      }
+    }
+  },
+  "wheelOrderTableTextStatus0": "未派发",
+  "@wheelOrderTableTextStatus0": {
+    "type": "text"
+  },
+  "wheelOrderTableTextStatus1": "已派发",
+  "@wheelOrderTableTextStatus1": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus0": "未达成",
+  "@wheelApplyTableTextStatus0": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus1": "已达成",
+  "@wheelApplyTableTextStatus1": {
+    "type": "text"
+  },
+  "storeTextTitleProduct": "兑换商品",
+  "@storeTextTitleProduct": {
+    "type": "text"
+  },
+  "storeTextTitleRule": "兑换规则",
+  "@storeTextTitleRule": {
+    "type": "text"
+  },
+  "storeTextTitleRecord": "积分记录",
+  "@storeTextTitleRecord": {
+    "type": "text"
+  },
+  "storeTextTitlePoint": "商城积分：",
+  "@storeTextTitlePoint": {
+    "type": "text"
+  },
+  "storeTextItemHint": "数量有限换完为止",
+  "@storeTextItemHint": {
+    "type": "text"
+  },
+  "storeTextItemPoint": "{value}积分",
+  "@storeTextItemPoint": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "storeTextItemButton": "立即兑换",
+  "@storeTextItemButton": {
+    "type": "text"
+  },
+  "storeRuleTableHeader": "每100元有效投注额即可获得积分表",
+  "@storeRuleTableHeader": {
+    "type": "text"
+  },
+  "storeRuleTableTitle": "各平台{value}",
+  "@storeRuleTableTitle": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "storeRecordSpinnerTitle1": "显示",
+  "@storeRecordSpinnerTitle1": {
+    "type": "text"
+  },
+  "storeRecordSpinnerTitle2": "项",
+  "@storeRecordSpinnerTitle2": {
+    "type": "text"
+  },
+  "storeRecordFieldHint": "请输入商品名称",
+  "@storeRecordFieldHint": {
+    "type": "text"
+  },
+  "storeRecordButtonTitle": "搜索",
+  "@storeRecordButtonTitle": {
+    "type": "text"
+  },
+  "storeRecordTableTitleNo": "订单号",
+  "@storeRecordTableTitleNo": {
+    "type": "text"
+  },
+  "storeRecordTableTitleProduct": "商品",
+  "@storeRecordTableTitleProduct": {
+    "type": "text"
+  },
+  "storeRecordTableTitlePoint": "积分",
+  "@storeRecordTableTitlePoint": {
+    "type": "text"
+  },
+  "storeRecordTableTitleDate": "日期",
+  "@storeRecordTableTitleDate": {
+    "type": "text"
+  },
+  "storeRecordTableTitleState": "状态",
+  "@storeRecordTableTitleState": {
+    "type": "text"
+  },
+  "storeProductWindowTitle": "会员兑换",
+  "@storeProductWindowTitle": {
+    "type": "text"
+  },
+  "storeProductWindowTextRemain": "剩余数量",
+  "@storeProductWindowTextRemain": {
+    "type": "text"
+  },
+  "storeProductWindowHint1": "数量有限，换完为止",
+  "@storeProductWindowHint1": {
+    "type": "text"
+  },
+  "storeProductWindowHint2": "每支使用",
+  "@storeProductWindowHint2": {
+    "type": "text"
+  },
+  "storeProductWindowHint3": "积分兑换",
+  "@storeProductWindowHint3": {
+    "type": "text"
+  },
+  "storeRequestWindowTextPoint": "累计积分：",
+  "@storeRequestWindowTextPoint": {
+    "type": "text"
+  },
+  "storeRequestWindowTitle": "收件人资讯",
+  "@storeRequestWindowTitle": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleName": "姓名",
+  "@storeRequestWindowFieldTitleName": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitlePhone": "电话",
+  "@storeRequestWindowFieldTitlePhone": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitlePostno": "邮编",
+  "@storeRequestWindowFieldTitlePostno": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleArea": "地区",
+  "@storeRequestWindowFieldTitleArea": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleAddress": "地址",
+  "@storeRequestWindowFieldTitleAddress": {
+    "type": "text"
+  },
+  "storeRequestWindowSpinnerHint": "请选择",
+  "@storeRequestWindowSpinnerHint": {
+    "type": "text"
+  },
+  "storeRequestWindowButton": "确定送出",
+  "@storeRequestWindowButton": {
+    "type": "text"
+  },
+  "transferViewTitleOut": "转出",
+  "@transferViewTitleOut": {
+    "type": "text"
+  }
+}

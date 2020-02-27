@@ -1,0 +1,564 @@
+{
+  "category": [
+    {
+      "type": "casino",
+      "ch": "真人"
+    },
+    {
+      "type": "slot",
+      "ch": "电子"
+    },
+    {
+      "type": "sport",
+      "ch": "体育"
+    },
+    {
+      "type": "fish",
+      "ch": "捕魚"
+    },
+    {
+      "type": "lottery",
+      "ch": "彩票"
+    },
+    {
+      "type": "card",
+      "ch": "棋牌"
+    },
+    {
+      "type": "gift",
+      "ch": "禮物"
+    }
+  ],
+  "list": [
+    {
+      "site": "eg",
+      "site2": "EG",
+      "ch": "EG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 1,
+      "class": "eg-casino"
+    },
+    {
+      "site": "sg",
+      "site2": "SG",
+      "ch": "SG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 2,
+      "class": "sg-casino"
+    },
+    {
+      "site": "mg",
+      "site2": "MG",
+      "ch": "MG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 3,
+      "class": "mg-casino"
+    },
+    {
+      "site": "ag",
+      "site2": "AG",
+      "ch": "AG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 6,
+      "class": "ag-casino"
+    },
+    {
+      "site": "bb",
+      "site2": "BB",
+      "ch": "BB casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 11,
+      "class": "bb-casino"
+    },
+    {
+      "site": "og",
+      "site2": "OG",
+      "ch": "OG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 14,
+      "class": "og-casino"
+    },
+    {
+      "site": "allbet",
+      "site2": "ALLBET",
+      "ch": "ALLBET casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 22,
+      "class": "allbet-casino"
+    },
+    {
+      "site": "bg",
+      "site2": "BG",
+      "ch": "BG casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 41,
+      "class": "bg-casino"
+    },
+    {
+      "site": "ebet",
+      "site2": "EBET",
+      "ch": "EBET casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 52,
+      "class": "ebet-casino"
+    },
+    {
+      "site": "wm",
+      "site2": "WM",
+      "ch": "WM casino",
+      "type": "casino",
+      "cid": 1,
+      "status": "1",
+      "sort": 67,
+      "class": "wm-casino"
+    },
+    {
+      "site": "eg",
+      "site2": "EG",
+      "ch": "EG slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 4,
+      "class": "eg-slot"
+    },
+    {
+      "site": "mg",
+      "site2": "MG",
+      "ch": "MG slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 7,
+      "class": "mg-slot"
+    },
+    {
+      "site": "ag",
+      "site2": "AG",
+      "ch": "AG slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 13,
+      "class": "ag-slot"
+    },
+    {
+      "site": "bb",
+      "site2": "BB",
+      "ch": "BB slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 16,
+      "class": "bb-slot"
+    },
+    {
+      "site": "nt",
+      "site2": "NT",
+      "ch": "NT slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 28,
+      "class": "nt-slot"
+    },
+    {
+      "site": "pt",
+      "site2": "PT",
+      "ch": "PT slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 30,
+      "class": "pt-slot"
+    },
+    {
+      "site": "bg",
+      "site2": "BG",
+      "ch": "BG slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 31,
+      "class": "bg-slot"
+    },
+    {
+      "site": "cq9",
+      "site2": "CQ9",
+      "ch": "CQ9 slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 34,
+      "class": "cq9-slot"
+    },
+    {
+      "site": "jdb",
+      "site2": "JDB",
+      "ch": "JDB slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 38,
+      "class": "jdb-slot"
+    },
+    {
+      "site": "fg",
+      "site2": "FG",
+      "ch": "FG slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 45,
+      "class": "fg-slot"
+    },
+    {
+      "site": "sw",
+      "site2": "SW",
+      "ch": "SW slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 46,
+      "class": "sw-slot"
+    },
+    {
+      "site": "ebet",
+      "site2": "EBET",
+      "ch": "EBET slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 49,
+      "class": "ebet-slot"
+    },
+    {
+      "site": "mw",
+      "site2": "MW",
+      "ch": "MW slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 53,
+      "class": "mw-slot"
+    },
+    {
+      "site": "ds",
+      "site2": "DS",
+      "ch": "DS slot",
+      "type": "slot",
+      "cid": 2,
+      "status": "1",
+      "sort": 56,
+      "class": "ds-slot"
+    },
+    {
+      "site": "tf",
+      "site2": "TF",
+      "ch": "TF\r\nsport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 1,
+      "class": "tf-sport"
+    },
+    {
+      "site": "bb",
+      "site2": "BB",
+      "ch": "BB sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 8,
+      "class": "bb-sport"
+    },
+    {
+      "site": "sb",
+      "site2": "SB",
+      "ch": "SB sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 18,
+      "class": "sb-sport"
+    },
+    {
+      "site": "sing",
+      "site2": "SING",
+      "ch": "SING sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 20,
+      "class": "sing-sport"
+    },
+    {
+      "site": "ig",
+      "site2": "IG",
+      "ch": "IG sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 26,
+      "class": "ig-sport"
+    },
+    {
+      "site": "ia",
+      "site2": "IA",
+      "ch": "IA sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 53,
+      "class": "ia-sport"
+    },
+    {
+      "site": "cmd",
+      "site2": "CMD",
+      "ch": "CMD sport",
+      "type": "sport",
+      "cid": 3,
+      "status": "1",
+      "sort": 55,
+      "class": "cmd-sport"
+    },
+    {
+      "site": "ag",
+      "site2": "AG",
+      "ch": "AG fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 5,
+      "class": "ag-fish"
+    },
+    {
+      "site": "bb",
+      "site2": "BB",
+      "ch": "BB fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 10,
+      "class": "bb-fish"
+    },
+    {
+      "site": "jdb",
+      "site2": "JDB",
+      "ch": "JDB fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 32,
+      "class": "jdb-fish"
+    },
+    {
+      "site": "fg",
+      "site2": "FG",
+      "ch": "FG fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 35,
+      "class": "fg-fish"
+    },
+    {
+      "site": "sw",
+      "site2": "SW",
+      "ch": "SW fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 40,
+      "class": "sw-fish"
+    },
+    {
+      "site": "mw",
+      "site2": "MW",
+      "ch": "MW fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 48,
+      "class": "mw-fish"
+    },
+    {
+      "site": "ds",
+      "site2": "DS",
+      "ch": "DS fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 51,
+      "class": "ds-fish"
+    },
+    {
+      "site": "bg",
+      "site2": "BG",
+      "ch": "BG fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 54,
+      "class": "bg-fish"
+    },
+    {
+      "site": "allbet",
+      "site2": "ALLBET",
+      "ch": "ALLBET fish",
+      "type": "fish",
+      "cid": 4,
+      "status": "1",
+      "sort": 54,
+      "class": "allbet-fish"
+    },
+    {
+      "site": "bb",
+      "site2": "BB",
+      "ch": "BB lottery",
+      "type": "lottery",
+      "cid": 5,
+      "status": "1",
+      "sort": 9,
+      "class": "bb-lottery"
+    },
+    {
+      "site": "vr",
+      "site2": "VR",
+      "ch": "VR lottery",
+      "type": "lottery",
+      "cid": 5,
+      "status": "1",
+      "sort": 25,
+      "class": "vr-lottery"
+    },
+    {
+      "site": "kg",
+      "site2": "KG",
+      "ch": "KG card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 24,
+      "class": "kg-card"
+    },
+    {
+      "site": "lg",
+      "site2": "LG",
+      "ch": "LG card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 29,
+      "class": "lg-card"
+    },
+    {
+      "site": "jdb",
+      "site2": "JDB",
+      "ch": "JDB card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 33,
+      "class": "jdb-card"
+    },
+    {
+      "site": "fg",
+      "site2": "FG",
+      "ch": "FG card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 36,
+      "class": "fg-card"
+    },
+    {
+      "site": "yg",
+      "site2": "YG",
+      "ch": "YG card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 37,
+      "class": "yg-card"
+    },
+    {
+      "site": "bl",
+      "site2": "BL",
+      "ch": "BL card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 42,
+      "class": "bl-card"
+    },
+    {
+      "site": "im",
+      "site2": "IM",
+      "ch": "IM card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 43,
+      "class": "im-card"
+    },
+    {
+      "site": "mw",
+      "site2": "MW",
+      "ch": "MW card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 47,
+      "class": "mw-card"
+    },
+    {
+      "site": "ds",
+      "site2": "DS",
+      "ch": "DS card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 50,
+      "class": "ds-card"
+    },
+    {
+      "site": "lc",
+      "site2": "LC",
+      "ch": "LC Card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 55,
+      "class": "lc-card"
+    },
+    {
+      "site": "wm",
+      "site2": "WM",
+      "ch": "WM card",
+      "type": "card",
+      "cid": 6,
+      "status": "1",
+      "sort": 68,
+      "class": "wm-card"
+    }
+  ]
+}
