@@ -2,7 +2,7 @@ import 'package:flui/flui.dart' show FLMarqueeLabel;
 import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter/material.dart';
 import 'package:flutter_ty_mobile/core/internal/font_size.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/entities.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
 import 'package:meta/meta.dart' show required;
 
@@ -19,11 +19,12 @@ class MarqueeDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//    print('display marquee: $marquees');
     return FutureBuilder(
       future: compute(_marqueeToString, marquees),
       builder: (context, snapshot) {
-        print('marquee display state: '
-            '${snapshot.connectionState}, error: ${snapshot.hasError}');
+//        print('marquee display state: ${snapshot.connectionState}, '
+//            'error: ${snapshot.hasError}');
         if (snapshot.connectionState == ConnectionState.done &&
             !snapshot.hasError) {
           return FLMarqueeLabel(
@@ -52,14 +53,18 @@ String _marqueeToString(List<dynamic> list) {
   String separator = '        ';
   List<String> contents = new List();
   list.forEach((item) {
-    if (item is MarqueeEntity) {
-//        print('add marquee string: ${item.content}');
+    try {
       contents.add(item.content.replaceAll('\n', '\t'));
-    } else {
-      MyLogger.warn(
-          msg: 'error marquee type condition!! item: $item',
-          tag: 'MarqueeDisplay');
+//      print('add marquee content to list: ${item.id}');
+    } catch (e) {
+      print(e);
     }
   });
+//  print('computed list: $contents');
+  if (list.isNotEmpty && contents.isEmpty) {
+    MyLogger.warn(
+        msg: 'error marquee type condition!! item: $list',
+        tag: 'MarqueeDisplay');
+  }
   return '$separator${contents.join(separator)}';
 }

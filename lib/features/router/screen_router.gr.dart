@@ -13,7 +13,6 @@ import 'package:flutter_ty_mobile/features/screen/web_game_screen.dart';
 class ScreenRouter {
   static const featureScreen = '/';
   static const webGameScreen = '/web-game-screen';
-  static const _guardedRoutes = const {};
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -22,6 +21,7 @@ class ScreenRouter {
         return MaterialPageRoute<dynamic>(
           builder: (_) => FeatureScreen(),
           settings: settings,
+          maintainState: true,
         );
       case ScreenRouter.webGameScreen:
         if (hasInvalidArgs<String>(args)) {

@@ -15,8 +15,12 @@ final _htmlRegex = RegExp(
   '<\s*html.*?>.*?<\s*/\s*html.*?>',
 );
 
+final _urlRegex = RegExp(
+    r'^((?:.|\n)*?)((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?)',
+    caseSensitive: false);
+
 extension StringVerifyExtension on String {
-  bool get isUrl => Uri.parse(this).isAbsolute;
+  bool get isUrl => Uri.parse(this).isAbsolute || _urlRegex.hasMatch(this);
 
   bool get isEmail => EmailValidator.validate(this);
 

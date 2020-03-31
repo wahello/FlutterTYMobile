@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_game_tabs.dart';
+import 'package:flutter_ty_mobile/features/home/presentation/bloc/game_tabs/bloc_game_tabs_export.dart';
 
 /// Get game category and platform data through [HomeGameTabsBloc]
 /// @author H.C.CHIANG

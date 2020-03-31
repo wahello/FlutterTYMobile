@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/marquee_entity.dart';
-import 'package:flutter_ty_mobile/features/home/domain/usecase/get_marquee.dart';
 import 'package:flutter_ty_mobile/core/base/usecase_export.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/marquee_freezed.dart'
+    show MarqueeEntity;
+import 'package:flutter_ty_mobile/features/home/domain/usecase/get_marquee.dart';
 import 'package:meta/meta.dart' show required;
 import 'package:super_enum/super_enum.dart';
 
@@ -26,7 +27,7 @@ class HomeMarqueeBloc extends Bloc<HomeMarqueeEvent, HomeMarqueeState> {
   @override
   void onTransition(Transition<HomeMarqueeEvent, HomeMarqueeState> transition) {
 //    print('marquee state, current: ${transition.currentState}');
-    print('marquee state, next: ${transition.nextState.runtimeType}');
+//    print('marquee state, next: ${transition.nextState.runtimeType}');
     super.onTransition(transition);
   }
 
@@ -56,11 +57,10 @@ class HomeMarqueeBloc extends Bloc<HomeMarqueeEvent, HomeMarqueeState> {
       GetMarqueeEvent event) async* {
     final failureOrData = await getMarqueeData(NoParams());
     yield failureOrData.fold(
-      // TODO add failure alert
       (failure) => HomeMarqueeState.mError(message: failure.message),
       (marquees) {
-//        print('stream marquee data returned: $marquees');
         blocData = List.from(marquees);
+//        print('stored marquee data: $blocData');
         return HomeMarqueeState.mLoaded(marquee: blocData);
       },
     );

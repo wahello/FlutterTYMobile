@@ -35,7 +35,7 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
         centerTitle: true,
         title: Observer(builder: (_) {
           final page =
-              viewState.store.pageInfo ?? RouterPageInfo.template.value;
+              viewState.store.pageInfo ?? RoutePage.template.value;
           return Text(
             page.title,
             style: TextStyle(fontSize: FontSize.MESSAGE.value),
@@ -140,7 +140,7 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
                 ),
                 visualDensity: VisualDensity(horizontal: -3.0),
                 onPressed: () =>
-                    RouterNavigate.navigateToPage(RouterPageInfo.template2),
+                    RouterNavigate.navigateToPage(RoutePage.template2),
               ),
             ),
           ],

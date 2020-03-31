@@ -24,8 +24,10 @@ abstract class Failure extends Equatable {
 
   factory Failure.internal() = Internal;
 
-  factory Failure.login(RequestFailedModel requestFailedModel) =
-      RequestFailedModelWrapper;
+  factory Failure.login(RequestStatusModel requestStatusModel) =
+      RequestStatusModelWrapper;
+
+  factory Failure.token() = Token;
 
   final _Failure _type;
 
@@ -38,7 +40,8 @@ abstract class Failure extends Equatable {
       @required R Function(DataType) dataType,
       @required R Function(CachedFile) cachedFile,
       @required R Function(Internal) internal,
-      @required R Function(RequestFailedModel) login}) {
+      @required R Function(RequestStatusModel) login,
+      @required R Function(Token) token}) {
     assert(() {
       if (network == null ||
           networkLocation == null ||
@@ -47,7 +50,8 @@ abstract class Failure extends Equatable {
           dataType == null ||
           cachedFile == null ||
           internal == null ||
-          login == null) {
+          login == null ||
+          token == null) {
         throw 'check for all possible cases';
       }
       return true;
@@ -68,7 +72,9 @@ abstract class Failure extends Equatable {
       case _Failure.Internal:
         return internal(this as Internal);
       case _Failure.Login:
-        return login((this as RequestFailedModelWrapper).requestFailedModel);
+        return login((this as RequestStatusModelWrapper).requestStatusModel);
+      case _Failure.Token:
+        return token(this as Token);
     }
   }
 
@@ -81,7 +87,8 @@ abstract class Failure extends Equatable {
       @required FutureOr<R> Function(DataType) dataType,
       @required FutureOr<R> Function(CachedFile) cachedFile,
       @required FutureOr<R> Function(Internal) internal,
-      @required FutureOr<R> Function(RequestFailedModel) login}) {
+      @required FutureOr<R> Function(RequestStatusModel) login,
+      @required FutureOr<R> Function(Token) token}) {
     assert(() {
       if (network == null ||
           networkLocation == null ||
@@ -90,7 +97,8 @@ abstract class Failure extends Equatable {
           dataType == null ||
           cachedFile == null ||
           internal == null ||
-          login == null) {
+          login == null ||
+          token == null) {
         throw 'check for all possible cases';
       }
       return true;
@@ -111,7 +119,9 @@ abstract class Failure extends Equatable {
       case _Failure.Internal:
         return internal(this as Internal);
       case _Failure.Login:
-        return login((this as RequestFailedModelWrapper).requestFailedModel);
+        return login((this as RequestStatusModelWrapper).requestStatusModel);
+      case _Failure.Token:
+        return token(this as Token);
     }
   }
 
@@ -123,7 +133,8 @@ abstract class Failure extends Equatable {
       R Function(DataType) dataType,
       R Function(CachedFile) cachedFile,
       R Function(Internal) internal,
-      R Function(RequestFailedModel) login,
+      R Function(RequestStatusModel) login,
+      R Function(Token) token,
       @required R Function(Failure) orElse}) {
     assert(() {
       if (orElse == null) {
@@ -155,7 +166,10 @@ abstract class Failure extends Equatable {
         return internal(this as Internal);
       case _Failure.Login:
         if (login == null) break;
-        return login((this as RequestFailedModelWrapper).requestFailedModel);
+        return login((this as RequestStatusModelWrapper).requestStatusModel);
+      case _Failure.Token:
+        if (token == null) break;
+        return token(this as Token);
     }
     return orElse(this);
   }
@@ -168,7 +182,8 @@ abstract class Failure extends Equatable {
       FutureOr<R> Function(DataType) dataType,
       FutureOr<R> Function(CachedFile) cachedFile,
       FutureOr<R> Function(Internal) internal,
-      FutureOr<R> Function(RequestFailedModel) login,
+      FutureOr<R> Function(RequestStatusModel) login,
+      FutureOr<R> Function(Token) token,
       @required FutureOr<R> Function(Failure) orElse}) {
     assert(() {
       if (orElse == null) {
@@ -200,7 +215,10 @@ abstract class Failure extends Equatable {
         return internal(this as Internal);
       case _Failure.Login:
         if (login == null) break;
-        return login((this as RequestFailedModelWrapper).requestFailedModel);
+        return login((this as RequestStatusModelWrapper).requestStatusModel);
+      case _Failure.Token:
+        if (token == null) break;
+        return token(this as Token);
     }
     return orElse(this);
   }
@@ -214,7 +232,8 @@ abstract class Failure extends Equatable {
       FutureOr<void> Function(DataType) dataType,
       FutureOr<void> Function(CachedFile) cachedFile,
       FutureOr<void> Function(Internal) internal,
-      FutureOr<void> Function(RequestFailedModel) login}) {
+      FutureOr<void> Function(RequestStatusModel) login,
+      FutureOr<void> Function(Token) token}) {
     assert(() {
       if (network == null &&
           networkLocation == null &&
@@ -223,7 +242,8 @@ abstract class Failure extends Equatable {
           dataType == null &&
           cachedFile == null &&
           internal == null &&
-          login == null) {
+          login == null &&
+          token == null) {
         throw 'provide at least one branch';
       }
       return true;
@@ -252,7 +272,10 @@ abstract class Failure extends Equatable {
         return internal(this as Internal);
       case _Failure.Login:
         if (login == null) break;
-        return login((this as RequestFailedModelWrapper).requestFailedModel);
+        return login((this as RequestStatusModelWrapper).requestStatusModel);
+      case _Failure.Token:
+        if (token == null) break;
+        return token(this as Token);
     }
   }
 
@@ -345,14 +368,26 @@ class Internal extends Failure {
 }
 
 @immutable
-class RequestFailedModelWrapper extends Failure {
-  const RequestFailedModelWrapper(this.requestFailedModel)
+class RequestStatusModelWrapper extends Failure {
+  const RequestStatusModelWrapper(this.requestStatusModel)
       : super(_Failure.Login);
 
-  final RequestFailedModel requestFailedModel;
+  final RequestStatusModel requestStatusModel;
 
   @override
-  String toString() => 'RequestFailedModelWrapper($requestFailedModel)';
+  String toString() => 'RequestStatusModelWrapper($requestStatusModel)';
   @override
-  List get props => [requestFailedModel];
+  List get props => [requestStatusModel];
+}
+
+@immutable
+class Token extends Failure {
+  const Token._() : super(_Failure.Token);
+
+  factory Token() {
+    _instance ??= const Token._();
+    return _instance;
+  }
+
+  static Token _instance;
 }

@@ -1,10 +1,11 @@
 import 'package:flutter_ty_mobile/core/error/exceptions.dart';
-import 'package:flutter_ty_mobile/features/general/data/repository_export.dart';
-import 'package:flutter_ty_mobile/features/home/data/form/platform_game_form.dart';
+import 'package:flutter_ty_mobile/core/repository_export.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
 import 'package:flutter_ty_mobile/features/home/data/models/models.dart';
 import 'package:flutter_ty_mobile/features/home/data/source/home_local_data_source.dart';
 import 'package:flutter_ty_mobile/features/home/data/source/home_remote_data_source.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
+import 'package:flutter_ty_mobile/features/home/domain/entity/platform_game_form.dart';
 import 'package:flutter_ty_mobile/features/home/domain/repository/home_repository.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
@@ -30,7 +31,7 @@ class HomeRepositoryImpl implements HomeRepository {
     if (connected) {
       final result = await handleResponse<List<BannerModel>>(
           remoteDataSource.getBanners());
-      print('test response type: ${result.runtimeType}');
+//      print('test response type: ${result.runtimeType}');
       return result.fold(
         (failure) {
           if (failure.typeIndex == 0)
@@ -46,12 +47,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
   List<BannerEntity> transformBannerModel(List<BannerModel> data) {
     final list = data.map((model) {
-      return BannerEntity(
-          id: model.id,
-          picMobile: model.picMobile,
-          blankUrl: model.blankUrl,
-          promoUrl: model.promoUrl,
-          sort: model.sort);
+      return model.entity;
     }).toList();
     MyLogger.log(msg: 'mapped banner model: ${list.length}', tag: tag);
     localDataSource.cacheBanners(list);
@@ -61,9 +57,9 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Either<Failure, List<BannerEntity>>> getCachedBanners() async {
     try {
-      print('accessing local data source...');
+      print('accessing banner local data source...');
       var cached = await localDataSource.getCachedBanners();
-      print('data from cached source: $cached');
+//      print('data from cached source: $cached');
       if (cached.isNotEmpty)
         return Right(cached);
       else
@@ -81,7 +77,7 @@ class HomeRepositoryImpl implements HomeRepository {
     if (connected) {
       final result = await handleResponse<MarqueeModelList>(
           remoteDataSource.getMarquees());
-      print('test response type: ${result.runtimeType}');
+//      print('test response type: ${result.runtimeType}');
       return result.fold(
         (failure) => Left(failure),
         (model) => Right(transformMarqueeModelList(model.marquees)),
@@ -93,19 +89,19 @@ class HomeRepositoryImpl implements HomeRepository {
 
   List<MarqueeEntity> transformMarqueeModelList(List<MarqueeModel> data) {
     final list = data.map((model) {
-      return MarqueeEntity(
-          id: model.id, content: model.content, url: model.url);
+      return model.entity;
     }).toList();
     MyLogger.log(msg: 'mapped marquee model: ${list.length}', tag: tag);
-    localDataSource.cacheMarquees(list);
+//    localDataSource.cacheMarquees(list);
     return list;
   }
 
   @override
   Future<Either<Failure, List<MarqueeEntity>>> getCachedMarquees() async {
     try {
+      print('accessing marquee local data source...');
       var cached = await localDataSource.getCachedMarquees();
-      print('data from cached source: $cached');
+//      print('data from cached source: $cached');
       if (cached.isNotEmpty)
         return Right(cached);
       else
@@ -117,12 +113,12 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<Failure, GameTypesEntity>> getGameTypes() async {
+  Future<Either<Failure, GameTypes>> getGameTypes() async {
     final connected = await networkInfo.isConnected;
     print('network connected: $connected');
     if (connected) {
       final result =
-          await handleResponse<GameTypesModel>(remoteDataSource.getGameTypes());
+          await handleResponse<GameTypes>(remoteDataSource.getGameTypes());
       return result.fold(
         (failure) => Left(failure),
         (model) => Right(transformGameTypeModelList(model)),
@@ -131,28 +127,19 @@ class HomeRepositoryImpl implements HomeRepository {
     return getCachedGameTypes();
   }
 
-  GameTypesEntity transformGameTypeModelList(GameTypesModel data) {
-    final platforms = data.platformList.map((model) {
-      return GamePlatformEntity.fromJson(model.toJson());
-    }).toList();
-
-    final categories = data.categoryList;
-    categories.removeWhere((c) => c.type == 'gift');
-
-    final entity = GameTypesEntity(
-      categories: categories,
-      platforms: platforms,
-    );
-    MyLogger.log(msg: 'mapped game-type model: ${entity.debug()}', tag: tag);
+  GameTypes transformGameTypeModelList(GameTypes data) {
+    final entity = data.shrink;
+    MyLogger.log(msg: 'mapped game-type model: ${entity.debug}', tag: tag);
     localDataSource.cacheGameTypes(entity);
     return entity;
   }
 
   @override
-  Future<Either<Failure, GameTypesEntity>> getCachedGameTypes() async {
+  Future<Either<Failure, GameTypes>> getCachedGameTypes() async {
     try {
+      print('accessing game-types local data source...');
       var cached = await localDataSource.getCachedGameTypes();
-      print('data from cached source: $cached');
+//      print('data from cached source: $cached');
       if (cached != null &&
           cached.categories.isNotEmpty &&
           cached.platforms.isNotEmpty)
@@ -161,7 +148,7 @@ class HomeRepositoryImpl implements HomeRepository {
         return Left(Failure.network());
     } on HiveDataException {
       MyLogger.debug(msg: 'no cached game-types', tag: tag);
-      return Right(new GameTypesEntity(categories: [], platforms: []));
+      return Right(new GameTypes(categories: [], platforms: []));
     }
   }
 
@@ -183,9 +170,29 @@ class HomeRepositoryImpl implements HomeRepository {
 
   List<GameEntity> transformGamesModel(List<GameModel> data) {
     final list = data.map((model) {
-      return GameEntity.fromJson(model.toJson());
+      return model.entity;
     }).toList();
     MyLogger.log(msg: 'mapped game models: ${list.length}', tag: tag);
     return list;
+  }
+
+  @override
+  Future<Either<Failure, String>> getGameUrl(String requestUrl) async {
+    if (requestUrl == null || requestUrl.isEmpty) {
+      MyLogger.error(msg: 'game url is empty', tag: tag);
+      return Left(Failure.internal());
+    }
+
+    final connected = await networkInfo.isConnected;
+    print('network connected: $connected');
+    if (connected) {
+      final result =
+          await handleResponse<String>(remoteDataSource.getGameUrl(requestUrl));
+      return result.fold(
+        (failure) => Left(failure),
+        (data) => Right(data),
+      );
+    }
+    return Left(Failure.network());
   }
 }

@@ -14,6 +14,8 @@ class Themes {
 
   static final accentLightColor = Color(0xffeace98);
   static final dialogBgColor = Color(0xff424242);
+  static final dialogTextColor = Color(0xffe6e6e6);
+  static final dialogTitleColor = Color(0xffe7c080);
 
   static final defaultTextColor = Color(0xffb5b5b5);
   static final defaultSubtitleColor = Color(0xffeea942);
@@ -26,13 +28,18 @@ class Themes {
   static final iconColorDark = Color(0xffa4a4a4);
   static final iconBgColorTrans = Color(0x40a4a4a4);
 
+  static final buttonSubColor = Color(0xfff19149);
   static final buttonDisabledColor = Color(0xffc9c9c9);
   static final buttonDisabledTextColor = Color(0xff575757);
 
-  static final fieldHeight = 52.0;
+  static final fieldHeight = 51.6;
   static final fieldIconSize = 24.0;
   static final fieldInputBgColor = Color(0xff4e4e4e);
   static final fieldInputHintColor = Color(0xffececec);
+
+  static final hintHighlight = Color(0xffff7eb8);
+  static final hintHighlightRed = Color(0xffff0000);
+  static final hintHyperLink = Color(0xff82f8ff);
 
   static final linearAccentColor1 = Color(0xffbb904d);
   static final linearAccentColor2 = Color(0xffe3b977);
@@ -57,6 +64,7 @@ class Themes {
       labelPadding: const EdgeInsets.only(top: 4.0),
     ),
     unselectedWidgetColor: defaultWidgetColor,
+    canvasColor: fieldInputBgColor,
     hintColor: defaultHintColor,
     disabledColor: defaultDisabledColor,
     toggleableActiveColor: defaultAccentColor,

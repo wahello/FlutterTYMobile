@@ -4,9 +4,9 @@ import 'dart:math';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ty_mobile/core/base/usecase.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/game_category_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_platform_entity.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_types_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_category_freezed.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_platform_freezed.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
 import 'package:flutter_ty_mobile/features/home/domain/repository/home_repository.dart';
 import 'package:flutter_ty_mobile/features/home/domain/usecase/get_game_types.dart';
 import 'package:hive/src/hive_impl.dart';
@@ -34,7 +34,7 @@ void main() {
     className: "eg-casino",
   );
 
-  final GameTypesEntity typesEntity = GameTypesEntity(
+  final GameTypes typesEntity = GameTypes(
     categories: [categoryModel],
     platforms: [platformEntity],
   );
@@ -106,7 +106,7 @@ void main() {
       print('key: ${box2.keyAt(0)}, data: $data2');
       expect(data2 == platformEntity, true);
 
-      var data = GameTypesEntity(categories: [data1], platforms: [data2]);
+      var data = GameTypes(categories: [data1], platforms: [data2]);
       expect(data, typesEntity);
     });
   });

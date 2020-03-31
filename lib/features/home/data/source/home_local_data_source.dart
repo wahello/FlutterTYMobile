@@ -1,7 +1,9 @@
 import 'package:flutter_ty_mobile/core/data/hive_actions.dart';
 import 'package:flutter_ty_mobile/core/error/exceptions.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/game_category_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_category_freezed.dart'
+    show GameCategoryModel;
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
 import 'package:hive/hive.dart';
 
@@ -22,12 +24,12 @@ abstract class HomeLocalDataSource {
   Future<List<MarqueeEntity>> getCachedMarquees();
   Future<void> cacheMarquees(List<MarqueeEntity> marqueesToCache);
 
-  /// Gets the cached [GameTypesEntity] which was gotten the last time
+  /// Gets the cached [GameTypes] which was gotten the last time
   /// the user had an internet connection.
   ///
   /// Throws [HiveDataException] if no cached data is present.
-  Future<GameTypesEntity> getCachedGameTypes();
-  Future<void> cacheGameTypes(GameTypesEntity typesToCache);
+  Future<GameTypes> getCachedGameTypes();
+  Future<void> cacheGameTypes(GameTypes typesToCache);
 }
 
 const CACHED_HOME_BANNER = 'CACHED_BANNER';
@@ -123,7 +125,7 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   }
 
   @override
-  Future<GameTypesEntity> getCachedGameTypes() async {
+  Future<GameTypes> getCachedGameTypes() async {
     try {
       var box1 = await _getHiveBox(HomeBox.Category);
       final categories =
@@ -131,18 +133,18 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
       var box2 = await _getHiveBox(HomeBox.Platform);
       final platforms =
           box2.getData<GamePlatformEntity>(logKeyword: 'type-platform');
-      return GameTypesEntity(categories: categories, platforms: platforms);
+      return GameTypes(categories: categories, platforms: platforms);
     } on HiveDataException {
-      return GameTypesEntity(categories: [], platforms: []);
+      return GameTypes(categories: [], platforms: []);
     } catch (e) {
       MyLogger.error(
           msg: 'box get data has exception: $e', error: e, stackTrace: e);
-      return GameTypesEntity(categories: [], platforms: []);
+      return GameTypes(categories: [], platforms: []);
     }
   }
 
   @override
-  Future<void> cacheGameTypes(GameTypesEntity typesToCache) async {
+  Future<void> cacheGameTypes(GameTypes typesToCache) async {
     var cBox = await _getHiveBox(HomeBox.Category);
     if (cBox.hasData()) {
       typesToCache.categories.addNewToHive(

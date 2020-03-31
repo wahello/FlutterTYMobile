@@ -1,4 +1,4 @@
-import 'package:flutter_ty_mobile/features/general/data/repository_export.dart';
+import 'package:flutter_ty_mobile/core/repository_export.dart';
 import 'package:flutter_ty_mobile/template/mobx/data/source/template_data_source.dart';
 
 abstract class TemplateRepository {

@@ -4,6 +4,7 @@ import 'package:flui/flui.dart' show FLToastDefaults, FLToastProvider;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChannels;
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_ty_mobile/features/route_page_export.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -15,7 +16,6 @@ import '../generated/l10n.dart';
 import '../injection_container.dart' as di;
 import '../mylogger.dart';
 import 'main_startup.dart';
-import 'router/router_navigate.dart';
 
 class MainApp extends StatefulWidget {
   @override
@@ -55,11 +55,13 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       //TODO: Register data adapters here
       try {
         Hive.registerAdapter(BannerEntityAdapter());
-        Hive.registerAdapter(MarqueeEntityAdapter());
+//        Hive.registerAdapter(MarqueeEntityAdapter());
         Hive.registerAdapter(GameCategoryModelAdapter());
         Hive.registerAdapter(GamePlatformEntityAdapter());
         Hive.registerAdapter(CookieAdapter());
         Hive.registerAdapter(HiveCookieEntityAdapter());
+        Hive.registerAdapter(PromoEntityAdapter());
+        Hive.registerAdapter(UserLoginHiveFormAdapter());
       } catch (e) {
         MyLogger.warn(
             msg: 'register hive adapter has error!!', tag: tag, error: e);
@@ -108,7 +110,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   @override
   void dispose() async {
     await Hive.close().then((value) => _hiveInitialized = false);
-    di.sl.get<RouterWidgetStreams>().dispose();
+    di.sl.get<RouteUserStreams>().dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

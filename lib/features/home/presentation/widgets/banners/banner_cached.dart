@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/banner_entity.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_banner.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/banner_freezed.dart'
+    show BannerEntity;
+import 'package:flutter_ty_mobile/features/home/presentation/bloc/banner/bloc_banner_export.dart';
 
 /// Get each [BannerEntity]'s image from network or local file
 /// [GetBannerImageEvent] will be process in [HomeBannerBloc]
@@ -22,6 +23,7 @@ class BannerCached extends StatefulWidget {
 class _BannerCachedState extends State<BannerCached> {
   @override
   void initState() {
+//    print('BannerCached data: ${widget.banners}}');
     super.initState();
     // post bloc event
     BlocProvider.of<HomeBannerBloc>(context).add(GetBannerImageEvent());

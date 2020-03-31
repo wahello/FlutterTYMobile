@@ -160,6 +160,10 @@
   "@btnRefresh": {
     "type": "text"
   },
+  "btnConfirm": "Confirm",
+  "@btnConfirm": {
+    "type": "text"
+  },
   "btnLogin": "Login",
   "@btnLogin": {
     "type": "text"
@@ -170,6 +174,10 @@
   },
   "btnResetPassword": "Forgot Password",
   "@btnResetPassword": {
+    "type": "text"
+  },
+  "btnFastLogin": "Save Login Info",
+  "@btnFastLogin": {
     "type": "text"
   },
   "btnSignUp": "Sign in",
@@ -315,6 +323,10 @@
   "@messageLoginFailed": {
     "type": "text"
   },
+  "messageActionFailed": "Invalid Action",
+  "@messageActionFailed": {
+    "type": "text"
+  },
   "messageLogout": "{name}, please log in again",
   "@messageLogout": {
     "type": "text",
@@ -383,39 +395,16 @@
   "@messageInvalidConfirmPassword": {
     "type": "text"
   },
-  "messageInvalidDepositAmount": "The minimum value is {num}",
+  "messageInvalidDepositAmount": "Amount Error",
   "@messageInvalidDepositAmount": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMin": "The minimum amount is {num}",
+  "@messageInvalidDepositAmountMin": {
     "type": "text",
     "placeholders": {
       "num": {
         "example": "0"
-      }
-    }
-  },
-  "messageInvalidDepositAmountRange": "Input range: {num} ~ {num2}",
-  "@messageInvalidDepositAmountRange": {
-    "type": "text",
-    "placeholders": {
-      "num": {
-        "example": "1"
-      },
-      "num2": {
-        "example": "100"
-      }
-    }
-  },
-  "messageInvalidDepositAmountRangeStep": "Input range: {num} ~ {num2} (amount is a multiple of {num3})",
-  "@messageInvalidDepositAmountRangeStep": {
-    "type": "text",
-    "placeholders": {
-      "num": {
-        "example": "50"
-      },
-      "num2": {
-        "example": "500"
-      },
-      "num3": {
-        "example": "50"
       }
     }
   },
@@ -645,6 +634,10 @@
   "@registerButtonTitleRegister": {
     "type": "text"
   },
+  "promoDetailText": ">>Detail",
+  "@promoDetailText": {
+    "type": "text"
+  },
   "promoCategoryAll": "All",
   "@promoCategoryAll": {
     "type": "text"
@@ -823,10 +816,6 @@
   },
   "walletViewButtonOneclick": "One Click Home",
   "@walletViewButtonOneclick": {
-    "type": "text"
-  },
-  "walletViewButtonConfrim": "OK",
-  "@walletViewButtonConfrim": {
     "type": "text"
   },
   "walletViewHintOneclick": "All platform credits are transferred to the main wallet",
@@ -1191,12 +1180,16 @@
   "@depositPaymentTitleUnion": {
     "type": "text"
   },
-  "depositPaymentTitleVirtual": "Virtual Currency",
-  "@depositPaymentTitleVirtual": {
+  "depositPaymentTitleCgp": "CGPay",
+  "@depositPaymentTitleCgp": {
     "type": "text"
   },
-  "depositPaymentTitleAli": "Alipay Pay",
+  "depositPaymentTitleAli": "AliPay",
   "@depositPaymentTitleAli": {
+    "type": "text"
+  },
+  "depositPaymentTitleJd": "JD Pay",
+  "@depositPaymentTitleJd": {
     "type": "text"
   },
   "depositPaymentTitleOnline": "Online Payment",
@@ -1205,6 +1198,10 @@
   },
   "depositPaymentTitleWechat": "WeChat Pay",
   "@depositPaymentTitleWechat": {
+    "type": "text"
+  },
+  "depositPaymentTitleAtm": "WEB ATM",
+  "@depositPaymentTitleAtm": {
     "type": "text"
   },
   "depositPaymentSpinnerTitlePromo": "Choose Offer",
@@ -1231,19 +1228,46 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
-  "depositPaymentButtonTitleTutorial": "Click to see teaching",
+  "depositPaymentEditTitleAmountHintRange": "Input range: {num} ~ {num2}",
+  "@depositPaymentEditTitleAmountHintRange": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "1"
+      },
+      "num2": {
+        "example": "100"
+      }
+    }
+  },
+  "depositPaymentEditTitleAmountHintRangeStep": "Input range: {num} ~ {num2} (amount is a multiple of {num3})",
+  "@depositPaymentEditTitleAmountHintRangeStep": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "50"
+      },
+      "num2": {
+        "example": "500"
+      },
+      "num3": {
+        "example": "50"
+      }
+    }
+  },
+  "depositPaymentButtonTitleTutorial": "Tutorial",
   "@depositPaymentButtonTitleTutorial": {
     "type": "text"
   },
-  "depositPaymentButtonTitleConfirm": "OK",
-  "@depositPaymentButtonTitleConfirm": {
+  "depositPaymentTitleTutorial": "Tutorial",
+  "@depositPaymentTitleTutorial": {
     "type": "text"
   },
-  "depositPaymentMethodLocal1": "Transfer Funding",
+  "depositPaymentMethodLocal1": "Local Transfer",
   "@ depositPaymentMethodLocal1": {
     "type": "text"
   },
-  "depositPaymentMethodLocal2": "Atm Deposit",
+  "depositPaymentMethodLocal2": "ATM Deposit",
   "@ depositPaymentMethodLocal2": {
     "type": "text"
   },
@@ -1255,12 +1279,12 @@
   "@depositHintTextAccount": {
     "type": "text"
   },
-  "depositHintTextMax": "{no} single maximum limit",
-  "@depositHintTextMax": {
+  "depositHintTextAmount": "Single Deposit Limit: ￥{value}",
+  "@depositHintTextAmount": {
     "type": "text",
     "placeholders": {
-      "no": {
-        "example": "1."
+      "value": {
+        "example": "100"
       }
     }
   },
@@ -1272,7 +1296,16 @@
   "@depositHintTextTitle": {
     "type": "text"
   },
-  "depositHintTextClearInfo": "{no} [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!",
+  "depositHintTextMax": "{no} single maximum limit\n",
+  "@depositHintTextMax": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "1."
+      }
+    }
+  },
+  "depositHintTextClearInfo": "{no} [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!\n",
   "@depositHintTextClearInfo": {
     "type": "text",
     "placeholders": {
@@ -1281,7 +1314,7 @@
       }
     }
   },
-  "depositHintTextMaxExceed": "{no} exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used",
+  "depositHintTextMaxExceed": "{no} exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used\n",
   "@depositHintTextMaxExceed": {
     "type": "text",
     "placeholders": {
@@ -1290,7 +1323,7 @@
       }
     }
   },
-  "depositHintTextFailure": "{no} If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel",
+  "depositHintTextFailure": "{no} If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel\n",
   "@depositHintTextFailure": {
     "type": "text",
     "placeholders": {
@@ -1308,7 +1341,7 @@
       }
     }
   },
-  "depositHintTextUnionShortcut": "{no} opens a quick function to China UnionPay to make your payment more convenient",
+  "depositHintTextUnionShortcut": "{no} opens a quick function to China UnionPay to make your payment more convenient\n",
   "@depositHintTextUnionShortcut": {
     "type": "text",
     "placeholders": {
@@ -1317,7 +1350,7 @@
       }
     }
   },
-  "depositHintTextQuickpay": "{no} Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)",
+  "depositHintTextQuickpay": "{no} Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)\n",
   "@depositHintTextQuickpay": {
     "type": "text",
     "placeholders": {
@@ -1326,7 +1359,7 @@
       }
     }
   },
-  "depositHintTextUnion": "{no} want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.",
+  "depositHintTextUnion": "{no} want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.\n",
   "@depositHintTextUnion": {
     "type": "text",
     "placeholders": {
@@ -1335,19 +1368,19 @@
       }
     }
   },
-  "depositHintTextUnionA": "A. Download the Bank of China App or UnionPay Wallet App on your phone;",
+  "depositHintTextUnionA": "A. Download the Bank of China App or UnionPay Wallet App on your phone;\n",
   "@depositHintTextUnionA": {
     "type": "text"
   },
-  "depositHintTextUnionB": "B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;",
+  "depositHintTextUnionB": "B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;\n",
   "@depositHintTextUnionB": {
     "type": "text"
   },
-  "depositHintTextUnionC": "C. Enter the QR code page for payment to the merchant, just scan the code with the machine.",
+  "depositHintTextUnionC": "C. Enter the QR code page for payment to the merchant, just scan the code with the machine.\n",
   "@depositHintTextUnionC": {
     "type": "text"
   },
-  "depositHintTextAli": "{no} Restricted Debit Card and Alipay Balance Payment!",
+  "depositHintTextAli": "{no} Restricted Debit Card and Alipay Balance Payment!\n",
   "@depositHintTextAli": {
     "type": "text",
     "placeholders": {
@@ -1356,7 +1389,7 @@
       }
     }
   },
-  "depositHintTextLastNum": "{no} If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit",
+  "depositHintTextLastNum": "{no} If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit\n",
   "@depositHintTextLastNum": {
     "type": "text",
     "placeholders": {
@@ -1365,7 +1398,7 @@
       }
     }
   },
-  "depositHintTextLimit": "{no} Issuer Limit Solution: Requires the user to call the issuer's customer service to request an increase in online transaction limit",
+  "depositHintTextLimit": "{no} Issuer Limit Solution: Requires the user to call the issuer's customer service to request an increase in online transaction limit\n",
   "@depositHintTextLimit": {
     "type": "text",
     "placeholders": {
@@ -1378,20 +1411,17 @@
   "@depositMessageFailed": {
     "type": "text"
   },
-  "depositMessageSuccess": "Successful Deposit",
-  "@depositMessageSuccess": {
-    "type": "text"
+  "depositMessageSuccessLocal": "Request Success, Order No.{value}",
+  "@depositMessageSuccessLocal": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "12345"
+      }
+    }
   },
   "depositNewbieQuick0": "Debit Card Teaching",
   "@ depositNewbieQuick0": {
-    "type": "text"
-  },
-  "depositNewbieVirtual0": "Download Link",
-  "@ depositNewbieVirtual0": {
-    "type": "text"
-  },
-  "depositNewbieVirtualButton1": "Download the Baobao Payment App",
-  "@ depositNewbieVirtualButton1": {
     "type": "text"
   },
   "depositNewbieAli0": "Alipay to Bank Card Teaching",
@@ -1416,6 +1446,26 @@
   },
   "depositNewbieAli5": "After the transfer is successful, you can view it in the Alipay bill details, and change the transfer details and arrival time.",
   "@ depositNewbieAli5": {
+    "type": "text"
+  },
+  "depositNewbieJd0": "JD.COM Tutorial",
+  "@depositNewbieJd0": {
+    "type": "text"
+  },
+  "depositNewbieJd1": "1、Download JD.COM App",
+  "@depositNewbieJd1": {
+    "type": "text"
+  },
+  "depositNewbieJd2": "2、Enter the App and press 'My' tab",
+  "@depositNewbieJd2": {
+    "type": "text"
+  },
+  "depositNewbieJd3": "3、Register or Login a account",
+  "@depositNewbieJd3": {
+    "type": "text"
+  },
+  "depositNewbieJd4": "4、Press 'Scanner' to pay or bind bank card",
+  "@depositNewbieJd4": {
     "type": "text"
   },
   "depositNewbieUnion0": "UnionPay Payment Tutorial",
@@ -1447,7 +1497,19 @@
     "type": "text"
   },
   "depositNewbieWechat2": "2. Then use another mobile phone WeChat to scan the code.",
-  "@ depositNewbieWechat2": {
+  "@depositNewbieWechat2": {
+    "type": "text"
+  },
+  "depositNewbieCgp0": "Download Link",
+  "@depositNewbieCgp0": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp1": "APP",
+  "@depositNewbieButtonCgp1": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp2": "Manual",
+  "@depositNewbieButtonCgp2": {
     "type": "text"
   },
   "balanceStatusMaintenance": "Maintenance",

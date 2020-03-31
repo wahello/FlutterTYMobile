@@ -1,7 +1,7 @@
 import 'package:flutter_ty_mobile/core/network/dio_api_service.dart';
 import 'package:flutter_ty_mobile/core/network/handler/data_request_handler.dart'
     show requestData;
-import 'package:flutter_ty_mobile/features/general/data/user_token_storage.dart';
+import 'package:flutter_ty_mobile/features/general/data/user/user_token_storage.dart';
 import 'package:flutter_ty_mobile/features/member/data/models/account_limit_model.dart';
 import 'package:meta/meta.dart' show required;
 
@@ -28,7 +28,7 @@ class MemberRemoteDataSourceImpl implements MemberRemoteDataSource {
     return await _checkToken(account).then((_) {
       return requestData<AccountLimitModel>(
         request: dioApiService.get(MemberApi.GET_CREDIT, userToken: token),
-        jsonToModel: AccountLimitModel.jsonToCreditModel,
+        jsonToModel: AccountLimitModel.jsonToAccountLimitModel,
         tag: 'remote-MEMBER',
       );
     });

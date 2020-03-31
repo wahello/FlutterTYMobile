@@ -5,8 +5,9 @@ import '../screen/web_game_screen.dart';
 
 @MaterialAutoRouter()
 class $ScreenRouter {
-  @initial
+  @MaterialRoute(initial: true, maintainState: true)
   FeatureScreen featureScreen;
 
+  @MaterialRoute()
   WebGameScreen webGameScreen;
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ty_mobile/features/users/data/form/login_form.dart';
-import 'package:flutter_ty_mobile/features/users/presentation/bloc/bloc_user.dart';
+import 'package:flutter_ty_mobile/features/users/presentation/bloc/bloc_user_export.dart';
 import 'package:meta/meta.dart' show required;
 
 ///

@@ -16,21 +16,38 @@ mixin _$MemberCreditStore on _MemberCreditStore, Store {
       (_$stateComputed ??= Computed<MemberCreditStoreState>(() => super.state))
           .value;
 
-  final _$userDataAtom = Atom(name: '_MemberCreditStore.userData');
+  final _$_userFutureAtom = Atom(name: '_MemberCreditStore._userFuture');
 
   @override
-  UserData get userData {
-    _$userDataAtom.context.enforceReadPolicy(_$userDataAtom);
-    _$userDataAtom.reportObserved();
-    return super.userData;
+  ObservableFuture<LoginStatus> get _userFuture {
+    _$_userFutureAtom.context.enforceReadPolicy(_$_userFutureAtom);
+    _$_userFutureAtom.reportObserved();
+    return super._userFuture;
   }
 
   @override
-  set userData(UserData value) {
-    _$userDataAtom.context.conditionallyRunInAction(() {
-      super.userData = value;
-      _$userDataAtom.reportChanged();
-    }, _$userDataAtom, name: '${_$userDataAtom.name}_set');
+  set _userFuture(ObservableFuture<LoginStatus> value) {
+    _$_userFutureAtom.context.conditionallyRunInAction(() {
+      super._userFuture = value;
+      _$_userFutureAtom.reportChanged();
+    }, _$_userFutureAtom, name: '${_$_userFutureAtom.name}_set');
+  }
+
+  final _$userAtom = Atom(name: '_MemberCreditStore.user');
+
+  @override
+  UserEntity get user {
+    _$userAtom.context.enforceReadPolicy(_$userAtom);
+    _$userAtom.reportObserved();
+    return super.user;
+  }
+
+  @override
+  set user(UserEntity value) {
+    _$userAtom.context.conditionallyRunInAction(() {
+      super.user = value;
+      _$userAtom.reportChanged();
+    }, _$userAtom, name: '${_$userAtom.name}_set');
   }
 
   final _$_creditFutureAtom = Atom(name: '_MemberCreditStore._creditFuture');
@@ -67,6 +84,13 @@ mixin _$MemberCreditStore on _MemberCreditStore, Store {
     }, _$creditAtom, name: '${_$creditAtom.name}_set');
   }
 
+  final _$getUserAsyncAction = AsyncAction('getUser');
+
+  @override
+  Future<UserEntity> getUser() {
+    return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
   final _$getCreditAsyncAction = AsyncAction('getCredit');
 
   @override
@@ -77,7 +101,7 @@ mixin _$MemberCreditStore on _MemberCreditStore, Store {
   @override
   String toString() {
     final string =
-        'userData: ${userData.toString()},credit: ${credit.toString()},state: ${state.toString()}';
+        'user: ${user.toString()},credit: ${credit.toString()},state: ${state.toString()}';
     return '{$string}';
   }
 }

@@ -1,0 +1,61 @@
+{
+  "8": {
+    "47": {
+      "bankaccountid": 16,
+      "amounttype": 3,
+      "amountoption": [
+        "666",
+        "777"
+      ],
+      "pgindex": 2,
+      "gateway": 8,
+      "amount": "1443.00",
+      "min": 50,
+      "max": 30000,
+      "sb": [
+        47
+      ],
+      "payment": 8,
+      "type": "CGP"
+    },
+    "48": {
+      "bankaccountid": 24291,
+      "amounttype": 3,
+      "amountoption": [
+        "100",
+        "200",
+        "300"
+      ],
+      "pgindex": 35,
+      "gateway": 8,
+      "amount": "0.00",
+      "min": 100,
+      "max": 20000,
+      "sb": [
+        48
+      ],
+      "payment": 8,
+      "type": "购宝支付"
+    }
+  },
+  "1": {
+    "1": {
+      "bankindex": 1,
+      "bankaccountno": "168",
+      "min": "1.00",
+      "max": 10000,
+      "bankaccountid": 2,
+      "payment": "localbank",
+      "type": "中国农业银行"
+    },
+    "20": {
+      "bankindex": 20,
+      "bankaccountno": "1991",
+      "min": "1.00",
+      "max": "30000.00",
+      "bankaccountid": 35,
+      "payment": "localbank",
+      "type": "中国工商银行"
+    }
+  }
+}

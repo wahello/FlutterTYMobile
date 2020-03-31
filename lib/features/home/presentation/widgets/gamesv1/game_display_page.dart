@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ty_mobile/core/error/exceptions.dart';
-import 'package:flutter_ty_mobile/features/general/bloc_widget_export.dart'
-    show LoadingWidget, MessageDisplay;
-import 'package:flutter_ty_mobile/features/home/data/form/platform_game_form.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_entity.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_platform_entity.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_game.dart';
-import 'package:flutter_ty_mobile/mylogger.dart';
+import 'package:flutter_ty_mobile/features/general/bloc_widget_export.dart';
+import 'package:flutter_ty_mobile/features/general/toast_widget_export.dart';
+import 'package:flutter_ty_mobile/features/home/data/game_page_data_export.dart';
+import 'package:flutter_ty_mobile/features/resource_export.dart'
+    show FontSize, networkImageWidget;
 
-import '../../../../widget_res_export.dart'
-    show FontSize, sl, networkImageWidget;
+import '../../../../route_page_export.dart'
+    show MyLogger, getRouteUserStreams, localeStr, sl;
+import '../../bloc/game/bloc_game_export.dart';
 import 'game_control_grid.dart';
+import 'game_web_control.dart';
 
 /// Create Platforms and Games [GridView]
 ///@author H.C.CHIANG
@@ -47,23 +47,40 @@ class _GameDisplayPageState extends State<GameDisplayPage>
   /// Pass in a [itemData] on grid item tap or back button pressed.
   /// [itemData] should be [GamePlatformEntity] or [GameEntity]
   /// else throw [UnknownConditionException].
-  void _onItemTap(dynamic itemData) {
+  String _onItemTap(dynamic itemData) {
     if (itemData is GamePlatformEntity) {
       if (_isGameGrid) {
 //        print('clicked back');
         _setContent(_createPlatformGrid());
-      } else if (itemData.hasGames) {
+      } else if (itemData.isGameHall == false) {
 //        print('clicked platform: ${itemData.className}, data: $itemData');
         _setContent(_createGamesView(itemData));
       } else {
         print('clicked game: ${itemData.gameUrl}');
+        return itemData.gameUrl;
       }
     } else if (itemData is GameEntity) {
       print('clicked game: ${itemData.gameUrl}');
+      return itemData.gameUrl;
     } else {
       MyLogger.warn(msg: 'tapped item unknown, data: $itemData', tag: tag);
       throw UnknownConditionException();
     }
+    return '';
+  }
+
+  void openGame(String url, BuildContext context) {
+    if (getRouteUserStreams.hasUser == false)
+      FLToast.showInfo(
+          text: localeStr.messageErrorNotLogin,
+          position: FLToastPosition.center,
+          showDuration: ToastDuration.DEFAULT.value);
+    else
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => new GameWebControl(url),
+      );
   }
 
   PlatformGameForm _createForm(GamePlatformEntity platform) {
@@ -115,7 +132,10 @@ class _GameDisplayPageState extends State<GameDisplayPage>
               IconButton(
                 visualDensity: VisualDensity.compact,
                 icon: Icon(Icons.arrow_back_ios, size: 20),
-                onPressed: () => _onItemTap(platform),
+                onPressed: () {
+                  String url = _onItemTap(platform);
+                  if (url.isNotEmpty) openGame(url, context);
+                },
               ),
               FutureBuilder(
                   future: _imageWidget(platform.iconUrl, isIconSize: true),
@@ -132,7 +152,7 @@ class _GameDisplayPageState extends State<GameDisplayPage>
                   }),
               SizedBox(width: 12.0),
               Text(
-                platform.getLabel(),
+                platform.label,
                 style: TextStyle(fontSize: FontSize.SUBTITLE.value),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -176,23 +196,37 @@ class _GameDisplayPageState extends State<GameDisplayPage>
   /// Create grid item for data [entity]
   /// Returns a [Stack] widget with image and name
   Widget _createGridItem(dynamic entity) {
-    var label = (entity is GameEntity) ? entity.cname : entity.getLabel();
+    String label;
+    String imgUrl;
     double textMargin;
+
+    if (entity is GameEntity) {
+      label = entity.cname;
+      imgUrl = entity.imageUrl;
+    } else if (entity is GamePlatformEntity) {
+      label = entity.label;
+      imgUrl = entity.imageUrl;
+    } else
+      throw UnknownConditionException();
+
     if (!_isGameGrid)
       textMargin = 4;
     else
       textMargin = 0;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 2.0),
       child: GestureDetector(
-        onTap: () => _onItemTap(entity),
+        onTap: () {
+          String url = _onItemTap(entity);
+          if (url.isNotEmpty) openGame(url, context);
+        },
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           overflow: Overflow.visible,
           children: <Widget>[
             FutureBuilder(
-              future:
-                  _imageWidget(entity.imageUrl, isGame: (entity is GameEntity)),
+              future: _imageWidget(imgUrl, isGame: (entity is GameEntity)),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done &&
                     !snapshot.hasError) {
@@ -211,9 +245,11 @@ class _GameDisplayPageState extends State<GameDisplayPage>
               bottom: textMargin,
               child: ConstrainedBox(
                 constraints: BoxConstraints.tightFor(
-                  width: FontSize.NORMAL.value * 5,
+                  width: (!_isGameGrid)
+                      ? FontSize.SUBTITLE.value * 6
+                      : FontSize.NORMAL.value * 5,
                   height: (!_isGameGrid)
-                      ? FontSize.NORMAL.value * 2
+                      ? FontSize.SUBTITLE.value * 1.5
                       : FontSize.NORMAL.value * 3, // preserved height for text
                 ),
                 child: Align(
@@ -221,12 +257,13 @@ class _GameDisplayPageState extends State<GameDisplayPage>
                   child: Text(
                     label,
                     textAlign: TextAlign.center,
-                    maxLines: 2,
+                    maxLines: (!_isGameGrid) ? 1 : 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: (_isGameGrid)
-                            ? FontSize.NORMAL.value
-                            : FontSize.SUBTITLE.value),
+                      fontSize: (_isGameGrid)
+                          ? FontSize.NORMAL.value
+                          : FontSize.SUBTITLE.value,
+                    ),
                   ),
                 ),
               ),

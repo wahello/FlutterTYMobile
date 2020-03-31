@@ -11,11 +11,11 @@ class ScreenNavigationBar extends StatefulWidget {
 
 class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   static final List<String> _tabTitle = [
-    RouterPageInfo.home.pageTitle,
-    '充值',
-    '優惠',
-    '客服',
-    RouterPageInfo.member.pageTitle,
+    RoutePage.home.pageTitle,
+    RoutePage.deposit.pageTitle,
+    RoutePage.promo.pageTitle,
+    RoutePage.service.pageTitle,
+    RoutePage.member.pageTitle,
     '更多'
   ];
 
@@ -28,13 +28,13 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     Icons.more_horiz
   ];
 
-  final List<RouterPageInfo> _tabRoute = [
-    RouterPageInfo.home,
-    RouterPageInfo.template,
-    RouterPageInfo.template,
-    RouterPageInfo.service,
-    RouterPageInfo.member,
-    RouterPageInfo.template2,
+  final List<RoutePage> _tabRoute = [
+    RoutePage.home,
+    RoutePage.deposit,
+    RoutePage.promo,
+    RoutePage.service,
+    RoutePage.member,
+    RoutePage.template2,
   ];
 
   int _navIndex = 0;
@@ -55,18 +55,17 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
         return BottomNavigationBar(
           onTap: (index) {
             print('tapped index: $index');
-            print('check user: $getUserData');
-            print('store state user: ${viewState.store.userData}');
+            print('store state user: ${viewState.store.userStatus}');
             print('store state user: ${viewState.store.hasUser}');
 //            RouterNavigate.testNavigate(_tabRoute[index]);
-            if (index == 1)
-              RouterNavigate.switchScreen(web: true);
-            else if ((index == 1 || index == 4) &&
-                viewState.store.hasUser == false)
-              RouterNavigate.navigateToPage(RouterPageInfo.login);
+//              RouterNavigate.switchScreen(web: true);
+            if ((index == 1 || index == 4) && viewState.store.hasUser == false)
+              RouterNavigate.navigateToPage(RoutePage.login);
             else if (index == 3)
-              RouterNavigate.navigateToPage(_tabRoute[index],
-                  arg: 'http://60.249.37.214:4477/');
+              RouterNavigate.navigateToPage(
+                _tabRoute[index],
+                arg: Global.TY_SERVICE_URL,
+              );
             else
               RouterNavigate.navigateToPage(_tabRoute[index]);
           },

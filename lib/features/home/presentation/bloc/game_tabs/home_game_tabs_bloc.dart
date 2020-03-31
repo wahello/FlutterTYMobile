@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
-import 'package:flutter_ty_mobile/features/home/domain/usecase/get_game_types.dart';
 import 'package:flutter_ty_mobile/core/base/usecase_export.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
+import 'package:flutter_ty_mobile/features/home/domain/usecase/get_game_types.dart';
 import 'package:meta/meta.dart' show required;
 import 'package:super_enum/super_enum.dart';
 
@@ -13,7 +13,7 @@ import 'home_game_tabs_state.dart';
 class HomeGameTabsBloc extends Bloc<HomeGameTabsEvent, HomeGameTabsState> {
   final GetGameTypesData getGameTypesData;
   final tag = 'HomeGameBloc';
-  GameTypesEntity blocData;
+  GameTypes blocData;
 
   HomeGameTabsBloc({
     @required GetGameTypesData gameTypesData,
@@ -26,8 +26,8 @@ class HomeGameTabsBloc extends Bloc<HomeGameTabsEvent, HomeGameTabsState> {
   @override
   void onTransition(
       Transition<HomeGameTabsEvent, HomeGameTabsState> transition) {
-//    print('game state, current: ${transition.currentState}');
-    print('game state, next: ${transition.nextState.runtimeType}');
+//    print('game-tab state, current: ${transition.currentState}');
+//    print('game-tab state, next: ${transition.nextState.runtimeType}');
     super.onTransition(transition);
   }
 
@@ -39,9 +39,9 @@ class HomeGameTabsBloc extends Bloc<HomeGameTabsEvent, HomeGameTabsState> {
     if (event is GetGameTypesEvent) {
       yield HomeGameTabsState.tLoading();
     }
-    if (blocData != null && blocData.isValid()) {
+    if (blocData != null && blocData.isValid) {
       MyLogger.log(
-          msg: 'using game-types data stored in bloc: ${blocData.debug()}',
+          msg: 'using game-types data stored in bloc: ${blocData.debug}',
           tag: tag);
       yield HomeGameTabsState.tLoaded(types: blocData);
     } else {
@@ -61,7 +61,7 @@ class HomeGameTabsBloc extends Bloc<HomeGameTabsEvent, HomeGameTabsState> {
       (failure) => HomeGameTabsState.tError(message: failure.message),
       (data) {
 //        print('stream game-types data returned: $data');
-        blocData = GameTypesEntity(
+        blocData = GameTypes(
             categories: List.from(data.categories),
             platforms: List.from(data.platforms));
 //        print('stored stream game-types data: $blocData');

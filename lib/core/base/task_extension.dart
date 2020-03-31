@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart' show Either, Task;
-import 'package:flutter_ty_mobile/core/base/usecase_export.dart';
+import 'package:dartz/dartz.dart' show Either, Left, Task;
 import 'package:flutter_ty_mobile/core/error/failures.dart';
+import 'package:flutter_ty_mobile/mylogger.dart';
 
 ///Catches [Failure] in a way like catching Exception
 ///[Failure] will show up as Left(Object) after throw from the Future task

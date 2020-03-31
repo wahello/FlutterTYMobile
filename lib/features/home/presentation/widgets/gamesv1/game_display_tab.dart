@@ -2,12 +2,15 @@ import 'dart:collection' show HashMap;
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/game_category_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_platform_entity.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_types_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_category_freezed.dart'
+    show GameCategoryModel, GameCategoryModelExtension;
+import 'package:flutter_ty_mobile/features/home/data/models/game_platform_freezed.dart'
+    show GamePlatformEntity;
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
 
-import '../../../../widget_res_export.dart' show FontSize, Global, Themes;
+import '../../../../resource_export.dart' show FontSize, Themes;
+import '../../../../route_page_export.dart' show Global;
 import 'game_display_page.dart';
 import 'game_display_tab_ctrl.dart';
 
@@ -17,7 +20,7 @@ import 'game_display_tab_ctrl.dart';
 ///@author H.C.CHIANG
 ///@version 2020/1/14
 class GameDisplayTab extends StatefulWidget {
-  final GameTypesEntity tabsData;
+  final GameTypes tabsData;
 
   GameDisplayTab({
     Key key,
@@ -34,20 +37,18 @@ class _GameDisplayTabState extends State<GameDisplayTab>
   PageController _pageController;
   List<GameCategoryModel> _tabs;
   HashMap<String, List<GamePlatformEntity>> _platformMap;
-  int _tabCnt;
   String _currentType;
 
   @override
   void initState() {
 //    print('game tabs data: ${widget.tabsData}');
-    _tabs = new List.from(widget.tabsData.categories);
-    _tabCnt = _tabs.length;
-    _currentType = _tabs[0].type;
-    print('game tabs count = $_tabCnt');
+    _tabs = new List.from(widget.tabsData.categories, growable: true);
     mapPlatforms();
+    _currentType = _tabs[0].type;
+    print('game tabs count = ${_tabs.length}');
     super.initState();
 
-    _tabController = TabController(length: _tabCnt, vsync: this);
+    _tabController = TabController(length: _tabs.length, vsync: this);
     _pageController = PageController();
 
     _tabController.addListener(_setActiveTabIndex);
@@ -66,12 +67,26 @@ class _GameDisplayTabState extends State<GameDisplayTab>
   /// Map the platforms into separate list by game category
   void mapPlatforms() {
     final all = widget.tabsData.platforms;
+    List remove = new List();
     _platformMap = new HashMap();
     _tabs.forEach((category) {
       var list = List<GamePlatformEntity>.from(
           all.where((platform) => category.type == platform.category));
-      _platformMap.putIfAbsent(category.type, () => list);
+      switch (category.type) {
+        case 'gift':
+        case 'movie':
+          if (list == null || list.isEmpty) remove.add(category);
+          break;
+        default:
+          if (list == null || list.isEmpty)
+            _platformMap.putIfAbsent(
+                category.type, () => List<GamePlatformEntity>());
+          else
+            _platformMap.putIfAbsent(category.type, () => list);
+          break;
+      }
     });
+    if (remove.isNotEmpty) remove.forEach((element) => _tabs.remove(element));
 //    _platformMap.keys.forEach((key) =>
 //        MyLogger.print(msg: '$key: ${_platformMap[key]}', tag: 'PlatformMap'));
   }
@@ -134,7 +149,7 @@ class _GameDisplayTabState extends State<GameDisplayTab>
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               ExtendedImage.network(
-                                '${Global.CURRENT_SERVICE}${data.getIconUrl()}',
+                                '${Global.CURRENT_SERVICE}${data.iconUrl}',
                                 scale: 3.0,
                                 color: data.type == _currentType
                                     ? Themes.defaultAccentColor
@@ -153,7 +168,7 @@ class _GameDisplayTabState extends State<GameDisplayTab>
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 2.0),
-                                child: Text(data.getLabel()),
+                                child: Text(data.label),
                               ),
                             ],
                           ),

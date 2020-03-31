@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_route.dart';
+import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_home_export.dart';
 import 'package:flutter_ty_mobile/features/home/presentation/widgets/home_widgets_export.dart';
 
-import '../../widget_res_export.dart'
-    show FontSize, Global, RouterNavigate, Themes, localeStr, sl;
+import '../../resource_export.dart' show FontSize, Themes;
+import '../../route_page_export.dart';
 
 /// Main View of [Router.homeRoute]
 ///@author H.C.CHIANG
@@ -113,11 +113,11 @@ class _HomeRouteState extends State<HomeRoute> {
             return state.when(
               bInitial: (_) => BannerControl(),
               bLoading: (_) => LoadingWidget(),
-              bCaching: (_) {
-                print('banner state props: ${state.props.first}');
-                return BannerCached(banners: state.props.first);
-              },
-              bLoaded: (_) => BannerDisplay(images: state.props.first),
+              bCaching: (_) => BannerCached(banners: state.props.first),
+              bLoaded: (_) => BannerDisplay(
+                images: state.props[0],
+                promoIds: state.props[1],
+              ),
               bError: (_) =>
                   Icon(Icons.broken_image, color: Themes.defaultTextColor),
             );

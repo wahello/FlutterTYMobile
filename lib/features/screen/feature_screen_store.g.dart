@@ -57,41 +57,41 @@ mixin _$FeatureScreenStore on _FeatureScreenStore, Store {
   final _$_streamUserAtom = Atom(name: '_FeatureScreenStore._streamUser');
 
   @override
-  ObservableStream<UserData> get _streamUser {
+  ObservableStream<LoginStatus> get _streamUser {
     _$_streamUserAtom.context.enforceReadPolicy(_$_streamUserAtom);
     _$_streamUserAtom.reportObserved();
     return super._streamUser;
   }
 
   @override
-  set _streamUser(ObservableStream<UserData> value) {
+  set _streamUser(ObservableStream<LoginStatus> value) {
     _$_streamUserAtom.context.conditionallyRunInAction(() {
       super._streamUser = value;
       _$_streamUserAtom.reportChanged();
     }, _$_streamUserAtom, name: '${_$_streamUserAtom.name}_set');
   }
 
-  final _$userDataAtom = Atom(name: '_FeatureScreenStore.userData');
+  final _$userStatusAtom = Atom(name: '_FeatureScreenStore.userStatus');
 
   @override
-  UserData get userData {
-    _$userDataAtom.context.enforceReadPolicy(_$userDataAtom);
-    _$userDataAtom.reportObserved();
-    return super.userData;
+  LoginStatus get userStatus {
+    _$userStatusAtom.context.enforceReadPolicy(_$userStatusAtom);
+    _$userStatusAtom.reportObserved();
+    return super.userStatus;
   }
 
   @override
-  set userData(UserData value) {
-    _$userDataAtom.context.conditionallyRunInAction(() {
-      super.userData = value;
-      _$userDataAtom.reportChanged();
-    }, _$userDataAtom, name: '${_$userDataAtom.name}_set');
+  set userStatus(LoginStatus value) {
+    _$userStatusAtom.context.conditionallyRunInAction(() {
+      super.userStatus = value;
+      _$userStatusAtom.reportChanged();
+    }, _$userStatusAtom, name: '${_$userStatusAtom.name}_set');
   }
 
   @override
   String toString() {
     final string =
-        'pageInfo: ${pageInfo.toString()},userData: ${userData.toString()},hasUser: ${hasUser.toString()},navIndex: ${navIndex.toString()}';
+        'pageInfo: ${pageInfo.toString()},userStatus: ${userStatus.toString()},hasUser: ${hasUser.toString()},navIndex: ${navIndex.toString()}';
     return '{$string}';
   }
 }

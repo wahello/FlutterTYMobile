@@ -1,16 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/banner_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/banner_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/banner_freezed.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   final BannerEntity bannerInfo = BannerEntity(
     id: 1,
-    picMobile: "images/banner/mobile/291.jpg",
-    blankUrl: true,
+    pic: "images/banner/mobile/291.jpg",
+    noPromo: true,
     promoUrl: "456456456",
     sort: 8,
   );
@@ -24,9 +23,9 @@ void main() {
 
       final info = BannerEntity(
           id: model.id,
-          picMobile: model.picMobile,
-          blankUrl: model.blankUrl,
-          promoUrl: model.promoUrl,
+          pic: model.picMobile,
+          noPromo: model.urlBlank,
+          promoUrl: model.mobileUrl,
           sort: model.sort);
       expect(info, bannerInfo);
       print("test info: ${info.toString()}");

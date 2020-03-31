@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ty_mobile/core/internal/orientation_helper.dart';
 import 'package:logging/logging.dart';
 
 import 'env/config_reader.dart';
@@ -20,6 +21,9 @@ Future<void> mainCommon(String env) async {
 
   // setup log
   _setupLogging();
+  // setup orientation
+  OrientationHelper.setPreferredOrientations();
+  OrientationHelper.setEnabledSystemUIOverlays();
   // setup injector
   await di.init();
   // run application

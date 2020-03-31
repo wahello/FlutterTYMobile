@@ -75,7 +75,7 @@ class DioApiService {
   /// [options]：請求配置
   /// [cancelToken]：取消標識
   Future<Response<dynamic>> get(url,
-      {data, options, cancelToken, String userToken}) async {
+      {data, options, cancelToken, String userToken, Map<String, dynamic> headers}) async {
     try {
       if (userToken != null)
         return await _dio.get(url,
@@ -83,6 +83,11 @@ class DioApiService {
             options: Options(headers: {
               'JWT-TOKEN': userToken,
             }),
+            cancelToken: cancelToken);
+      else if (headers != null)
+        return await _dio.get(url,
+            queryParameters: data,
+            options: Options(headers: headers),
             cancelToken: cancelToken);
       else
         return await _dio.get(url,
@@ -101,7 +106,7 @@ class DioApiService {
       {data, options, cancelToken, String userToken}) async {
     try {
       if (userToken != null)
-        return await _dio.get(url,
+        return await _dio.post(url,
             queryParameters: data,
             options: Options(headers: {
               'JWT-TOKEN': userToken,

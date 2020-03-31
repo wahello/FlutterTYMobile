@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/game_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_data_freezed.dart';
 import 'package:flutter_ty_mobile/utils/json_decode_util.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
