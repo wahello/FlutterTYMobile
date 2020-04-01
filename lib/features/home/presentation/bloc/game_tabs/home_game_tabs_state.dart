@@ -1,4 +1,4 @@
-import 'package:flutter_ty_mobile/features/home/domain/entity/game_types_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
 import 'package:super_enum/super_enum.dart';
 
 part 'home_game_tabs_state.g.dart';
@@ -10,7 +10,7 @@ enum _HomeGameTabsState {
   @object
   TLoading,
   @Data(fields: [
-    DataField<GameTypesEntity>('types'),
+    DataField<GameTypes>('types'),
   ])
   TLoaded,
   @Data(fields: [

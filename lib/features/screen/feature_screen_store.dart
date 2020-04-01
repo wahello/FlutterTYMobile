@@ -1,10 +1,8 @@
-import 'package:flutter_ty_mobile/features/general/data/holds/user_data.dart'
-    show UserData;
-import 'package:flutter_ty_mobile/features/users/domain/entity/user_entity.dart';
+import 'package:flutter_ty_mobile/features/users/data/models/user_freezed.dart'
+    show LoginStatus, UserEntity;
+import 'package:flutter_ty_mobile/features/router/route_user_streams.dart' show getRouteUserStreams;
+import 'package:flutter_ty_mobile/features/router/router_navigate.dart' show RouterNavigate, RouteInfo, PagesNameExtension;
 import 'package:mobx/mobx.dart';
-
-import '../router/router_navigate.dart'
-    show PagesNameExtension, RouteInfo, RouterNavigate, getRouterStreams;
 
 part 'feature_screen_store.g.dart';
 
@@ -12,32 +10,40 @@ class FeatureScreenStore = _FeatureScreenStore with _$FeatureScreenStore;
 
 abstract class _FeatureScreenStore with Store {
   _FeatureScreenStore() {
+    // initialize route observe
     _streamRoute = ObservableStream(RouterNavigate.routeStream);
     _streamRoute.listen((route) => pageInfo = route);
-    pageInfo ??= RouterNavigate.current.toRouteInfo.value;
+    pageInfo ??= RouterNavigate.current.toRoutePage.value;
 
-    _streamUser = ObservableStream(getRouterStreams.userStream);
-    _streamUser.listen((data) => userData = data);
-    userData = UserData(isLoggedIn: false);
+    // initialize user status observe
+    _streamUser = ObservableStream(getRouteUserStreams.userStream);
+    _streamUser.listen((data) => userStatus = data);
+    userStatus = LoginStatus(loggedIn: false);
   }
 
+  /* observe route change */
   @observable
   ObservableStream<RouteInfo> _streamRoute;
 
+  /* current route's info */
   @observable
   RouteInfo pageInfo;
 
+  /* observe user change */
   @observable
-  ObservableStream<UserData> _streamUser;
+  ObservableStream<LoginStatus> _streamUser;
 
+  /* current user status */
   @observable
-  UserData userData;
+  LoginStatus userStatus;
 
-  UserEntity get user => userData.user;
+  /* current user */
+  UserEntity get user => userStatus.currentUser;
 
   @computed
-  bool get hasUser => (userData != null) ? userData.isLoggedIn : false;
+  bool get hasUser => (userStatus != null) ? userStatus.loggedIn : false;
 
+  /* bottom navigator selected index */
   @computed
   int get navIndex => (pageInfo != null && pageInfo.bottomNavIndex != null)
       ? pageInfo.bottomNavIndex

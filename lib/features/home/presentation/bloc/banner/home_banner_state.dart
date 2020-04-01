@@ -14,6 +14,7 @@ enum _HomeBannerState {
   BCaching,
   @Data(fields: [
     DataField<List>('images'),
+    DataField<List>('promoIds'),
   ])
   BLoaded,
   @Data(fields: [

@@ -1,5 +1,5 @@
 import 'package:flutter_ty_mobile/core/internal/local_strings.dart';
-import 'package:flutter_ty_mobile/features/general/data/entity/request_failed_model.dart';
+import 'package:flutter_ty_mobile/core/network/handler/request_status_freezed.dart' show RequestStatusModel;
 import 'package:super_enum/super_enum.dart';
 
 part 'failures.g.dart';
@@ -20,8 +20,10 @@ enum _Failure {
   CachedFile,
   @object
   Internal,
-  @UseClass(RequestFailedModel)
+  @UseClass(RequestStatusModel)
   Login,
+  @object
+  Token,
 }
 
 extension FailureExtension on Failure {
@@ -38,6 +40,8 @@ extension FailureExtension on Failure {
         return localeStr.messageErrorServerError;
       case _Failure.Login:
         return localeStr.messageLoginFailed;
+      case _Failure.Token:
+        return localeStr.messageErrorData;
       case _Failure.CachedFile:
         return localeStr.messageErrorCachedFile;
       case _Failure.Internal:

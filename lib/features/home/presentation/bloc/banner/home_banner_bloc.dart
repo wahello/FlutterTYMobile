@@ -1,8 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_ty_mobile/core/base/usecase_export.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/banner_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/banner_freezed.dart'
+    show BannerEntity;
 import 'package:flutter_ty_mobile/features/home/domain/usecase/get_banner_data.dart';
 import 'package:flutter_ty_mobile/features/home/domain/usecase/get_banner_image.dart';
+import 'package:flutter_ty_mobile/utils/string_util.dart'
+    show ValueStringExtension;
 import 'package:meta/meta.dart' show required;
 
 import 'home_banner_event.dart';
@@ -13,7 +16,8 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
   final GetHomeBannerImage getHomeBannerImage;
   final tag = 'HomeBannerBloc';
   List<BannerEntity> blocData;
-  List blocImage;
+  List<int> blocPromoIds;
+  List blocImages;
 
   HomeBannerBloc({
     @required GetHomeBannerData homeBannerData,
@@ -29,7 +33,7 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
   @override
   void onTransition(Transition<HomeBannerEvent, HomeBannerState> transition) {
 //    print('banner state, current: ${transition.currentState}');
-    print('banner state, next: ${transition.nextState.runtimeType}');
+//    print('banner state, next: ${transition.nextState.runtimeType}');
     super.onTransition(transition);
   }
 
@@ -41,11 +45,14 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
     if (event is GetBannerEvent) {
       yield HomeBannerState.bLoading();
     }
-    if (blocImage != null && blocImage.isNotEmpty) {
+    if ((blocImages != null && blocImages.isNotEmpty) &&
+        blocPromoIds != null &&
+        blocPromoIds.length == blocImages.length) {
       MyLogger.log(
-          msg: 'using banner images stored in bloc: ${blocImage.length}',
+          msg:
+              'using banner images stored in bloc: ${blocImages.length}, ids: ${blocPromoIds.length}',
           tag: tag);
-      yield HomeBannerState.bLoaded(images: blocImage);
+      yield HomeBannerState.bLoaded(images: blocImages, promoIds: blocPromoIds);
     } else {
       // action on different event
       yield* await event.when(
@@ -62,8 +69,14 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
       // TODO add failure alert
       (failure) => HomeBannerState.bError(message: failure.message),
       (banners) {
-//        print('stream banner data returned: $banners');
+//          print('stream banner data returned: ${banners.length}');
         blocData = List.from(banners);
+        blocPromoIds = banners.map((data) {
+          if (data.noPromo || data.promoUrl.startsWith('promo') == false)
+            return -1;
+          return data.promoUrl.split('/').last.valueToInt;
+        }).toList();
+//          print('banner promo ids: ${blocPromoIds.length}');
         return HomeBannerState.bCaching(banners: blocData);
       },
     );
@@ -76,12 +89,12 @@ class HomeBannerBloc extends Bloc<HomeBannerEvent, HomeBannerState> {
     final failureOrData =
         await getHomeBannerImage(DataParams(state.props.first));
     yield failureOrData.fold(
-      // TODO add failure alert
       (failure) => HomeBannerState.bError(message: failure.message),
       (images) {
-//        print('stream banner data returned: $banners');
-        blocImage = List.from(images);
-        return HomeBannerState.bLoaded(images: blocImage);
+//        print('stream banner image returned: ${images.length}');
+        blocImages = List.from(images);
+        return HomeBannerState.bLoaded(
+            images: blocImages, promoIds: blocPromoIds);
       },
     );
     blocData = null;

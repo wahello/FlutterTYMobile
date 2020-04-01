@@ -21,24 +21,31 @@ Future<dynamic> checkCachedImage(String url) async {
   });
 }
 
-Future<Widget> networkImageWidget(String url,
-    {bool fillContainer = false, double imgScale = 1.0}) async {
+Future<Widget> networkImageWidget(
+  String url, {
+  bool fillContainer = false,
+  double imgScale = 1.0,
+  bool debug = false,
+  Color imgColor,
+}) async {
   String imageUrl =
       '${Global.CURRENT_SERVICE}$url'.replaceAll('//images/', '/images/');
   final image = await Future.value(checkCachedImage(imageUrl)).then((item) {
-//    print('image: $imageUrl, item: ${item.runtimeType}');
+    if (debug) print('image: $imageUrl, item: ${item.runtimeType}');
     if (item is File) {
 //      print('file state: ${item.statSync()}, length: ${item.lengthSync()}');
       return Image.file(
         item,
         fit: fillContainer ? BoxFit.fill : BoxFit.contain,
         scale: imgScale,
+        color: imgColor,
       );
     } else {
       return ExtendedImage.network(
         imageUrl,
         fit: fillContainer ? BoxFit.fill : BoxFit.contain,
         scale: imgScale,
+        color: imgColor,
         loadStateChanged: (ExtendedImageState state) {
           switch (state.extendedImageLoadState) {
             case LoadState.completed:
@@ -55,14 +62,30 @@ Future<Widget> networkImageWidget(String url,
   return image;
 }
 
-FutureBuilder networkImageBuilder(String url,
-    {bool fill = false, double imgScale = 1.0}) {
+FutureBuilder networkImageBuilder(
+  String url, {
+  bool fill = false,
+  double imgScale = 1.0,
+  Color imgColor,
+  bool roundCorner = false,
+  bool debug = false,
+}) {
   return FutureBuilder(
-    future: networkImageWidget(url, fillContainer: fill, imgScale: imgScale),
+    future: networkImageWidget(
+      url,
+      fillContainer: fill,
+      imgScale: imgScale,
+      imgColor: imgColor,
+      debug: debug,
+    ),
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.done &&
           !snapshot.hasError) {
-        return snapshot.data;
+        if (roundCorner)
+          return ClipRRect(
+              borderRadius: BorderRadius.circular(6.0), child: snapshot.data);
+        else
+          return snapshot.data;
       } else if (snapshot.hasError) {
         MyLogger.warn(msg: 'network image builder error: ${snapshot.error}');
         return Icon(Icons.broken_image, color: Themes.iconColorDark);

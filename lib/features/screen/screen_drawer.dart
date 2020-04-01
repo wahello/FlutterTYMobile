@@ -12,8 +12,8 @@ class ScreenDrawer extends StatelessWidget {
     ),
   ];
 
-  static final List<RouterPageInfo> _menuRoute = [
-    RouterPageInfo.home,
+  static final List<RoutePage> _menuRoute = [
+    RoutePage.home,
   ];
 
   @override
@@ -57,7 +57,7 @@ class ScreenDrawer extends StatelessWidget {
                           onPressed: () {
                             if (viewState.scaffoldKey.currentState.isDrawerOpen)
                               Navigator.pop(context);
-                            RouterNavigate.navigateToPage(RouterPageInfo.login);
+                            RouterNavigate.navigateToPage(RoutePage.login);
                           },
                         ),
                       ),

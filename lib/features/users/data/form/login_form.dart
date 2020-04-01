@@ -1,28 +1,33 @@
-import 'package:to_string/to_string.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
+part 'login_form.freezed.dart';
 part 'login_form.g.dart';
 
-@ToString()
-class UserLoginForm {
-  String account;
-  String password;
+@freezed
+abstract class UserLoginForm with _$UserLoginForm {
+  const factory UserLoginForm({
+    @JsonKey(name: 'accountcode') String account,
+    String password,
+  }) = _UserLoginForm;
 
-  UserLoginForm({this.account, this.password});
+  factory UserLoginForm.fromJson(Map<String, dynamic> json) =>
+      _$UserLoginFormFromJson(json);
+}
 
-  factory UserLoginForm.fromJson(Map<String, dynamic> json) {
-    return UserLoginForm(
-      account: json['accountcode'],
-      password: json['password'],
-    );
-  }
+@freezed
+abstract class UserLoginHiveForm with _$UserLoginHiveForm {
+  @HiveType(typeId: 109)
+  const factory UserLoginHiveForm({
+    @HiveField(0) String account,
+    @HiveField(1) String password,
+    @HiveField(2) @Default(false) bool fastLogin,
+  }) = _UserLoginHiveForm;
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['accountcode'] = this.account;
-    data['password'] = this.password;
-    return data;
-  }
-
-  @override
-  String toString() => _$UserLoginFormToString(this);
+extension UserLoginHiveFormExtension on UserLoginHiveForm {
+  UserLoginForm get simple => UserLoginForm(
+        account: this.account,
+        password: this.password,
+      );
 }

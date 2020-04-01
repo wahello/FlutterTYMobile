@@ -1,8 +1,9 @@
-import 'package:flutter_ty_mobile/features/general/data/entity/request_failed_model.dart';
-
+import 'package:flutter_ty_mobile/core/network/handler/request_status_freezed.dart' show RequestStatusModel;
 
 class NetworkException implements Exception {}
+
 class LocationException implements Exception {}
+
 class ServerException implements Exception {}
 
 class RequestTimeoutException implements ServerException {
@@ -14,13 +15,17 @@ class RequestTimeoutException implements ServerException {
     return 'RequestTimeoutException!! msg:$message';
   }
 }
+
 class RequestCanceledException implements ServerException {}
+
 class ResponseException implements ServerException {}
+
 class DownloadException implements ServerException {}
+
 class UnknownException implements ServerException {}
 
 class LoginException implements Exception {
-  final RequestFailedModel data;
+  final RequestStatusModel data;
   LoginException({this.data});
   @override
   String toString() {
@@ -37,7 +42,11 @@ class JsonFormatException implements Exception {
     return 'JsonFormatException!!\njson data: $json';
   }
 }
+
 class MapJsonDataException implements Exception {}
+
 class EmptyDataException implements Exception {}
+
 class HiveDataException implements Exception {}
+
 class UnknownConditionException implements Exception {}

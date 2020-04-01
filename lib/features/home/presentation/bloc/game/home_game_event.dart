@@ -1,4 +1,4 @@
-import 'package:flutter_ty_mobile/features/home/data/form/platform_game_form.dart';
+import 'package:flutter_ty_mobile/features/home/domain/entity/platform_game_form.dart';
 import 'package:super_enum/super_enum.dart';
 
 part 'home_game_event.g.dart';

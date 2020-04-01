@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/marquee_model.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/marquee_model_list.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/marquee_freezed.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -30,7 +29,7 @@ void main() {
 
   test('test model list data to json', () {
     final map = json.decode(fixture('home/marquee_array_test.json'));
-    final model = marqueeModelList.toJson();
+    final model = marqueeModelList.extJson();
     expect(map, model);
   });
 

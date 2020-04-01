@@ -10,7 +10,7 @@ class GetDescriptionData2 implements UseCase<String, DataParams> {
   @override
   Future<Either<Failure, String>> call(DataParams params) async {
     MyLogger.print(msg: 'called user usecase', tag: tag);
-    var data = params.props.first;
+    var data = params.data;
     if (!(data is String)) {
       MyLogger.warn(msg: 'usecase data type: $data', tag: tag);
       return Left(Failure.dataType());

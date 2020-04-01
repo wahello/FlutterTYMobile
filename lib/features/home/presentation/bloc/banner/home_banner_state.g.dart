@@ -17,7 +17,9 @@ abstract class HomeBannerState extends Equatable {
   factory HomeBannerState.bCaching({@required List<dynamic> banners}) =
       BCaching;
 
-  factory HomeBannerState.bLoaded({@required List<dynamic> images}) = BLoaded;
+  factory HomeBannerState.bLoaded(
+      {@required List<dynamic> images,
+      @required List<dynamic> promoIds}) = BLoaded;
 
   factory HomeBannerState.bError({@required String message}) = BError;
 
@@ -229,14 +231,18 @@ class BCaching extends HomeBannerState {
 
 @immutable
 class BLoaded extends HomeBannerState {
-  const BLoaded({@required this.images}) : super(_HomeBannerState.BLoaded);
+  const BLoaded({@required this.images, @required this.promoIds})
+      : super(_HomeBannerState.BLoaded);
 
   final List<dynamic> images;
 
+  final List<dynamic> promoIds;
+
   @override
-  String toString() => 'BLoaded(images:${this.images})';
+  String toString() =>
+      'BLoaded(images:${this.images},promoIds:${this.promoIds})';
   @override
-  List get props => [images];
+  List get props => [images, promoIds];
 }
 
 @immutable

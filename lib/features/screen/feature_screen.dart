@@ -7,6 +7,12 @@ import '../../mylogger.dart';
 import 'feature_screen_store.dart';
 import 'feature_screen_view.dart';
 
+///
+/// Main app screen
+///
+/// Include [FeatureScreenStore] which holds current page info and user data.
+/// Uses [WillPopScope] to maintain [FeatureScreenView]
+///
 class FeatureScreen extends StatefulWidget {
   const FeatureScreen();
 
@@ -21,8 +27,22 @@ class _FeatureScreenState extends State<FeatureScreen> {
 
   @override
   void initState() {
+    MyLogger.debug(msg: 'init feature screen', tag: tag);
+    // restore the screen to normal SystemUiOverlay
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(FeatureScreen oldWidget) {
+    MyLogger.debug(msg: 'update feature screen', tag: tag);
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void didChangeDependencies() {
+    MyLogger.debug(msg: 'change feature screen', tag: tag);
+    super.didChangeDependencies();
   }
 
   @override
@@ -34,7 +54,10 @@ class _FeatureScreenState extends State<FeatureScreen> {
         store: _store,
         child: FeatureScreenView(),
       ),
-      onWillPop: () async => Future(() => false),
+      onWillPop: () async {
+        MyLogger.debug(msg: 'pop feature screen', tag: 'FeatureScreen');
+        return Future(() => false);
+      },
     );
   }
 

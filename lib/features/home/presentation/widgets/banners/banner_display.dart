@@ -1,6 +1,7 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ty_mobile/core/internal/themes.dart';
+import 'package:flutter_ty_mobile/features/route_page_export.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
 import 'package:meta/meta.dart' show required;
 
@@ -9,10 +10,12 @@ import 'package:meta/meta.dart' show required;
 /// @version 2019/12/27
 class BannerDisplay extends StatelessWidget {
   final List<dynamic> images;
+  final List<int> promoIds;
 
   BannerDisplay({
     Key key,
     @required this.images,
+    @required this.promoIds,
   }) : super(key: key);
 
   @override
@@ -42,6 +45,11 @@ class BannerDisplay extends StatelessWidget {
       borderRadius: false,
       animationDuration: Duration(milliseconds: 2000),
       autoplayDuration: Duration(seconds: 10),
+      onImageTap: (index) {
+        var id = promoIds[index];
+        print('clicked image $index, promoId: $id');
+        if (id != -1) RouterNavigate.navigateToPage(RoutePage.promo, arg: id);
+      },
     );
   }
 }

@@ -11,6 +11,7 @@
   "@pageTitleHome": {
     "type": "text"
   },
+
   "pageTitleTutorial": "新手教学",
   "@pageTitleTutorial": {
     "type": "text"
@@ -160,6 +161,10 @@
   "@btnRefresh": {
     "type": "text"
   },
+  "btnConfirm": "确定",
+  "@btnConfirm": {
+    "type": "text"
+  },
   "btnLogin": "登入",
   "@btnLogin": {
     "type": "text"
@@ -170,6 +175,10 @@
   },
   "btnResetPassword": "忘记密码",
   "@btnResetPassword": {
+    "type": "text"
+  },
+  "btnFastLogin": "記住帳密",
+  "@btnFastLogin": {
     "type": "text"
   },
   "btnSignUp": "签到",
@@ -315,6 +324,10 @@
   "@messageLoginFailed": {
     "type": "text"
   },
+  "messageActionFailed": "操作无效",
+  "@messageActionFailed": {
+    "type": "text"
+  },
   "messageLogout": "{name}，请重新登入",
   "@messageLogout": {
     "type": "text",
@@ -383,39 +396,16 @@
   "@messageInvalidConfirmPassword": {
     "type": "text"
   },
-  "messageInvalidDepositAmount": "最小值为{num}",
+  "messageInvalidDepositAmount": "金额输入错误",
   "@messageInvalidDepositAmount": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMin": "金额最小值为{num}",
+  "@messageInvalidDepositAmountMin": {
     "type": "text",
     "placeholders": {
       "num": {
         "example": "0"
-      }
-    }
-  },
-  "messageInvalidDepositAmountRange": "输入范围:{num}~{num2}",
-  "@messageInvalidDepositAmountRange": {
-    "type": "text",
-    "placeholders": {
-      "num": {
-        "example": "1"
-      },
-      "num2": {
-        "example": "100"
-      }
-    }
-  },
-  "messageInvalidDepositAmountRangeStep": "输入范围:{num}~{num2}(金额为{num3}的倍数)",
-  "@messageInvalidDepositAmountRangeStep": {
-    "type": "text",
-    "placeholders": {
-      "num": {
-        "example": "50"
-      },
-      "num2": {
-        "example": "500"
-      },
-      "num3": {
-        "example": "50"
       }
     }
   },
@@ -492,7 +482,7 @@
   "@messageErrorCachedFile": {
     "type": "text"
   },
-  "messageErrorData": "用户数据错误",
+  "messageErrorData": "用户数据错误，请重新登入或联系客服",
   "@messageErrorData": {
     "type": "text"
   },
@@ -643,6 +633,10 @@
   },
   "registerButtonTitleRegister": "注册",
   "@registerButtonTitleRegister": {
+    "type": "text"
+  },
+  "promoDetailText": ">>活动细则",
+  "@promoDetailText": {
     "type": "text"
   },
   "promoCategoryAll": "All",
@@ -823,10 +817,6 @@
   },
   "walletViewButtonOneclick": "一键归户",
   "@walletViewButtonOneclick": {
-    "type": "text"
-  },
-  "walletViewButtonConfrim": "确定",
-  "@walletViewButtonConfrim": {
     "type": "text"
   },
   "walletViewHintOneclick": "所有平台额度转入主钱包",
@@ -1191,12 +1181,16 @@
   "@depositPaymentTitleUnion": {
     "type": "text"
   },
-  "depositPaymentTitleVirtual": "虚拟货币",
-  "@depositPaymentTitleVirtual": {
+  "depositPaymentTitleCgp": "购宝钱包",
+  "@depositPaymentTitleCgp": {
     "type": "text"
   },
   "depositPaymentTitleAli": "支付宝支付",
   "@depositPaymentTitleAli": {
+    "type": "text"
+  },
+  "depositPaymentTitleJd": "京东支付",
+  "@depositPaymentTitleJd": {
     "type": "text"
   },
   "depositPaymentTitleOnline": "在线支付",
@@ -1205,6 +1199,10 @@
   },
   "depositPaymentTitleWechat": "微信支付",
   "@depositPaymentTitleWechat": {
+    "type": "text"
+  },
+  "depositPaymentTitleAtm": "网银转帐",
+  "@depositPaymentTitleAtm": {
     "type": "text"
   },
   "depositPaymentSpinnerTitlePromo": "选择优惠",
@@ -1231,19 +1229,46 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
+  "depositPaymentEditTitleAmountHintRange": "输入范围:{num}~{num2}",
+  "@depositPaymentEditTitleAmountHintRange": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "1"
+      },
+      "num2": {
+        "example": "100"
+      }
+    }
+  },
+  "depositPaymentEditTitleAmountHintRangeStep": "输入范围:{num}~{num2}(金额为{num3}的倍数)",
+  "@depositPaymentEditTitleAmountHintRangeStep": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "50"
+      },
+      "num2": {
+        "example": "500"
+      },
+      "num3": {
+        "example": "50"
+      }
+    }
+  },
   "depositPaymentButtonTitleTutorial": "点我看教学",
   "@depositPaymentButtonTitleTutorial": {
     "type": "text"
   },
-  "depositPaymentButtonTitleConfirm": "确定",
-  "@depositPaymentButtonTitleConfirm": {
+  "depositPaymentTitleTutorial": "使用教学",
+  "@depositPaymentTitleTutorial": {
     "type": "text"
   },
   "depositPaymentMethodLocal1": "转帐充值",
   "@depositPaymentMethodLocal1": {
     "type": "text"
   },
-  "depositPaymentMethodLocal2": "Atm充值",
+  "depositPaymentMethodLocal2": "ATM充值",
   "@depositPaymentMethodLocal2": {
     "type": "text"
   },
@@ -1255,12 +1280,12 @@
   "@depositHintTextAccount": {
     "type": "text"
   },
-  "depositHintTextMax": "{no}单笔最高限额",
-  "@depositHintTextMax": {
+  "depositHintTextAmount": "单笔最高限额: {value}",
+  "@depositHintTextAmount": {
     "type": "text",
     "placeholders": {
-      "no": {
-        "example": "1."
+      "value": {
+        "example": "100"
       }
     }
   },
@@ -1272,7 +1297,16 @@
   "@depositHintTextTitle": {
     "type": "text"
   },
-  "depositHintTextClearInfo": "{no}【重要提醒】勿保留银行帐户，请您在每次充值前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！",
+  "depositHintTextMax": "{no}单笔最高限额\n",
+  "@depositHintTextMax": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "1."
+      }
+    }
+  },
+  "depositHintTextClearInfo": "{no}【重要提醒】勿保留银行帐户，请您在每次充值前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！\n",
   "@depositHintTextClearInfo": {
     "type": "text",
     "placeholders": {
@@ -1281,7 +1315,7 @@
       }
     }
   },
-  "depositHintTextMaxExceed": "{no}超出在线支付单日额度限制或单笔大额充值，可使用其它充值方式",
+  "depositHintTextMaxExceed": "{no}超出在线支付单日额度限制或单笔大额充值，可使用其它充值方式\n",
   "@depositHintTextMaxExceed": {
     "type": "text",
     "placeholders": {
@@ -1290,7 +1324,7 @@
       }
     }
   },
-  "depositHintTextFailure": "{no}如遇到存款扫码失败等故障，请尝试刷新重试，并联系客服使用其他替换信道",
+  "depositHintTextFailure": "{no}如遇到存款扫码失败等故障，请尝试刷新重试，并联系客服使用其他替换信道\n",
   "@depositHintTextFailure": {
     "type": "text",
     "placeholders": {
@@ -1308,7 +1342,7 @@
       }
     }
   },
-  "depositHintTextUnionShortcut": "{no}至中国银联开通快捷功能，让您的支付更加便利",
+  "depositHintTextUnionShortcut": "{no}至中国银联开通快捷功能，让您的支付更加便利\n",
   "@depositHintTextUnionShortcut": {
     "type": "text",
     "placeholders": {
@@ -1317,7 +1351,7 @@
       }
     }
   },
-  "depositHintTextQuickpay": "{no}温馨提醒：使用快捷支付需支付小数两位，系统会自动带入（若您提交小数两位为00则无法成功）",
+  "depositHintTextQuickpay": "{no}温馨提醒：使用快捷支付需支付小数两位，系统会自动带入（若您提交小数两位为00则无法成功）\n",
   "@depositHintTextQuickpay": {
     "type": "text",
     "placeholders": {
@@ -1326,7 +1360,7 @@
       }
     }
   },
-  "depositHintTextUnion": "{no}想要使用银联扫码支付，前提是需要持有卡号为62开头银联卡，信用卡借记卡都可以。",
+  "depositHintTextUnion": "{no}想要使用银联扫码支付，前提是需要持有卡号为62开头银联卡，信用卡借记卡都可以。\n",
   "@depositHintTextUnion": {
     "type": "text",
     "placeholders": {
@@ -1335,19 +1369,19 @@
       }
     }
   },
-  "depositHintTextUnionA": "A、手机下载中国银行App或银联钱包App；",
+  "depositHintTextUnionA": "A、手机下载中国银行App或银联钱包App；\n",
   "@depositHintTextUnionA": {
     "type": "text"
   },
-  "depositHintTextUnionB": "B、登入中国银行手机App，通过右上角“+”中的付款功能或移动支付模块中的付款功能；",
+  "depositHintTextUnionB": "B、登入中国银行手机App，通过右上角“+”中的付款功能或移动支付模块中的付款功能；\n",
   "@depositHintTextUnionB": {
     "type": "text"
   },
-  "depositHintTextUnionC": "C、进入向商家付款的二维码页面，对准机具扫码即可。",
+  "depositHintTextUnionC": "C、进入向商家付款的二维码页面，对准机具扫码即可。\n",
   "@depositHintTextUnionC": {
     "type": "text"
   },
-  "depositHintTextAli": "{no}限用借记卡与支付宝余额支付！",
+  "depositHintTextAli": "{no}限用借记卡与支付宝余额支付！\n",
   "@depositHintTextAli": {
     "type": "text",
     "placeholders": {
@@ -1356,7 +1390,7 @@
       }
     }
   },
-  "depositHintTextLastNum": "{no}若单笔交易金额尾号不是0（如：1000元整），会造成无法成功存款",
+  "depositHintTextLastNum": "{no}若单笔交易金额尾号不是0（如：1000元整），会造成无法成功存款\n",
   "@depositHintTextLastNum": {
     "type": "text",
     "placeholders": {
@@ -1365,7 +1399,7 @@
       }
     }
   },
-  "depositHintTextLimit": "{no}发卡行限额解决方法：需要用户自己致电发卡行客服要求增加网上交易额度",
+  "depositHintTextLimit": "{no}发卡行限额解决方法：需要用户自己致电发卡行客服要求增加网上交易额度\n",
   "@depositHintTextLimit": {
     "type": "text",
     "placeholders": {
@@ -1378,20 +1412,17 @@
   "@depositMessageFailed": {
     "type": "text"
   },
-  "depositMessageSuccess": "充值成功",
-  "@depositMessageSuccess": {
-    "type": "text"
+  "depositMessageSuccessLocal": "訂單已成立，訂單編號：{value}",
+  "@depositMessageSuccessLocal": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "12345"
+      }
+    }
   },
   "depositNewbieQuick0": "借记卡教学",
   "@depositNewbieQuick0": {
-    "type": "text"
-  },
-  "depositNewbieVirtual0": "下载链结",
-  "@depositNewbieVirtual0": {
-    "type": "text"
-  },
-  "depositNewbieVirtualButton1": "下载购宝支付App",
-  "@depositNewbieVirtualButton1": {
     "type": "text"
   },
   "depositNewbieAli0": "支付宝转银行卡教学",
@@ -1416,6 +1447,26 @@
   },
   "depositNewbieAli5": "转账成功后，可在支付宝账单详情中查看，改转账明细、和到帐时间。",
   "@depositNewbieAli5": {
+    "type": "text"
+  },
+  "depositNewbieJd0": "京东教学",
+  "@depositNewbieJd0": {
+    "type": "text"
+  },
+  "depositNewbieJd1": "1、下载京东app",
+  "@depositNewbieJd1": {
+    "type": "text"
+  },
+  "depositNewbieJd2": "2、进入页面后点击我的",
+  "@depositNewbieJd2": {
+    "type": "text"
+  },
+  "depositNewbieJd3": "3、注册或者登入京东帐户信用卡和储蓄卡皆可添加",
+  "@depositNewbieJd3": {
+    "type": "text"
+  },
+  "depositNewbieJd4": "4、点击首页的扫码即可支付与绑定银行卡",
+  "@depositNewbieJd4": {
     "type": "text"
   },
   "depositNewbieUnion0": "银联支付教学",
@@ -1448,6 +1499,18 @@
   },
   "depositNewbieWechat2": "2、然后用另一个手机微信扫码付款。",
   "@depositNewbieWechat2": {
+    "type": "text"
+  },
+  "depositNewbieCgp0": "下载链结",
+  "@depositNewbieCgp0": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp1": "下载购宝支付APP",
+  "@depositNewbieButtonCgp1": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp2": "下载购宝教学手册",
+  "@depositNewbieButtonCgp2": {
     "type": "text"
   },
   "balanceStatusMaintenance": "维护中",

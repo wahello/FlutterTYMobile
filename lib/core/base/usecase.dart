@@ -1,31 +1,17 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
+import 'package:dartz/dartz.dart' show Either;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../error/failures.dart';
+
+part 'usecase.freezed.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);
 }
 
-class NoParams extends Equatable {
-  @override
-  List<Object> get props => [];
-}
-
-class DataParams extends Equatable {
-  final dynamic data;
-
-  DataParams(this.data);
-
-  @override
-  List<Object> get props => [data];
-}
-
-class ListParams extends Equatable {
-  final List list;
-
-  ListParams(this.list);
-
-  @override
-  List<Object> get props => [list];
+@freezed
+abstract class UseCaseParams with _$UseCaseParams {
+  const factory UseCaseParams.none() = NoParams;
+  const factory UseCaseParams.data(dynamic data) = DataParams;
+  const factory UseCaseParams.list(List data) = ListParams;
 }

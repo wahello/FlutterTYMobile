@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/marquee_model.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/marquee_model_list.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/marquee_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/marquee_freezed.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -43,6 +41,7 @@ void main() {
         url: model.url,
       );
       expect(entity, marqueeEntity);
+      expect(entity is MarqueeEntity, true);
       print("test entity: ${entity.toString()}");
     },
   );

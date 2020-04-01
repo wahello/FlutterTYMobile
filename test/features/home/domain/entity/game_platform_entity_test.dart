@@ -1,14 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/game_platform_model.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_platform_freezed.dart';
 
 final GamePlatformModel platformModel = GamePlatformModel(
   site: "eg",
   site2: "EG",
   ch: "EG casino",
-  type: "casino",
+  category: "casino",
   cid: 1,
   status: "1",
   sort: 1,

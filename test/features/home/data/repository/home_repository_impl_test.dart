@@ -2,19 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ty_mobile/core/error/failures.dart';
 import 'package:flutter_ty_mobile/core/network/util/network_info.dart';
-import 'package:flutter_ty_mobile/features/home/data/models/models.dart'
-    show
-        BannerModel,
-        GameCategoryModel,
-        GamePlatformModel,
-        GameTypesModel,
-        MarqueeModel,
-        MarqueeModelList;
+import 'package:flutter_ty_mobile/features/home/data/models/entities.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/game_types_freezed.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/models.dart';
 import 'package:flutter_ty_mobile/features/home/data/repository/home_repository_impl.dart';
 import 'package:flutter_ty_mobile/features/home/data/source/home_local_data_source.dart';
 import 'package:flutter_ty_mobile/features/home/data/source/home_remote_data_source.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/entities.dart'
-    show BannerEntity, GamePlatformEntity, GameTypesEntity, MarqueeEntity;
 import 'package:mockito/mockito.dart';
 
 class MockRemoteDataSource extends Mock implements HomeRemoteDataSource {}
@@ -75,12 +68,7 @@ void main() {
         sort: 8);
 
     final List<BannerEntity> bannerInfo = [bannerInfoModel].map((model) {
-      return BannerEntity(
-          id: model.id,
-          picMobile: model.picMobile,
-          blankUrl: model.blankUrl,
-          promoUrl: model.promoUrl,
-          sort: model.sort);
+      return model.entity;
     }).toList();
 
     runTestsOnline(() {
@@ -173,26 +161,26 @@ void main() {
     });
 
     runTestsOffline(() {
-      test(
-          'should return local cache data when the call to remote data source is unsuccessful',
-          () async {
-        // arrange
-        when(mockLocalDataSource.getCachedMarquees())
-            .thenAnswer((_) async => [marqueeEntity]);
-        // act
-        final result = await repository.getMarquees();
-        final item = result.getOrElse(null);
-        // assert
-        verify(mockNetworkInfo.isConnected);
-        expect(item, equals([marqueeEntity]));
-      });
+//      test(
+//          'should return local cache data when the call to remote data source is unsuccessful',
+//          () async {
+//        // arrange
+//        when(mockLocalDataSource.getCachedMarquees())
+//            .thenAnswer((_) async => [marqueeEntity]);
+//        // act
+//        final result = await repository.getMarquees();
+//        final item = result.getOrElse(null);
+//        // assert
+//        verify(mockNetworkInfo.isConnected);
+//        expect(item, equals([marqueeEntity]));
+//      });
 
       test(
           'should return network failure when the call to remote data source is unsuccessful and no cache data',
           () async {
         // arrange
-        when(mockLocalDataSource.getCachedMarquees())
-            .thenAnswer((_) async => []);
+//        when(mockLocalDataSource.getCachedMarquees())
+//            .thenAnswer((_) async => []);
         // act
         final result = await repository.getMarquees();
         // assert
@@ -212,7 +200,7 @@ void main() {
       site: "eg",
       site2: "EG",
       ch: "EG casino",
-      type: "casino",
+      category: "casino",
       cid: 1,
       status: "1",
       sort: 1,
@@ -226,12 +214,12 @@ void main() {
       className: "eg-casino",
     );
 
-    final GameTypesModel typesModel = GameTypesModel(
-      categoryList: [categoryModel],
-      platformList: [platformModel],
+    final GameTypes typesModel = GameTypes(
+      categories: [categoryModel],
+      platforms: [platformModel],
     );
 
-    final GameTypesEntity typesEntity = GameTypesEntity(
+    final GameTypes typesEntity = GameTypes(
       categories: [categoryModel],
       platforms: [platformEntity],
     );

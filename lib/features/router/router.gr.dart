@@ -11,6 +11,8 @@ import 'package:flutter_ty_mobile/features/home/presentation/home_route.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/login_route.dart';
 import 'package:flutter_ty_mobile/features/web/web_route.dart';
 import 'package:flutter_ty_mobile/features/member/presentation/member_route.dart';
+import 'package:flutter_ty_mobile/features/promo/presentation/promo_route.dart';
+import 'package:flutter_ty_mobile/features/subfeatures/deposit/presentation/deposit_route.dart';
 import 'package:flutter_ty_mobile/template/mobx/presentation/template_route.dart';
 import 'package:flutter_ty_mobile/template/page/presentation/template2_route.dart';
 
@@ -19,9 +21,11 @@ class Router {
   static const loginRoute = '/login-route';
   static const serviceRoute = '/service-route';
   static const memberRoute = '/member-route';
+  static const promoRoute = '/promo-route';
+  static const depositRoute = '/deposit-route';
+  static const depositWebRoute = '/deposit-web-route';
   static const templateRoute = '/template-route';
   static const template2Route = '/template2-route';
-  static const _guardedRoutes = const {};
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -56,6 +60,29 @@ class Router {
         final typedArgs = args as Key;
         return MaterialPageRoute<dynamic>(
           builder: (_) => MemberRoute(key: typedArgs),
+          settings: settings,
+        );
+      case Router.promoRoute:
+        if (hasInvalidArgs<int>(args)) {
+          return misTypedArgsRoute<int>(args);
+        }
+        final typedArgs = args as int ?? -1;
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => PromoRoute(openPromoId: typedArgs),
+          settings: settings,
+        );
+      case Router.depositRoute:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => DepositRoute(),
+          settings: settings,
+        );
+      case Router.depositWebRoute:
+        if (hasInvalidArgs<String>(args, isRequired: true)) {
+          return misTypedArgsRoute<String>(args);
+        }
+        final typedArgs = args as String;
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => WebRoute(startUrl: typedArgs),
           settings: settings,
         );
       case Router.templateRoute:

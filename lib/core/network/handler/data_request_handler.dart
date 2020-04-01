@@ -4,12 +4,11 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_ty_mobile/core/error/exceptions.dart';
 import 'package:flutter_ty_mobile/core/error/failures.dart';
-import 'package:flutter_ty_mobile/features/general/data/entity/request_failed_model.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
 import 'package:flutter_ty_mobile/utils/json_decode_util.dart';
 import 'package:meta/meta.dart' show required;
 
-import 'data_request_result.dart';
+import 'request_status_freezed.dart';
 
 /// This function should be used inside Data Source class.
 /// Wrapped api request in [_handleRequest] to generalize the request action.
@@ -17,7 +16,8 @@ import 'data_request_result.dart';
 /// Takes in a [request] and wait for the response or throw failure if request failed.
 /// Throws [ResponseException] if response code is not 200 which will be catch as [ServerException].
 ///
-/// Takes in a [jsonToModel] function to transform the response json to desired model entity [T].
+/// Takes in a [jsonToModel] function to transform the response json to a list of model [T].
+///
 Future<List<T>> requestList<T>({
   @required Future<Response<dynamic>> request,
   @required Function(Map<String, dynamic> jsonMap) jsonToModel,
@@ -36,6 +36,13 @@ Future<List<T>> requestList<T>({
   return result;
 }
 
+///
+/// Takes in a [request] and wait for the response or throw failure if request failed.
+/// Throws [ResponseException] if response code is not 200 which will be catch as [ServerException].
+/// Throws [MapJsonDataException] if the response json is array.
+///
+/// Takes in a [jsonToModel] function to transform the response json to model [T].
+///
 Future<T> requestData<T>({
   @required Future<Response<dynamic>> request,
   @required Function(Map<String, dynamic> jsonMap) jsonToModel,
@@ -54,10 +61,16 @@ Future<T> requestData<T>({
   return result;
 }
 
+///
+/// Takes in a [request] and wait for the response or throw failure if request failed.
+/// Throws [ResponseException] if response code is not 200 which will be catch as [ServerException].
+///
+/// Specified [header] to filter out desired data from response headers.
+///
 Future<DataRequestResult> requestResponseHeader({
   @required Future<Response<dynamic>> request,
   @required String header,
-  String tag = 'remote-Response',
+  String tag = 'remote-Header',
 }) async {
   final result = await _handleRequest(() async {
     final response = await request;
@@ -66,12 +79,12 @@ Future<DataRequestResult> requestResponseHeader({
     if (headerRequested == null) {
       // request failed
       var model =
-          _jsonToData(response.data, RequestFailedModel.jsonToFailedModel, tag);
-      print('test failed model: $model');
+          _jsonToData(response.data, RequestStatusModel.jsonToStatusModel, tag);
+//      print('test failed model: $model');
       return DataRequestResult(failedData: model);
     } else {
       // request success
-      print('test header cookie: $headerRequested');
+//      print('test header cookie: $headerRequested');
       return DataRequestResult(data: headerRequested);
     }
   }, tag);
@@ -79,9 +92,33 @@ Future<DataRequestResult> requestResponseHeader({
   return result;
 }
 
+///
+/// Takes in a [request] and wait for the response or throw failure if request failed.
+/// Throws [ResponseException] if response code is not 200 which will be catch as [ServerException].
+/// Throws [MapJsonDataException] if the response json is array.
+///
+Future<String> requestRawString({
+  @required Future<Response<dynamic>> request,
+  String tag = 'remote-Raw',
+}) async {
+  final result = await _handleRequest(() async {
+    final response = await request;
+    if (response.statusCode != 200) throw ResponseException();
+    var responseData = response.data.toString();
+    if (responseData.startsWith('{') || responseData.startsWith('['))
+      throw MapJsonDataException();
+    else
+      return responseData;
+  }, tag);
+  MyLogger.debug(msg: 'remote data type: ${result.runtimeType}', tag: tag);
+  return result;
+}
+
+///
 /// Throws [JsonFormatException] if [JsonDecodeUtil] cannot decode the json data.
 /// Throws [MapJsonDataException] if the decoded json cannot be mapped into model entity.
 /// Throws [FormatException] if [jsonToModel] returns data different then [T].
+///
 Future<dynamic> _handleRequest(Function func, String tag) async {
   try {
     return await Future.microtask(func);
@@ -104,6 +141,13 @@ Future<dynamic> _handleRequest(Function func, String tag) async {
   }
 }
 
+///
+/// Decode json array into list of [T]
+///
+/// [str] = json array string
+/// [jsonToModel] = function that transforms the mapped json to model
+/// [tag] = logger tag
+///
 List<T> _jsonToList<T>(dynamic str,
     Function(Map<String, dynamic> jsonMap) jsonToModel, String tag) {
   MyLogger.debug(msg: 'start decoding array data to $T...', tag: tag);
@@ -112,7 +156,8 @@ List<T> _jsonToList<T>(dynamic str,
   final dataList = list.map((model) => jsonToModel(model) as T).toList();
   if (dataList.isEmpty) {
     MyLogger.error(
-        msg: 'mapped model error!! data: $str\nmapped json: $list', tag: tag);
+        msg: 'mapped model list error!! data: $str\nmapped json: $list',
+        tag: tag);
     throw MapJsonDataException();
   } else {
 //      for (int index = 0; index < dataList.length; index++) {
@@ -122,6 +167,13 @@ List<T> _jsonToList<T>(dynamic str,
   }
 }
 
+///
+/// Decode json into data [T]
+///
+/// [str] = json string
+/// [jsonToModel] = function that transforms the mapped json to model
+/// [tag] = logger tag
+///
 T _jsonToData<T>(dynamic str,
     Function(Map<String, dynamic> jsonMap) jsonToModel, String tag) {
   var trimmed = JsonDecodeUtil.trimJson(str);
@@ -146,6 +198,8 @@ T _jsonToData<T>(dynamic str,
 /// Catch [ServerException] if network request failed.
 /// Catch [LocationException] if network request had been redirected to other .
 /// Catch [MapJsonDataException] if json decode failed.
+/// Catch [LoginException] if login failed or token check failed.
+///
 Future<Either<Failure, T>> handleResponse<T>(Future future) async {
   try {
     final data = await future;

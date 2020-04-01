@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_banner.dart';
+import 'package:flutter_ty_mobile/features/home/presentation/bloc/banner/bloc_banner_export.dart';
 
 /// Get banner data through [HomeBannerBloc]
 /// @author H.C.CHIANG

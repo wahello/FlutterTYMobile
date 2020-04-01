@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ty_mobile/features/member/data/repository/member_repository.dart';
+import 'package:flutter_ty_mobile/features/general/toast_widget_export.dart';
 import 'package:mobx/mobx.dart' show ReactionDisposer, reaction;
 import 'package:relative_layout/relative_layout.dart';
 
-import '../../widget_res_export.dart'
-    show
-        FontSize,
-        Global,
-        RouterNavigate,
-        Themes,
-        ValueStringExtension,
-        localeStr,
-        sl;
+import '../../resource_export.dart'
+    show FontSize, Themes, ValueStringExtension, networkImageBuilder;
+import '../../route_page_export.dart';
 import 'member_grid_data.dart';
 import 'state/member_credit_store.dart';
 
@@ -26,35 +20,40 @@ class MemberRoute extends StatefulWidget {
 }
 
 class _MemberRouteState extends State<MemberRoute> {
+  final String tag = 'MemberRoute';
   MemberCreditStore _store;
   List<ReactionDisposer> _disposers;
 
   String _credit = '';
 
-  static final List<MemberGridItem> gridItems = [
-    MemberGridItem.deposit,
-    MemberGridItem.transfer,
-    MemberGridItem.bankcard,
-    MemberGridItem.withdraw,
-    MemberGridItem.balance,
-    MemberGridItem.wallet,
-    MemberGridItem.stationMessages,
-    MemberGridItem.accountCenter,
-    MemberGridItem.transferRecord,
-    MemberGridItem.betRecord,
-    MemberGridItem.dealRecord,
-    MemberGridItem.flowRecord,
-    MemberGridItem.agent,
-    MemberGridItem.logout,
+  static final List<MemberGridItemV2> gridItems = [
+    MemberGridItemV2.deposit,
+    MemberGridItemV2.transfer,
+    MemberGridItemV2.bankcard,
+    MemberGridItemV2.withdraw,
+    MemberGridItemV2.balance,
+    MemberGridItemV2.wallet,
+    MemberGridItemV2.stationMessages,
+    MemberGridItemV2.accountCenter,
+    MemberGridItemV2.transferRecord,
+    MemberGridItemV2.betRecord,
+    MemberGridItemV2.dealRecord,
+    MemberGridItemV2.flowRecord,
+    MemberGridItemV2.agent,
+    MemberGridItemV2.logout,
   ];
 
   @override
   void initState() {
-    _store ??= MemberCreditStore(sl.get<MemberRepository>());
-    print('member user: ${_store.userData}');
-    _credit =
-        _store.getUser.credit.trimValue(floorIfInt: true, creditSign: true);
+    _store ??= sl.get<MemberCreditStore>();
+    _credit = _store.user.credit.trimValue(floorIfInt: true, creditSign: true);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(MemberRoute oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _store.getUser();
   }
 
   @override
@@ -80,7 +79,7 @@ class _MemberRouteState extends State<MemberRoute> {
     setState(() {
       _credit = credit.trimValue(floorIfInt: true, creditSign: true);
     });
-    print('credit update to $_credit');
+    MyLogger.print(msg: 'credit update to $_credit', tag: tag);
   }
 
   void refresh() {
@@ -90,10 +89,12 @@ class _MemberRouteState extends State<MemberRoute> {
     });
   }
 
-  void itemTapped(MemberGridData data) {
+  void itemTapped(MemberGridDataV2 data) {
     print('item tapped: ${data.title}');
     if (data.route != null) {
       RouterNavigate.navigateToPage(data.route);
+    } else {
+      FLToast.showInfo(text: localeStr.workInProgress);
     }
   }
 
@@ -132,7 +133,7 @@ class _MemberRouteState extends State<MemberRoute> {
                           flex: 3,
                           child: Container(
                             child: Image.asset(
-                              'assets/images/vip/user_vip_${_store.getUser.vip}.png',
+                              'assets/images/vip/user_vip_${_store.user.vip}.png',
                               scale: 1.1,
                             ),
                           ),
@@ -144,7 +145,7 @@ class _MemberRouteState extends State<MemberRoute> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 6.0),
                             child: Text(
-                              _store.getUser.account,
+                              _store.user.account,
                               style: TextStyle(
                                 fontSize: FontSize.SUBTITLE.value,
                                 color: Themes.defaultTextColorBlack,
@@ -236,12 +237,12 @@ class _MemberRouteState extends State<MemberRoute> {
                 padding: const EdgeInsets.fromLTRB(4.0, 4.0, 4.0, 2.0),
                 child: GridView.count(
                   physics: BouncingScrollPhysics(),
-                  crossAxisCount: 3,
+                  crossAxisCount: 4, //3,
                   crossAxisSpacing: 4,
-                  childAspectRatio: 1.4,
+                  childAspectRatio: 1.0, //1.4,
                   shrinkWrap: true,
                   children: gridItems
-                      .map((itemData) => _createGridItem(itemData.value))
+                      .map((itemData) => _createGridItemV2(itemData.value))
                       .toList(),
                 ),
               ),
@@ -252,7 +253,49 @@ class _MemberRouteState extends State<MemberRoute> {
     );
   }
 
-  Widget _createGridItem(MemberGridData data) {
+//  Widget _createGridItem(MemberGridData data) {
+//    return GestureDetector(
+//      onTap: () => itemTapped(data),
+//      child: Container(
+//        decoration: BoxDecoration(
+//          color: Colors.black45,
+//          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+//        ),
+//        margin: const EdgeInsets.all(2.0),
+//        child: Column(
+//          mainAxisSize: MainAxisSize.min,
+//          mainAxisAlignment: MainAxisAlignment.center,
+//          children: <Widget>[
+//            Padding(
+//              padding: const EdgeInsets.only(top: 4.0),
+//              child: Container(
+//                padding: const EdgeInsets.all(10.0),
+//                decoration: BoxDecoration(
+//                  gradient: LinearGradient(
+//                    begin: Alignment.topCenter,
+//                    end: Alignment.bottomCenter,
+//                    colors: [data.iconDecorColorStart, data.iconDecorColorEnd],
+//                    tileMode: TileMode.clamp,
+//                  ),
+//                  shape: BoxShape.circle,
+//                ),
+//                child: Icon(data.iconData),
+//              ),
+//            ),
+//            Padding(
+//              padding: const EdgeInsets.only(top: 6.0),
+//              child: Text(
+//                data.title,
+//                style: TextStyle(fontSize: FontSize.SUBTITLE.value - 1),
+//              ),
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+
+  Widget _createGridItemV2(MemberGridDataV2 data) {
     return GestureDetector(
       onTap: () => itemTapped(data),
       child: Container(
@@ -266,26 +309,16 @@ class _MemberRouteState extends State<MemberRoute> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [data.iconDecorColorStart, data.iconDecorColorEnd],
-                    tileMode: TileMode.clamp,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(data.iconData),
-              ),
-            ),
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 6.0),
+                child: networkImageBuilder(data.imageName, imgScale: 2.0)),
             Padding(
-              padding: const EdgeInsets.only(top: 6.0),
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Text(
                 data.title,
-                style: TextStyle(fontSize: FontSize.SUBTITLE.value - 1),
+                style: TextStyle(
+                  fontSize: FontSize.SUBTITLE.value - 1,
+                  color: Themes.defaultAccentColor,
+                ),
               ),
             ),
           ],

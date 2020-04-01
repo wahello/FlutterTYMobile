@@ -7,8 +7,13 @@ class JsonDecodeUtil {
   /// trim json [str] to prevent data error while decoding
   static String trimJson(dynamic str) {
     final trimRegex = RegExp(r"\s+\b|\b\s|\n|\r\n|\r|\s|\t");
-
-    String strBody = """$str""".replaceAll(trimRegex, "");
+    final trimRegexSimple = RegExp('r"\n|\r\n|\r|\t"');
+    final tagRegex = RegExp('>\\s*<');
+    String jsonStr = """$str""";
+    bool hasHtmlTag = jsonStr.contains(tagRegex);
+    String strBody = (hasHtmlTag)
+        ? jsonStr.replaceAll(trimRegexSimple, "").replaceAll('> <', "><")
+        : jsonStr.replaceAll(trimRegex, "");
 //    print("trimmed: $strBody");
     if (strBody.isHtmlFormat) throw LocationException();
     return strBody;

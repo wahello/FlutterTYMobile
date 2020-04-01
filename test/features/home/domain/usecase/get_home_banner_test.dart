@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ty_mobile/core/base/usecase.dart';
-import 'package:flutter_ty_mobile/features/home/domain/entity/banner_entity.dart';
+import 'package:flutter_ty_mobile/features/home/data/models/banner_freezed.dart';
 import 'package:flutter_ty_mobile/features/home/domain/repository/home_repository.dart';
 import 'package:flutter_ty_mobile/features/home/domain/usecase/get_banner_data.dart';
 import 'package:hive/src/hive_impl.dart';
@@ -24,8 +24,8 @@ void main() {
 
   final BannerEntity bannerInfo = BannerEntity(
     id: 1,
-    picMobile: "images/banner/mobile/291.jpg",
-    blankUrl: true,
+    pic: "images/banner/mobile/291.jpg",
+    noPromo: true,
     promoUrl: "456456456",
     sort: 8,
   );

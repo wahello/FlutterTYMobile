@@ -14,8 +14,7 @@ abstract class HomeGameTabsState extends Equatable {
 
   factory HomeGameTabsState.tLoading() = TLoading;
 
-  factory HomeGameTabsState.tLoaded({@required GameTypesEntity types}) =
-      TLoaded;
+  factory HomeGameTabsState.tLoaded({@required GameTypes types}) = TLoaded;
 
   factory HomeGameTabsState.tError({@required String message}) = TError;
 
@@ -196,7 +195,7 @@ class TLoading extends HomeGameTabsState {
 class TLoaded extends HomeGameTabsState {
   const TLoaded({@required this.types}) : super(_HomeGameTabsState.TLoaded);
 
-  final GameTypesEntity types;
+  final GameTypes types;
 
   @override
   String toString() => 'TLoaded(types:${this.types})';

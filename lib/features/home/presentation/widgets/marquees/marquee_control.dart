@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ty_mobile/features/home/presentation/bloc/bloc_marquee.dart';
+import 'package:flutter_ty_mobile/features/home/presentation/bloc/marquee/bloc_marquee_bloc.dart';
 
 /// Get marquee data through [HomeMarqueeBloc]
 /// @author H.C.CHIANG

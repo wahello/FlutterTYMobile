@@ -1,5 +1,5 @@
 import 'package:flutter_ty_mobile/core/network/dio_api_service.dart';
-import 'package:flutter_ty_mobile/features/users/data/models/user_model.dart';
+import 'package:flutter_ty_mobile/features/users/data/models/user_freezed.dart';
 import 'package:meta/meta.dart' show required;
 
 abstract class Template2DataSource {

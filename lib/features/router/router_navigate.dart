@@ -1,24 +1,23 @@
-import 'dart:async';
+import 'dart:async' show StreamController;
 
-import 'package:flutter_ty_mobile/core/error/exceptions.dart';
-import 'package:flutter_ty_mobile/core/internal/local_strings.dart';
-import 'package:flutter_ty_mobile/features/general/data/holds/user_data.dart';
-import 'package:flutter_ty_mobile/features/users/domain/entity/user_entity.dart';
+import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlay;
+import 'package:flutter_ty_mobile/core/internal/orientation_helper.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
-import 'package:generic_enum/generic_enum.dart';
-import 'package:meta/meta.dart' show required;
-import 'package:to_string/to_string.dart';
 
-import '../../injection_container.dart' show sl;
+import 'route_info.dart';
+import 'route_page.dart';
+import 'route_user_streams.dart';
 import 'router.gr.dart';
 import 'screen_router.gr.dart';
 
-part 'router_navigate.g.dart';
-part 'router_page.dart';
-part 'router_widget_streams.dart';
+export 'route_info.dart';
+export 'route_page.dart';
 
+///
+/// Main Router Action class to switch between routes
+///
 class RouterNavigate {
-  static final routerStreams = getRouterStreams;
+  static final routerStreams = getRouteUserStreams;
 
   static final String _tag = 'RouterNavigate';
   static int screenIndex = 0;
@@ -37,25 +36,46 @@ class RouterNavigate {
     _routeInfo.close();
   }
 
+  /// Switch to different screen
+  /// switch to app home page by default.
+  /// [web] = true, will open a fullscreen web page,
+  /// and use [webArg] to pass the url.
   static switchScreen({bool web = false, Object webArg}) {
     try {
       if (web) {
-        ScreenRouter.navigator.pushNamedAndRemoveUntil(
+        ScreenRouter.navigator.pushNamed(
           ScreenRouter.webGameScreen,
-          (route) =>
-              route.settings.name == ScreenRouter.featureScreen ||
-              route.settings.name == ScreenRouter.webGameScreen,
           arguments: webArg,
         );
         screenIndex = 1;
+        // to hide only bottom bar:
+//        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+        // to hide only status bar:
+//        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+        // to hide both:
+        SystemChrome.setEnabledSystemUIOverlays([]);
       } else {
-        ScreenRouter.navigator.pushNamedAndRemoveUntil(
-          ScreenRouter.featureScreen,
-          (route) =>
-              route.settings.name == ScreenRouter.featureScreen ||
-              route.settings.name == ScreenRouter.webGameScreen,
-        );
+        if (ScreenRouter.navigator.canPop())
+          ScreenRouter.navigator.pop();
+        else {
+          try {
+            ScreenRouter.navigator.pushReplacementNamed(
+              ScreenRouter.featureScreen,
+            );
+          } catch (e) {
+            ScreenRouter.navigator.pushNamedAndRemoveUntil(
+              ScreenRouter.featureScreen,
+              (route) =>
+                  route.settings.name == ScreenRouter.featureScreen ||
+                  route.settings.name == ScreenRouter.webGameScreen,
+            );
+          }
+        }
         screenIndex = 0;
+        // Rotate to normal
+        OrientationHelper.forceOrientationEasy();
+        // restore the screen to normal SystemUiOverlay
+        SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
       }
     } catch (e) {
       MyLogger.error(
@@ -66,8 +86,9 @@ class RouterNavigate {
     }
   }
 
-  static navigateToPage(RouterPageInfo page,
-      {bool cleanStack = true, Object arg}) {
+  /// Navigate to [page], and clean the stack if route is declared feature
+  /// use [arg] to pass [page]'s arguments.
+  static navigateToPage(RoutePage page, {Object arg}) {
     if (page.page == _currentRoute) return;
     if (page.page == Router.homeRoute) {
       navigateClean();
@@ -99,9 +120,10 @@ class RouterNavigate {
     _routeInfo.sink.add(page.value);
   }
 
+  /// Pop the current page
   static navigateBack() {
-    print(
-        'Router current: $_currentRoute, previous: $_previousRoute ,canPop: ${Router.navigator.canPop()}');
+    print('navigate back, current:$_currentRoute, previous: $_previousRoute, '
+        'canPop: ${Router.navigator.canPop()}');
     try {
       if (_previousRoute == Router.homeRoute)
         navigateClean();
@@ -114,14 +136,14 @@ class RouterNavigate {
               'navigate back has exception!! Router current: $_currentRoute, previous: $_previousRoute',
           error: e,
           tag: _tag);
-      // TODO restart app when router fails.
     }
 
-    var page = _previousRoute.toRouteInfo;
+    var page = _previousRoute.toRoutePage;
     _setPath(page.page, parentRoute: page.pageRoot);
     _routeInfo.sink.add(page.value);
   }
 
+  /// Navigate to [Router.homeRoute] and clean the stack
   static navigateClean() {
     print('navigate to home, from:$_currentRoute');
     if (_currentRoute != Router.homeRoute) {
@@ -141,18 +163,20 @@ class RouterNavigate {
       }
     }
     _setPath(Router.homeRoute, parentRoute: Router.homeRoute);
-    print('update home app bar on clean');
-    _routeInfo.sink.add(RouterPageInfo.home.value);
+//    print('update home app bar on clean');
+    _routeInfo.sink.add(RoutePage.home.value);
   }
 
   static _setPath(String route, {String parentRoute = ''}) {
     _previousRoute = parentRoute.isEmpty ? _currentRoute : parentRoute;
     _currentRoute = route;
+    print(
+        'set navigate path, current:$_currentRoute, previous: $_previousRoute');
   }
 
   static resetCheckUser() => routerStreams.setCheck(false);
 
-  static testNavigate(RouterPageInfo page) {
+  static testNavigate(RoutePage page) {
     print('test navigate...page: ${page.value}');
     _setPath(page.page, parentRoute: page.pageRoot);
     _routeInfo.sink.add(page.value);

@@ -3,15 +3,18 @@ import 'package:flutter_ty_mobile/core/error/exceptions.dart';
 import 'package:flutter_ty_mobile/core/network/dio_api_service.dart';
 import 'package:flutter_ty_mobile/core/network/handler/data_request_handler.dart'
     show requestData, requestResponseHeader;
-import 'package:flutter_ty_mobile/core/network/handler/data_request_result.dart';
+import 'package:flutter_ty_mobile/core/network/handler/request_status_freezed.dart';
 import 'package:flutter_ty_mobile/features/users/data/form/login_form.dart';
-import 'package:flutter_ty_mobile/features/users/data/models/user_model.dart';
+import 'package:flutter_ty_mobile/features/users/data/models/user_freezed.dart';
 import 'package:meta/meta.dart' show required;
 
 import 'user_api.dart';
 
 abstract class UserRemoteDataSource {
-  /// Login user and retrieve token, then calls [getAccount] to return data.
+  /// Calls the service [UserApi.JWT_CHECK] endpoint to verify [token].
+  Future<RequestStatusModel> checkJwt(String token);
+
+  /// Login user and retrieve token, check it with [checkJwt], then calls [getAccount] to return data.
   Future<UserModel> login(UserLoginForm form);
 
   /// Calls the service [UserApi.GET_ACCOUNT] endpoint, and decode json into [UserModel].
@@ -24,11 +27,22 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   UserRemoteDataSourceImpl({@required this.dioApiService});
 
+  /// Calls the service [UserApi.LOGIN] endpoint with [form] to get user token.
   Future<DataRequestResult> _getToken(UserLoginForm form) {
     print('start requesting token...');
     return requestResponseHeader(
       request: dioApiService.post(UserApi.LOGIN, data: form.toJson()),
       header: 'set-cookie',
+      tag: 'remote-USER',
+    );
+  }
+
+  @override
+  Future<RequestStatusModel> checkJwt(String token) {
+    return requestData<RequestStatusModel>(
+      request: dioApiService.post(UserApi.JWT_CHECK,
+          userToken: token, data: {"href": UserApi.JWT_CHECK_HREF}),
+      jsonToModel: RequestStatusModel.jsonToStatusModel,
       tag: 'remote-USER',
     );
   }
@@ -42,7 +56,14 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     final token =
         tokenStr.substring(tokenStr.indexOf('=') + 1, tokenStr.indexOf(';'));
     MyLogger.debug(msg: 'user token: $token', tag: tag);
-    return getAccount(token);
+
+    final validStatus = await Future.value(checkJwt(token));
+    if (validStatus.isSuccess) {
+      return getAccount(token);
+    } else {
+      MyLogger.warn(msg: 'user token is not valid: $validStatus', tag: tag);
+      return UserModel(status: 'failed', vip: 0);
+    }
   }
 
   @override

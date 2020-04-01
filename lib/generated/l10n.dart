@@ -15,7 +15,7 @@ class S {
     AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -371,6 +371,15 @@ class S {
     );
   }
 
+  String get btnConfirm {
+    return Intl.message(
+      'Confirm',
+      name: 'btnConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get btnLogin {
     return Intl.message(
       'Login',
@@ -393,6 +402,15 @@ class S {
     return Intl.message(
       'Forgot Password',
       name: 'btnResetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get btnFastLogin {
+    return Intl.message(
+      'Save Login Info',
+      name: 'btnFastLogin',
       desc: '',
       args: [],
     );
@@ -686,6 +704,15 @@ class S {
     );
   }
 
+  String get messageActionFailed {
+    return Intl.message(
+      'Invalid Action',
+      name: 'messageActionFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
   String messageLogout(dynamic name) {
     return Intl.message(
       '$name, please log in again',
@@ -794,30 +821,21 @@ class S {
     );
   }
 
-  String messageInvalidDepositAmount(dynamic num) {
+  String get messageInvalidDepositAmount {
     return Intl.message(
-      'The minimum value is $num',
+      'Amount Error',
       name: 'messageInvalidDepositAmount',
       desc: '',
+      args: [],
+    );
+  }
+
+  String messageInvalidDepositAmountMin(dynamic num) {
+    return Intl.message(
+      'The minimum amount is $num',
+      name: 'messageInvalidDepositAmountMin',
+      desc: '',
       args: [num],
-    );
-  }
-
-  String messageInvalidDepositAmountRange(dynamic num, dynamic num2) {
-    return Intl.message(
-      'Input range: $num ~ $num2',
-      name: 'messageInvalidDepositAmountRange',
-      desc: '',
-      args: [num, num2],
-    );
-  }
-
-  String messageInvalidDepositAmountRangeStep(dynamic num, dynamic num2, dynamic num3) {
-    return Intl.message(
-      'Input range: $num ~ $num2 (amount is a multiple of $num3)',
-      name: 'messageInvalidDepositAmountRangeStep',
-      desc: '',
-      args: [num, num2, num3],
     );
   }
 
@@ -1289,6 +1307,15 @@ class S {
     );
   }
 
+  String get promoDetailText {
+    return Intl.message(
+      '>>Detail',
+      name: 'promoDetailText',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get promoCategoryAll {
     return Intl.message(
       'All',
@@ -1689,15 +1716,6 @@ class S {
     return Intl.message(
       'One Click Home',
       name: 'walletViewButtonOneclick',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get walletViewButtonConfrim {
-    return Intl.message(
-      'OK',
-      name: 'walletViewButtonConfrim',
       desc: '',
       args: [],
     );
@@ -2495,10 +2513,10 @@ class S {
     );
   }
 
-  String get depositPaymentTitleVirtual {
+  String get depositPaymentTitleCgp {
     return Intl.message(
-      'Virtual Currency',
-      name: 'depositPaymentTitleVirtual',
+      'CGPay',
+      name: 'depositPaymentTitleCgp',
       desc: '',
       args: [],
     );
@@ -2506,8 +2524,17 @@ class S {
 
   String get depositPaymentTitleAli {
     return Intl.message(
-      'Alipay Pay',
+      'AliPay',
       name: 'depositPaymentTitleAli',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositPaymentTitleJd {
+    return Intl.message(
+      'JD Pay',
+      name: 'depositPaymentTitleJd',
       desc: '',
       args: [],
     );
@@ -2526,6 +2553,15 @@ class S {
     return Intl.message(
       'WeChat Pay',
       name: 'depositPaymentTitleWechat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositPaymentTitleAtm {
+    return Intl.message(
+      'WEB ATM',
+      name: 'depositPaymentTitleAtm',
       desc: '',
       args: [],
     );
@@ -2585,19 +2621,37 @@ class S {
     );
   }
 
+  String depositPaymentEditTitleAmountHintRange(dynamic num, dynamic num2) {
+    return Intl.message(
+      'Input range: $num ~ $num2',
+      name: 'depositPaymentEditTitleAmountHintRange',
+      desc: '',
+      args: [num, num2],
+    );
+  }
+
+  String depositPaymentEditTitleAmountHintRangeStep(dynamic num, dynamic num2, dynamic num3) {
+    return Intl.message(
+      'Input range: $num ~ $num2 (amount is a multiple of $num3)',
+      name: 'depositPaymentEditTitleAmountHintRangeStep',
+      desc: '',
+      args: [num, num2, num3],
+    );
+  }
+
   String get depositPaymentButtonTitleTutorial {
     return Intl.message(
-      'Click to see teaching',
+      'Tutorial',
       name: 'depositPaymentButtonTitleTutorial',
       desc: '',
       args: [],
     );
   }
 
-  String get depositPaymentButtonTitleConfirm {
+  String get depositPaymentTitleTutorial {
     return Intl.message(
-      'OK',
-      name: 'depositPaymentButtonTitleConfirm',
+      'Tutorial',
+      name: 'depositPaymentTitleTutorial',
       desc: '',
       args: [],
     );
@@ -2605,7 +2659,7 @@ class S {
 
   String get depositPaymentMethodLocal1 {
     return Intl.message(
-      'Transfer Funding',
+      'Local Transfer',
       name: 'depositPaymentMethodLocal1',
       desc: '',
       args: [],
@@ -2614,7 +2668,7 @@ class S {
 
   String get depositPaymentMethodLocal2 {
     return Intl.message(
-      'Atm Deposit',
+      'ATM Deposit',
       name: 'depositPaymentMethodLocal2',
       desc: '',
       args: [],
@@ -2639,12 +2693,12 @@ class S {
     );
   }
 
-  String depositHintTextMax(dynamic no) {
+  String depositHintTextAmount(dynamic value) {
     return Intl.message(
-      '$no single maximum limit',
-      name: 'depositHintTextMax',
+      'Single Deposit Limit: ￥$value',
+      name: 'depositHintTextAmount',
       desc: '',
-      args: [no],
+      args: [value],
     );
   }
 
@@ -2666,9 +2720,18 @@ class S {
     );
   }
 
+  String depositHintTextMax(dynamic no) {
+    return Intl.message(
+      '$no single maximum limit\n',
+      name: 'depositHintTextMax',
+      desc: '',
+      args: [no],
+    );
+  }
+
   String depositHintTextClearInfo(dynamic no) {
     return Intl.message(
-      '$no [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!',
+      '$no [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!\n',
       name: 'depositHintTextClearInfo',
       desc: '',
       args: [no],
@@ -2677,7 +2740,7 @@ class S {
 
   String depositHintTextMaxExceed(dynamic no) {
     return Intl.message(
-      '$no exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used',
+      '$no exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used\n',
       name: 'depositHintTextMaxExceed',
       desc: '',
       args: [no],
@@ -2686,7 +2749,7 @@ class S {
 
   String depositHintTextFailure(dynamic no) {
     return Intl.message(
-      '$no If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel',
+      '$no If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel\n',
       name: 'depositHintTextFailure',
       desc: '',
       args: [no],
@@ -2704,7 +2767,7 @@ class S {
 
   String depositHintTextUnionShortcut(dynamic no) {
     return Intl.message(
-      '$no opens a quick function to China UnionPay to make your payment more convenient',
+      '$no opens a quick function to China UnionPay to make your payment more convenient\n',
       name: 'depositHintTextUnionShortcut',
       desc: '',
       args: [no],
@@ -2713,7 +2776,7 @@ class S {
 
   String depositHintTextQuickpay(dynamic no) {
     return Intl.message(
-      '$no Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)',
+      '$no Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)\n',
       name: 'depositHintTextQuickpay',
       desc: '',
       args: [no],
@@ -2722,7 +2785,7 @@ class S {
 
   String depositHintTextUnion(dynamic no) {
     return Intl.message(
-      '$no want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.',
+      '$no want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.\n',
       name: 'depositHintTextUnion',
       desc: '',
       args: [no],
@@ -2731,7 +2794,7 @@ class S {
 
   String get depositHintTextUnionA {
     return Intl.message(
-      'A. Download the Bank of China App or UnionPay Wallet App on your phone;',
+      'A. Download the Bank of China App or UnionPay Wallet App on your phone;\n',
       name: 'depositHintTextUnionA',
       desc: '',
       args: [],
@@ -2740,7 +2803,7 @@ class S {
 
   String get depositHintTextUnionB {
     return Intl.message(
-      'B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;',
+      'B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;\n',
       name: 'depositHintTextUnionB',
       desc: '',
       args: [],
@@ -2749,7 +2812,7 @@ class S {
 
   String get depositHintTextUnionC {
     return Intl.message(
-      'C. Enter the QR code page for payment to the merchant, just scan the code with the machine.',
+      'C. Enter the QR code page for payment to the merchant, just scan the code with the machine.\n',
       name: 'depositHintTextUnionC',
       desc: '',
       args: [],
@@ -2758,7 +2821,7 @@ class S {
 
   String depositHintTextAli(dynamic no) {
     return Intl.message(
-      '$no Restricted Debit Card and Alipay Balance Payment!',
+      '$no Restricted Debit Card and Alipay Balance Payment!\n',
       name: 'depositHintTextAli',
       desc: '',
       args: [no],
@@ -2767,7 +2830,7 @@ class S {
 
   String depositHintTextLastNum(dynamic no) {
     return Intl.message(
-      '$no If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit',
+      '$no If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit\n',
       name: 'depositHintTextLastNum',
       desc: '',
       args: [no],
@@ -2776,7 +2839,7 @@ class S {
 
   String depositHintTextLimit(dynamic no) {
     return Intl.message(
-      '$no Issuer Limit Solution: Requires the user to call the issuer\'s customer service to request an increase in online transaction limit',
+      '$no Issuer Limit Solution: Requires the user to call the issuer\'s customer service to request an increase in online transaction limit\n',
       name: 'depositHintTextLimit',
       desc: '',
       args: [no],
@@ -2792,12 +2855,12 @@ class S {
     );
   }
 
-  String get depositMessageSuccess {
+  String depositMessageSuccessLocal(dynamic value) {
     return Intl.message(
-      'Successful Deposit',
-      name: 'depositMessageSuccess',
+      'Request Success, Order No.$value',
+      name: 'depositMessageSuccessLocal',
       desc: '',
-      args: [],
+      args: [value],
     );
   }
 
@@ -2805,24 +2868,6 @@ class S {
     return Intl.message(
       'Debit Card Teaching',
       name: 'depositNewbieQuick0',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get depositNewbieVirtual0 {
-    return Intl.message(
-      'Download Link',
-      name: 'depositNewbieVirtual0',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get depositNewbieVirtualButton1 {
-    return Intl.message(
-      'Download the Baobao Payment App',
-      name: 'depositNewbieVirtualButton1',
       desc: '',
       args: [],
     );
@@ -2877,6 +2922,51 @@ class S {
     return Intl.message(
       'After the transfer is successful, you can view it in the Alipay bill details, and change the transfer details and arrival time.',
       name: 'depositNewbieAli5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieJd0 {
+    return Intl.message(
+      'JD.COM Tutorial',
+      name: 'depositNewbieJd0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieJd1 {
+    return Intl.message(
+      '1、Download JD.COM App',
+      name: 'depositNewbieJd1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieJd2 {
+    return Intl.message(
+      '2、Enter the App and press \'My\' tab',
+      name: 'depositNewbieJd2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieJd3 {
+    return Intl.message(
+      '3、Register or Login a account',
+      name: 'depositNewbieJd3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieJd4 {
+    return Intl.message(
+      '4、Press \'Scanner\' to pay or bind bank card',
+      name: 'depositNewbieJd4',
       desc: '',
       args: [],
     );
@@ -2949,6 +3039,33 @@ class S {
     return Intl.message(
       '2. Then use another mobile phone WeChat to scan the code.',
       name: 'depositNewbieWechat2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieCgp0 {
+    return Intl.message(
+      'Download Link',
+      name: 'depositNewbieCgp0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieButtonCgp1 {
+    return Intl.message(
+      'APP',
+      name: 'depositNewbieButtonCgp1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get depositNewbieButtonCgp2 {
+    return Intl.message(
+      'Manual',
+      name: 'depositNewbieButtonCgp2',
       desc: '',
       args: [],
     );
@@ -3752,7 +3869,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('en', ''), Locale('zh', ''),
+      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'zh'),
     ];
   }
 

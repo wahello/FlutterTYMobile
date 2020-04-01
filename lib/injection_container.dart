@@ -1,41 +1,24 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:flutter_ty_mobile/features/screen/web_game_screen_store.dart';
 import 'package:flutter_ty_mobile/mylogger.dart';
-import 'package:flutter_ty_mobile/template/template_export.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/network/dio_api_service.dart';
 import 'core/network/util/network_info.dart';
-import 'features/general/data/holds/user_data.dart';
-import 'features/home/data/repository/home_repository_impl.dart';
-import 'features/home/data/source/home_local_data_source.dart';
-import 'features/home/data/source/home_remote_data_source.dart';
-import 'features/home/domain/repository/home_repository.dart';
-import 'features/home/domain/usecase/get_banner_data.dart';
-import 'features/home/domain/usecase/get_banner_image.dart';
-import 'features/home/domain/usecase/get_game_types.dart';
-import 'features/home/domain/usecase/get_games.dart';
-import 'features/home/domain/usecase/get_marquee.dart';
-import 'features/home/presentation/bloc/banner/home_banner_bloc.dart';
-import 'features/home/presentation/bloc/game/home_game_bloc.dart';
-import 'features/home/presentation/bloc/game_tabs/home_game_tabs_bloc.dart';
-import 'features/home/presentation/bloc/marquee/home_marquee_bloc.dart';
-import 'features/member/data/repository/member_repository.dart';
-import 'features/member/data/repository/member_repository_impl.dart';
-import 'features/member/data/source/member_data_source.dart';
-import 'features/member/data/source/member_data_source_impl.dart';
-import 'features/router/router_navigate.dart' show RouterWidgetStreams;
-import 'features/users/data/repository/user_repository_impl.dart';
-import 'features/users/data/source/user_data_source.dart';
-import 'features/users/domain/repository/user_repository.dart';
-import 'features/users/domain/usecase/get_user.dart';
-import 'features/users/presentation/bloc/user_login_bloc.dart';
+import 'features/home/home_inject.dart';
+import 'features/member/member_inject.dart';
+import 'features/promo/promo_inject.dart';
+import 'features/router/route_user_streams.dart';
+import 'features/subfeatures/deposit/deposit_inject.dart';
+import 'features/users/user_inject.dart';
+import 'template/template_inject.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  sl.registerLazySingleton<RouterWidgetStreams>(() => RouterWidgetStreams());
+  sl.registerLazySingleton<RouteUserStreams>(() => RouteUserStreams());
 
-  /// Bloc
+  /// Bloc & Store
   sl.registerFactory(
     () => HomeBannerBloc(
       homeBannerData: sl(),
@@ -43,24 +26,28 @@ Future<void> init() async {
     ),
   );
   sl.registerFactory(
-    () => HomeMarqueeBloc(
-      homeMarqueeData: sl(),
-    ),
+    () => HomeMarqueeBloc(homeMarqueeData: sl()),
   );
   sl.registerFactory(
-    () => HomeGameTabsBloc(
-      gameTypesData: sl(),
-    ),
+    () => HomeGameTabsBloc(gameTypesData: sl()),
   );
   sl.registerFactory(
-    () => HomeGameBloc(
-      gamesData: sl(),
-    ),
+    () => HomeGameBloc(gamesData: sl(), gameUrl: sl()),
   );
   sl.registerFactory(
-    () => UserLoginBloc(
-      userData: sl(),
-    ),
+    () => UserLoginBloc(userData: sl()),
+  );
+  sl.registerFactory(
+    () => DepositStore(sl<DepositRepository>()),
+  );
+  sl.registerFactory(
+    () => PromoStore(sl<PromoRepository>()),
+  );
+  sl.registerFactory(
+    () => MemberCreditStore(sl.get<MemberRepository>()),
+  );
+  sl.registerLazySingleton<WebGameScreenStore>(
+    () => WebGameScreenStore(),
   );
 
   /// Use cases
@@ -69,8 +56,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetHomeMarqueeData(sl()));
   sl.registerLazySingleton(() => GetGameTypesData(sl()));
   sl.registerLazySingleton(() => GetGamesData(sl()));
-  sl.registerLazySingleton(() => GetUserData(sl()));
-  sl.registerLazySingleton(() => UserData(isLoggedIn: false));
+  sl.registerLazySingleton(() => GetGameUrl(sl()));
+  sl.registerLazySingleton(() => GetUserData(sl<UserRepository>()));
 
   /// Repository
   sl.registerLazySingleton<HomeRepository>(
@@ -80,14 +67,25 @@ Future<void> init() async {
       remoteDataSource: sl(),
     ),
   );
-
   sl.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(
       networkInfo: sl(),
       remoteDataSource: sl(),
     ),
   );
-
+  sl.registerLazySingleton<DepositRepository>(
+    () => DepositRepositoryImpl(
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+    ),
+  );
+  sl.registerLazySingleton<PromoRepository>(
+    () => PromoRepositoryImpl(
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+      localDataSource: sl(),
+    ),
+  );
   sl.registerLazySingleton<MemberRepository>(
     () => MemberRepositoryImpl(
       networkInfo: sl(),
@@ -99,15 +97,21 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(dioApiService: sl()),
   );
-
   sl.registerLazySingleton<HomeLocalDataSource>(
     () => HomeLocalDataSourceImpl(),
   );
-
   sl.registerLazySingleton<UserRemoteDataSource>(
     () => UserRemoteDataSourceImpl(dioApiService: sl()),
   );
-
+  sl.registerLazySingleton<DepositRemoteDataSource>(
+    () => DepositRemoteDataSourceImpl(dioApiService: sl()),
+  );
+  sl.registerLazySingleton<PromoRemoteDataSource>(
+    () => PromoRemoteDataSourceImpl(dioApiService: sl()),
+  );
+  sl.registerLazySingleton<PromoLocalDataSource>(
+    () => PromoLocalDataSourceImpl(),
+  );
   sl.registerLazySingleton<MemberRemoteDataSource>(
     () => MemberRemoteDataSourceImpl(dioApiService: sl()),
   );
