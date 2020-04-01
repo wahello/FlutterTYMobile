@@ -9,9 +9,11 @@ import '../../../route_page_export.dart';
 ///@version 2020/1/15
 class UserDisplay extends StatelessWidget {
   final UserEntity user;
+  final bool isDialog;
   final Color bgColor = HexColor.fromHex('#e8e8e8');
 
-  UserDisplay({Key key, @required this.user}) : super(key: key);
+  UserDisplay({Key key, @required this.user, this.isDialog = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class UserDisplay extends StatelessWidget {
       Future.delayed(Duration(milliseconds: 1500)).whenComplete(() {
         dismiss();
         RouterNavigate.navigateToPage(RoutePage.member);
+        if (isDialog) Navigator.pop(context);
       });
     });
     return SizedBox.shrink();

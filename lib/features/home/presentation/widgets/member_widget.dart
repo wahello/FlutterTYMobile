@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ty_mobile/features/general/toast_widget_export.dart';
 import 'package:flutter_ty_mobile/features/users/data/models/user_freezed.dart'
     show LoginStatus;
+import 'package:flutter_ty_mobile/features/users/presentation/login_dialog.dart';
 
 import '../../../resource_export.dart';
 import '../../../route_page_export.dart';
@@ -204,7 +205,11 @@ class MemberWidgetState extends State<MemberWidget> {
                 () {
                   (_userData.loggedIn)
                       ? RouterNavigate.navigateToPage(RoutePage.deposit)
-                      : RouterNavigate.navigateToPage(RoutePage.login);
+                      : showDialog(
+                          context: context,
+                          barrierDismissible: true,
+                          builder: (context) => new LoginDialog(),
+                        );
                 },
               ),
               _createIconButton(

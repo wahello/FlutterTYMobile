@@ -10,19 +10,19 @@ import 'package:flutter_ty_mobile/template/page/presentation/template2_route.dar
 
 @MaterialAutoRouter()
 class $Router {
-  @initial
+  @MaterialRoute(initial: true)
   HomeRoute homeRoute;
-
+  @MaterialRoute()
   LoginRoute loginRoute;
-
+  @MaterialRoute()
   WebRoute serviceRoute;
-
+  @MaterialRoute()
   MemberRoute memberRoute;
-
+  @MaterialRoute()
   PromoRoute promoRoute;
-
+  @MaterialRoute()
   DepositRoute depositRoute;
-
+  @MaterialRoute()
   WebRoute depositWebRoute;
 
   /// test route

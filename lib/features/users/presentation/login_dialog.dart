@@ -9,7 +9,7 @@ import 'package:flutter_ty_mobile/features/general/toast_widget_export.dart';
 import 'package:flutter_ty_mobile/features/general/widgets/text_input_type_freezed.dart';
 import 'package:flutter_ty_mobile/features/general/widgets/text_input_widget.dart';
 import 'package:flutter_ty_mobile/features/route_page_export.dart'
-    show localeStr, sl;
+    show Global, localeStr, sl;
 import 'package:flutter_ty_mobile/features/users/data/form/login_form.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/bloc/bloc_user_export.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/widgets/fast_login_widget.dart';
@@ -22,12 +22,12 @@ const String _CACHE_LOGIN_FORM = '_CACHE_LOGIN_FORM';
 /// Main View of [Router.loginRoute]
 ///@author H.C.CHIANG
 ///@version 2020/1/17
-class LoginRoute extends StatefulWidget {
+class LoginDialog extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => new _LoginRouteState();
+  State<StatefulWidget> createState() => new _LoginDialogState();
 }
 
-class _LoginRouteState extends State<LoginRoute> {
+class _LoginDialogState extends State<LoginDialog> {
   UserLoginBloc _bloc;
 //  final TextEditingController _passwordController = new TextEditingController();
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -43,7 +43,13 @@ class _LoginRouteState extends State<LoginRoute> {
   UserLoginHiveForm _hiveForm;
   GlobalKey<FastLoginWidgetState> _fastKey;
 
-  _LoginRouteState() {
+  final double dialogHeight = Global.device.height * 0.85;
+  // screen width - dialog padding
+  final double dialogWidth = Global.device.width - 32;
+  // screen width - dialog padding - stack padding - text padding
+  final double contentWidth = Global.device.width - 32 - 20 - 8;
+
+  _LoginDialogState() {
 //    _passwordController.addListener(_passwordListener);
   }
 
@@ -72,56 +78,103 @@ class _LoginRouteState extends State<LoginRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
-      // wrap with scrollview to prevent overflow when keyboard pops up.
-      body: SingleChildScrollView(
-        child: FutureBuilder(
-          future: getHiveBox(_CACHE_LOGIN_FORM),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError == false) {
-                try {
-                  _userBox = (snapshot.data) as Box;
-                  if (_userBox.length > 0) {
-                    print(_userBox.values.toList());
-                    _hiveForm = _userBox.values?.last;
-                    print('box login form: $_hiveForm');
-//                    _passwordController.text = _hiveForm?.password ?? '';
-                    _useBoxData = true;
-                  }
-                } catch (e) {}
-              }
-              return Container(
-                padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-                child: Column(
+    Duration insetAnimationDuration = const Duration(milliseconds: 100);
+    Curve insetAnimationCurve = Curves.decelerate;
+
+    return AnimatedPadding(
+      padding: MediaQuery.of(context).viewInsets +
+          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      duration: insetAnimationDuration,
+      curve: insetAnimationCurve,
+      child: MediaQuery.removeViewInsets(
+        removeLeft: true,
+        removeTop: true,
+        removeRight: true,
+        removeBottom: true,
+        context: context,
+        child: Center(
+          child: Material(
+            // round corner view
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(2.0)),
+            ),
+            color: Themes.dialogBgColor,
+            child: Container(
+              constraints: BoxConstraints(
+                minWidth: dialogWidth,
+                maxWidth: dialogWidth,
+                minHeight: dialogHeight / 4,
+                maxHeight: dialogHeight,
+              ),
+              child: IntrinsicHeight(
+                child: Stack(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          localeStr.hintTitleLogin,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Themes.defaultHintColor),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 10.0, 12.0, 8.0),
+                      child: SingleChildScrollView(
+                        child: FutureBuilder(
+                          future: getHiveBox(_CACHE_LOGIN_FORM),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              if (snapshot.hasError == false) {
+                                try {
+                                  _userBox = (snapshot.data) as Box;
+                                  if (_userBox.length > 0) {
+                                    print(_userBox.values.toList());
+                                    _hiveForm = _userBox.values?.last;
+                                    print('box login form: $_hiveForm');
+//                    _passwordController.text = _hiveForm?.password ?? '';
+                                    _useBoxData = true;
+                                  }
+                                } catch (e) {}
+                              }
+                              return Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 24.0, horizontal: 8.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Text(
+                                          localeStr.hintTitleLogin,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: Themes.defaultHintColor),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 12.0),
+                                    _buildTextFields(),
+                                    FastLoginWidget(
+                                      key: _fastKey,
+                                      initValue: _hiveForm?.fastLogin ?? false,
+                                    ),
+                                    SizedBox(height: 6.0),
+                                    _buildButtons(),
+                                    _blocMonitor(context),
+                                  ],
+                                ),
+                              );
+                            } else {
+                              return SizedBox.shrink();
+                            }
+                          },
                         ),
-                      ],
+                      ),
                     ),
-                    SizedBox(height: 12.0),
-                    _buildTextFields(),
-                    FastLoginWidget(
-                      key: _fastKey,
-                      initValue: _hiveForm?.fastLogin ?? false,
+                    Positioned(
+                      right: 2.0,
+                      child: IconButton(
+                        icon: Icon(Icons.close),
+                        onPressed: () => Navigator.pop(context),
+                      ),
                     ),
-                    SizedBox(height: 6.0),
-                    _buildButtons(),
-                    _blocMonitor(context),
                   ],
                 ),
-              );
-            } else {
-              return SizedBox.shrink();
-            }
-          },
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -304,7 +357,10 @@ class _LoginRouteState extends State<LoginRoute> {
                               .catchError((e) => print('hive clear error: $e'));
                         }
                       }
-                      return UserDisplay(user: state.props.first);
+                      return UserDisplay(
+                        user: state.props.first,
+                        isDialog: true,
+                      );
                     },
                     uError: (_) {
                       _loginFailed = true;
