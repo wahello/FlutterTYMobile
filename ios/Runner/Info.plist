@@ -11,9 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>flutter_ty_mobile</string>
-	<key>CFBundleDisplayName</key>
-    <string>EG990 Mobile</string>
+	<string>EG990 Mobile</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
