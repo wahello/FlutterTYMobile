@@ -1,4 +1,4 @@
-import 'dart:io' show exit;
+import 'dart:io' show Platform, exit;
 
 import 'package:flui/flui.dart' show FLToastDefaults, FLToastProvider;
 import 'package:flutter/material.dart';
@@ -136,6 +136,18 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 S.delegate
               ],
               supportedLocales: S.delegate.supportedLocales,
+              localeListResolutionCallback: (deviceLocale, supportedLocales) {
+                print('device locales: $deviceLocale');
+                print('supported locales: $supportedLocales');
+                if (Platform.isAndroid) {
+                  for (var loc in deviceLocale) {
+                    for (var supp in supportedLocales) {
+                      if (supp.languageCode == loc.languageCode) return supp;
+                    }
+                  }
+                }
+                return const Locale.fromSubtags(languageCode: 'zh');
+              },
               theme: appTheme.defaultTheme,
               title: 'TY Mobile',
               home: new MainStartup(),

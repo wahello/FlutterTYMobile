@@ -30,12 +30,12 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
         scale: 4,
       ),
       titleSpacing: 0,
+      centerTitle: false,
       /* Appbar Title */
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Observer(builder: (_) {
-          final page =
-              viewState.store.pageInfo ?? RoutePage.template.value;
+          final page = viewState.store.pageInfo ?? RoutePage.template.value;
           return Text(
             page.title,
             style: TextStyle(fontSize: FontSize.MESSAGE.value),
