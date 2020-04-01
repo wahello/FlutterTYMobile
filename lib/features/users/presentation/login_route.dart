@@ -74,7 +74,6 @@ class _LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       // wrap with scrollview to prevent overflow when keyboard pops up.
-      resizeToAvoidBottomPadding: false,
       body: SingleChildScrollView(
         child: FutureBuilder(
           future: getHiveBox(_CACHE_LOGIN_FORM),
@@ -178,6 +177,12 @@ class _LoginRouteState extends State<LoginRoute> {
               },
               hideText: _hidePassword,
               initText: _hiveForm?.password ?? '',
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              icon: Icon(Icons.add),
+              labelText: "Test Field",
             ),
           ),
         ],
