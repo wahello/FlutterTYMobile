@@ -13,6 +13,7 @@ import 'package:flutter_ty_mobile/features/route_page_export.dart'
 import 'package:flutter_ty_mobile/features/users/data/form/login_form.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/bloc/bloc_user_export.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/widgets/fast_login_widget.dart';
+import 'package:flutter_ty_mobile/features/users/presentation/widgets/test_dialog_login.dart';
 import 'package:flutter_ty_mobile/features/users/presentation/widgets/user_display.dart';
 import 'package:flutter_ty_mobile/utils/value_range.dart';
 import 'package:hive/hive.dart';
@@ -72,64 +73,88 @@ class _LoginRouteState extends State<LoginRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // wrap with scrollview to prevent overflow when keyboard pops up.
-      body: SingleChildScrollView(
-        child: FutureBuilder(
-          future: getHiveBox(_CACHE_LOGIN_FORM),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError == false) {
-                try {
-                  _userBox = (snapshot.data) as Box;
-                  if (_userBox.length > 0) {
-                    print(_userBox.values.toList());
-                    _hiveForm = _userBox.values?.last;
-                    print('box login form: $_hiveForm');
+    final _bodyForm = SingleChildScrollView(
+      child: FutureBuilder(
+        future: getHiveBox(_CACHE_LOGIN_FORM),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError == false) {
+              try {
+                _userBox = (snapshot.data) as Box;
+                if (_userBox.length > 0) {
+                  print(_userBox.values.toList());
+                  _hiveForm = _userBox.values?.last;
+                  print('box login form: $_hiveForm');
 //                    _passwordController.text = _hiveForm?.password ?? '';
-                    _useBoxData = true;
-                  }
-                } catch (e) {}
-              }
-              return Container(
-                padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          localeStr.hintTitleLogin,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Themes.defaultHintColor),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12.0),
-                    _buildTextFields(),
-                    FastLoginWidget(
-                      key: _fastKey,
-                      initValue: _hiveForm?.fastLogin ?? false,
-                    ),
-                    SizedBox(height: 6.0),
-                    _buildButtons(),
-                    _blocMonitor(context),
-                  ],
-                ),
-              );
-            } else {
-              return SizedBox.shrink();
+                  _useBoxData = true;
+                }
+              } catch (e) {}
             }
-          },
-        ),
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        localeStr.hintTitleLogin,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Themes.defaultHintColor),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12.0),
+                  _buildTextFields(),
+                  FastLoginWidget(
+                    key: _fastKey,
+                    initValue: _hiveForm?.fastLogin ?? false,
+                  ),
+                  SizedBox(height: 6.0),
+                  _buildButtons(),
+                  SizedBox(height: 12.0),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      RaisedButton(
+                        child: Text('Dialog Field'),
+                        color: Themes.hintHyperLink,
+                        textColor: Themes.defaultTextColorBlack,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) => new TestDialogField(),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  _blocMonitor(context),
+                ],
+              ),
+            );
+          } else {
+            return SizedBox.shrink();
+          }
+        },
       ),
+    );
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
+      // wrap with scrollview to prevent overflow when keyboard pops up.
+      body: _bodyForm,
     );
   }
 
   Widget _buildTextFields() {
-    return new Form(
+    return Form(
       key: _formKey,
       autovalidate: _autoValidate,
-      child: new Column(
+      child: Column(
         children: <Widget>[
           TextInputWidget(
             type: TextInputTypeFreezed.valid(
@@ -177,12 +202,6 @@ class _LoginRouteState extends State<LoginRoute> {
               },
               hideText: _hidePassword,
               initText: _hiveForm?.password ?? '',
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              icon: Icon(Icons.add),
-              labelText: "Test Field",
             ),
           ),
         ],

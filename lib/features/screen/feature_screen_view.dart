@@ -32,6 +32,7 @@ class FeatureScreenView extends StatelessWidget {
       drawer: new ScreenDrawer(),
       bottomNavigationBar: ScreenNavigationBar(),
       /* Main Content (switch placeholder with Router) */
+      resizeToAvoidBottomPadding: false,
       body: Navigator(
         key: Router.navigator.key,
         onGenerateRoute: Router.onGenerateRoute,
