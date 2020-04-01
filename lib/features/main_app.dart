@@ -136,11 +136,20 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
                 S.delegate
               ],
               supportedLocales: S.delegate.supportedLocales,
-              localeListResolutionCallback: (deviceLocale, supportedLocales) {
-                print('device locales: $deviceLocale');
+              localeResolutionCallback: (deviceLocale, supportedLocales) {
+                if (Platform.isAndroid) {
+                  for (var supp in supportedLocales) {
+                    if (supp.languageCode == deviceLocale.languageCode)
+                      return supp;
+                  }
+                }
+                return const Locale.fromSubtags(languageCode: 'zh');
+              },
+              localeListResolutionCallback: (deviceLocales, supportedLocales) {
+                print('device locales: $deviceLocales');
                 print('supported locales: $supportedLocales');
                 if (Platform.isAndroid) {
-                  for (var loc in deviceLocale) {
+                  for (var loc in deviceLocales) {
                     for (var supp in supportedLocales) {
                       if (supp.languageCode == loc.languageCode) return supp;
                     }
