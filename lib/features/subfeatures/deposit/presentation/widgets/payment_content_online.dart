@@ -32,7 +32,7 @@ class PaymentContentOnline extends StatefulWidget {
 
 class _PaymentContentOnlineState extends State<PaymentContentOnline> {
   final String tag = 'PaymentContentOnline';
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   PaymentDataOther _otherData;
   bool _autoValidate = false;

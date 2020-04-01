@@ -9,7 +9,7 @@ import 'intl/messages_all.dart';
 // **************************************************************************
 
 class S {
-  S(this.localeName);
+  S();
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,15 +19,13 @@ class S {
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      return S();
     });
   } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
-
-  final String localeName;
 
   String get title {
     return Intl.message(
@@ -299,7 +297,7 @@ class S {
     );
   }
 
-  String toolBarMemberCredit(dynamic value) {
+  String toolBarMemberCredit(Object value) {
     return Intl.message(
       '￥ $value',
       name: 'toolBarMemberCredit',
@@ -425,7 +423,7 @@ class S {
     );
   }
 
-  String btnSignUpTv(dynamic value) {
+  String btnSignUpTv(Object value) {
     return Intl.message(
       'Accumulated sign-in $value days',
       name: 'btnSignUpTv',
@@ -515,7 +513,7 @@ class S {
     );
   }
 
-  String homeHintWelcomeMember(dynamic name) {
+  String homeHintWelcomeMember(Object name) {
     return Intl.message(
       'Hello, $name！',
       name: 'homeHintWelcomeMember',
@@ -668,7 +666,7 @@ class S {
     );
   }
 
-  String messageWelcomeUser(dynamic name) {
+  String messageWelcomeUser(Object name) {
     return Intl.message(
       'Welcome, $name',
       name: 'messageWelcomeUser',
@@ -713,7 +711,7 @@ class S {
     );
   }
 
-  String messageLogout(dynamic name) {
+  String messageLogout(Object name) {
     return Intl.message(
       '$name, please log in again',
       name: 'messageLogout',
@@ -731,7 +729,7 @@ class S {
     );
   }
 
-  String messageTaskSuccess(dynamic msg) {
+  String messageTaskSuccess(Object msg) {
     return Intl.message(
       'Success: $msg',
       name: 'messageTaskSuccess',
@@ -740,7 +738,7 @@ class S {
     );
   }
 
-  String messageTaskCanceled(dynamic msg) {
+  String messageTaskCanceled(Object msg) {
     return Intl.message(
       'Cancel: $msg',
       name: 'messageTaskCanceled',
@@ -785,7 +783,7 @@ class S {
     );
   }
 
-  String messageInvalidPasswordArg(dynamic num) {
+  String messageInvalidPasswordArg(Object num) {
     return Intl.message(
       'Password must be at least $num words',
       name: 'messageInvalidPasswordArg',
@@ -830,7 +828,7 @@ class S {
     );
   }
 
-  String messageInvalidDepositAmountMin(dynamic num) {
+  String messageInvalidDepositAmountMin(Object num) {
     return Intl.message(
       'The minimum amount is $num',
       name: 'messageInvalidDepositAmountMin',
@@ -938,7 +936,7 @@ class S {
     );
   }
 
-  String messageError(dynamic msg, dynamic msg2) {
+  String messageError(Object msg, Object msg2) {
     return Intl.message(
       'Error: $msg ($msg2)',
       name: 'messageError',
@@ -947,7 +945,7 @@ class S {
     );
   }
 
-  String messageErrorStatus(dynamic msg) {
+  String messageErrorStatus(Object msg) {
     return Intl.message(
       'Error: $msg',
       name: 'messageErrorStatus',
@@ -1073,7 +1071,7 @@ class S {
     );
   }
 
-  String messageErrorFieldError(dynamic msg) {
+  String messageErrorFieldError(Object msg) {
     return Intl.message(
       'Please enter $msg',
       name: 'messageErrorFieldError',
@@ -2027,7 +2025,7 @@ class S {
     );
   }
 
-  String centerVipTextVipCondition(dynamic num) {
+  String centerVipTextVipCondition(Object num) {
     return Intl.message(
       '$num 万',
       name: 'centerVipTextVipCondition',
@@ -2144,7 +2142,7 @@ class S {
     );
   }
 
-  String betsTextTotal(dynamic value) {
+  String betsTextTotal(Object value) {
     return Intl.message(
       'Total: \$ $value',
       name: 'betsTextTotal',
@@ -2621,7 +2619,7 @@ class S {
     );
   }
 
-  String depositPaymentEditTitleAmountHintRange(dynamic num, dynamic num2) {
+  String depositPaymentEditTitleAmountHintRange(Object num, Object num2) {
     return Intl.message(
       'Input range: $num ~ $num2',
       name: 'depositPaymentEditTitleAmountHintRange',
@@ -2630,7 +2628,7 @@ class S {
     );
   }
 
-  String depositPaymentEditTitleAmountHintRangeStep(dynamic num, dynamic num2, dynamic num3) {
+  String depositPaymentEditTitleAmountHintRangeStep(Object num, Object num2, Object num3) {
     return Intl.message(
       'Input range: $num ~ $num2 (amount is a multiple of $num3)',
       name: 'depositPaymentEditTitleAmountHintRangeStep',
@@ -2693,7 +2691,7 @@ class S {
     );
   }
 
-  String depositHintTextAmount(dynamic value) {
+  String depositHintTextAmount(Object value) {
     return Intl.message(
       'Single Deposit Limit: ￥$value',
       name: 'depositHintTextAmount',
@@ -2720,7 +2718,7 @@ class S {
     );
   }
 
-  String depositHintTextMax(dynamic no) {
+  String depositHintTextMax(Object no) {
     return Intl.message(
       '$no single maximum limit\n',
       name: 'depositHintTextMax',
@@ -2729,7 +2727,7 @@ class S {
     );
   }
 
-  String depositHintTextClearInfo(dynamic no) {
+  String depositHintTextClearInfo(Object no) {
     return Intl.message(
       '$no [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!\n',
       name: 'depositHintTextClearInfo',
@@ -2738,7 +2736,7 @@ class S {
     );
   }
 
-  String depositHintTextMaxExceed(dynamic no) {
+  String depositHintTextMaxExceed(Object no) {
     return Intl.message(
       '$no exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used\n',
       name: 'depositHintTextMaxExceed',
@@ -2747,7 +2745,7 @@ class S {
     );
   }
 
-  String depositHintTextFailure(dynamic no) {
+  String depositHintTextFailure(Object no) {
     return Intl.message(
       '$no If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel\n',
       name: 'depositHintTextFailure',
@@ -2756,7 +2754,7 @@ class S {
     );
   }
 
-  String depositHintTextInfo(dynamic no) {
+  String depositHintTextInfo(Object no) {
     return Intl.message(
       '$no payment bank and account name, please contact',
       name: 'depositHintTextInfo',
@@ -2765,7 +2763,7 @@ class S {
     );
   }
 
-  String depositHintTextUnionShortcut(dynamic no) {
+  String depositHintTextUnionShortcut(Object no) {
     return Intl.message(
       '$no opens a quick function to China UnionPay to make your payment more convenient\n',
       name: 'depositHintTextUnionShortcut',
@@ -2774,7 +2772,7 @@ class S {
     );
   }
 
-  String depositHintTextQuickpay(dynamic no) {
+  String depositHintTextQuickpay(Object no) {
     return Intl.message(
       '$no Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)\n',
       name: 'depositHintTextQuickpay',
@@ -2783,7 +2781,7 @@ class S {
     );
   }
 
-  String depositHintTextUnion(dynamic no) {
+  String depositHintTextUnion(Object no) {
     return Intl.message(
       '$no want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.\n',
       name: 'depositHintTextUnion',
@@ -2819,7 +2817,7 @@ class S {
     );
   }
 
-  String depositHintTextAli(dynamic no) {
+  String depositHintTextAli(Object no) {
     return Intl.message(
       '$no Restricted Debit Card and Alipay Balance Payment!\n',
       name: 'depositHintTextAli',
@@ -2828,7 +2826,7 @@ class S {
     );
   }
 
-  String depositHintTextLastNum(dynamic no) {
+  String depositHintTextLastNum(Object no) {
     return Intl.message(
       '$no If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit\n',
       name: 'depositHintTextLastNum',
@@ -2837,7 +2835,7 @@ class S {
     );
   }
 
-  String depositHintTextLimit(dynamic no) {
+  String depositHintTextLimit(Object no) {
     return Intl.message(
       '$no Issuer Limit Solution: Requires the user to call the issuer\'s customer service to request an increase in online transaction limit\n',
       name: 'depositHintTextLimit',
@@ -2855,7 +2853,7 @@ class S {
     );
   }
 
-  String depositMessageSuccessLocal(dynamic value) {
+  String depositMessageSuccessLocal(Object value) {
     return Intl.message(
       'Request Success, Order No.$value',
       name: 'depositMessageSuccessLocal',
@@ -3098,7 +3096,7 @@ class S {
     );
   }
 
-  String balanceTransferAlertMsg(dynamic value, dynamic value2) {
+  String balanceTransferAlertMsg(Object value, Object value2) {
     return Intl.message(
       'Are you sure of the $value $value2 platform?',
       name: 'balanceTransferAlertMsg',
@@ -3377,7 +3375,7 @@ class S {
     );
   }
 
-  String wheelTextTitleCount(dynamic num) {
+  String wheelTextTitleCount(Object num) {
     return Intl.message(
       'Cumulative Lucky Draw: $num times',
       name: 'wheelTextTitleCount',
@@ -3521,7 +3519,7 @@ class S {
     );
   }
 
-  String wheelTableMessageEmpty(dynamic msg) {
+  String wheelTableMessageEmpty(Object msg) {
     return Intl.message(
       'No records found for $msg',
       name: 'wheelTableMessageEmpty',
@@ -3611,7 +3609,7 @@ class S {
     );
   }
 
-  String storeTextItemPoint(dynamic value) {
+  String storeTextItemPoint(Object value) {
     return Intl.message(
       '$value points',
       name: 'storeTextItemPoint',
@@ -3638,7 +3636,7 @@ class S {
     );
   }
 
-  String storeRuleTableTitle(dynamic value) {
+  String storeRuleTableTitle(Object value) {
     return Intl.message(
       'Each platform $value',
       name: 'storeRuleTableTitle',

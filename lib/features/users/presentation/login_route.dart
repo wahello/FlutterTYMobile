@@ -30,7 +30,7 @@ class LoginRoute extends StatefulWidget {
 class _LoginRouteState extends State<LoginRoute> {
   UserLoginBloc _bloc;
 //  final TextEditingController _passwordController = new TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _username = "";
   String _password = "";
   bool _hidePassword = true;
