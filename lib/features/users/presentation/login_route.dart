@@ -74,6 +74,7 @@ class _LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       // wrap with scrollview to prevent overflow when keyboard pops up.
+      resizeToAvoidBottomPadding: false,
       body: SingleChildScrollView(
         child: FutureBuilder(
           future: getHiveBox(_CACHE_LOGIN_FORM),
