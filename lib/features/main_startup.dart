@@ -37,7 +37,6 @@ class MainStartup extends StatelessWidget {
     if (Global.regLocale == false) registerLocale(context);
     return WillPopScope(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
         body: Navigator(
           key: ScreenRouter.navigator.key,
           onGenerateRoute: ScreenRouter.onGenerateRoute,

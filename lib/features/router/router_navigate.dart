@@ -40,9 +40,12 @@ class RouterNavigate {
   /// switch to app home page by default.
   /// [web] = true, will open a fullscreen web page,
   /// and use [webArg] to pass the url.
-  static switchScreen({bool web = false, Object webArg}) {
+  static switchScreen({bool web = false, Object webArg, bool test = false}) {
     try {
-      if (web) {
+      if (test) {
+        ScreenRouter.navigator.pushNamed(ScreenRouter.testScreen);
+        screenIndex = 1;
+      } else if (web) {
         ScreenRouter.navigator.pushNamed(
           ScreenRouter.webGameScreen,
           arguments: webArg,

@@ -9,10 +9,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_ty_mobile/features/screen/feature_screen.dart';
 import 'package:flutter_ty_mobile/features/screen/web_game_screen.dart';
+import 'package:flutter_ty_mobile/features/screen/test_screen.dart';
 
 class ScreenRouter {
   static const featureScreen = '/';
   static const webGameScreen = '/web-game-screen';
+  static const testScreen = '/test-screen';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -30,6 +32,11 @@ class ScreenRouter {
         final typedArgs = args as String ?? 'https://eg990.com/';
         return MaterialPageRoute<dynamic>(
           builder: (_) => WebGameScreen(startUrl: typedArgs),
+          settings: settings,
+        );
+      case ScreenRouter.testScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => TestScreen(),
           settings: settings,
         );
       default:
